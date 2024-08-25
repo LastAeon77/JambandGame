@@ -1,9 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn2fmk2fuwcwq"]
+[gd_scene load_steps=4 format=3 uid="uid://bn2fmk2fuwcwq"]
 
 [ext_resource type="PackedScene" uid="uid://bsjdvrrnug3ck" path="res://scenes/player_ship.tscn" id="1_mn0o8"]
 [ext_resource type="PackedScene" uid="uid://cbw3frru4q7te" path="res://scenes/passenger_ship.tscn" id="2_rhrxj"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4p44d"]
+
 [node name="SpaceLevel" type="Node"]
+
+[node name="WorldBoundries" type="StaticBody2D" parent="."]
+
+[node name="LeftBoundry" type="CollisionShape2D" parent="WorldBoundries"]
+position = Vector2(-1150, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_4p44d")
+
+[node name="UpperBoundry" type="CollisionShape2D" parent="WorldBoundries"]
+position = Vector2(7, -650)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_4p44d")
+
+[node name="LowerBoundry" type="CollisionShape2D" parent="WorldBoundries"]
+position = Vector2(0, 650)
+shape = SubResource("WorldBoundaryShape2D_4p44d")
+
+[node name="RightBoundry" type="CollisionShape2D" parent="WorldBoundries"]
+position = Vector2(1150, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_4p44d")
 
 [node name="MainCamera" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
