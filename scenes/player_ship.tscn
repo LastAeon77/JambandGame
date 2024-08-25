@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsjdvrrnug3ck"]
+
+[ext_resource type="Script" path="res://scripts/player_ship.gd" id="1_4xxtt"]
+[ext_resource type="Texture2D" uid="uid://qerubgc6veti" path="res://sprites/icon.svg" id="2_plyj4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kwbbc"]
+radius = 62.0081
+
+[node name="PlayerShip" type="CharacterBody2D" groups=["Magnetic", "Player"]]
+script = ExtResource("1_4xxtt")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_plyj4")
+
+[node name="PlayerCollsion" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kwbbc")

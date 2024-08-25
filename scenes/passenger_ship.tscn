@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbw3frru4q7te"]
+
+[ext_resource type="Texture2D" uid="uid://dykvnivcjbfpb" path="res://sprites/Passenger Ship.png" id="1_eyfjm"]
+[ext_resource type="Script" path="res://scripts/passenger_ship.gd" id="1_o2fu7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kik2n"]
+height = 82.0
+
+[node name="PassengerShip" type="CharacterBody2D"]
+script = ExtResource("1_o2fu7")
+
+[node name="ShipSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_eyfjm")
+
+[node name="ShipCollision" type="CollisionShape2D" parent="."]
+position = Vector2(10, 1.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kik2n")
