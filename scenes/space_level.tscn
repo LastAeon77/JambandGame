@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn2fmk2fuwcwq"]
+[gd_scene load_steps=6 format=3 uid="uid://bn2fmk2fuwcwq"]
 
+[ext_resource type="PackedScene" uid="uid://dp1wusb7lwvr6" path="res://scenes/asteroid_generator.tscn" id="1_m0rt1"]
 [ext_resource type="PackedScene" uid="uid://bsjdvrrnug3ck" path="res://scenes/player_ship.tscn" id="1_mn0o8"]
 [ext_resource type="PackedScene" uid="uid://cbw3frru4q7te" path="res://scenes/passenger_ship.tscn" id="2_rhrxj"]
 [ext_resource type="PackedScene" uid="uid://c1ino5hpjsofp" path="res://scenes/asteroid.tscn" id="3_00svk"]
@@ -7,6 +8,8 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4p44d"]
 
 [node name="SpaceLevel" type="Node"]
+
+[node name="Asteroid_Generator" parent="." instance=ExtResource("1_m0rt1")]
 
 [node name="WorldBoundries" type="StaticBody2D" parent="."]
 
@@ -29,7 +32,7 @@ position = Vector2(1150, 0)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_4p44d")
 
-[node name="MainCamera" type="Camera2D" parent="."]
+[node name="MainCamera" type="Camera2D" parent="." groups=["camera"]]
 zoom = Vector2(0.5, 0.5)
 
 [node name="PlayerShip" parent="." instance=ExtResource("1_mn0o8")]
