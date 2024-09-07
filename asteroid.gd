@@ -12,6 +12,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += movement_vector.rotated(rotation) * speed * delta
+	# TODO: Check if asteroid is too high or low and queue free it.
 	
 func on_ready(rotate):
 	rotation = rotate
