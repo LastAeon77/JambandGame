@@ -17,6 +17,11 @@ func _process(delta):
 func on_ready(rotate):
 	rotation = rotate
 
+func speed_up():
+	speed *=1.5
+	
+func slow_down():
+	speed*=0.5
 
 func _on_area_entered(area):
 	#queue_free()
