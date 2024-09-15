@@ -1,22 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://cld4pdgunud8x"]
+[gd_scene load_steps=8 format=3 uid="uid://cld4pdgunud8x"]
 
 [ext_resource type="Script" path="res://scripts/pull_push_ship.gd" id="1_j6mqp"]
-[ext_resource type="Texture2D" uid="uid://qerubgc6veti" path="res://sprites/icon.svg" id="2_asj46"]
+[ext_resource type="Texture2D" uid="uid://bkled4snqdpw2" path="res://sprites/Pixie_ship_full_player 2 Idle.png" id="2_l0y2c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6yk6m"]
-radius = 125.064
+radius = 36.3456
 
-[node name="PullPushShip" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_amq5f"]
+atlas = ExtResource("2_l0y2c")
+region = Rect2(0, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1w34"]
+atlas = ExtResource("2_l0y2c")
+region = Rect2(256, 0, 256, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ks7c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amq5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1w34")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rmfa2"]
+radius = 95.021
+
+[node name="PullPushShip" type="CharacterBody2D"]
 script = ExtResource("1_j6mqp")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_asj46")
+[node name="body" type="CollisionShape2D" parent="." groups=["forcefield"]]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_6yk6m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1ks7c")
 
 [node name="forcefield" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
-[node name="forcefield" type="CollisionShape2D" parent="forcefield" groups=["forcefield"]]
-position = Vector2(175, 1)
-shape = SubResource("CircleShape2D_6yk6m")
+[node name="Forcefield" type="CollisionShape2D" parent="forcefield"]
+position = Vector2(130, 2)
+shape = SubResource("CircleShape2D_rmfa2")
 
 [connection signal="area_entered" from="forcefield" to="." method="_on_forcefield_area_entered"]
 [connection signal="area_exited" from="forcefield" to="." method="_on_forcefield_area_exited"]

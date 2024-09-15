@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn2fmk2fuwcwq"]
+[gd_scene load_steps=7 format=3 uid="uid://bn2fmk2fuwcwq"]
 
 [ext_resource type="PackedScene" uid="uid://dp1wusb7lwvr6" path="res://scenes/asteroid_generator.tscn" id="1_m0rt1"]
 [ext_resource type="PackedScene" uid="uid://bsjdvrrnug3ck" path="res://scenes/player_ship.tscn" id="1_mn0o8"]
 [ext_resource type="PackedScene" uid="uid://cbw3frru4q7te" path="res://scenes/passenger_ship.tscn" id="2_rhrxj"]
 [ext_resource type="PackedScene" uid="uid://c1ino5hpjsofp" path="res://scenes/asteroid.tscn" id="3_00svk"]
+[ext_resource type="PackedScene" uid="uid://cld4pdgunud8x" path="res://scenes/pull_push_ship.tscn" id="6_4jwa6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4p44d"]
 
 [node name="SpaceLevel" type="Node"]
 
 [node name="Asteroid_Generator" parent="." instance=ExtResource("1_m0rt1")]
-position = Vector2(1246, -562)
+position = Vector2(1236, -134)
 
 [node name="WorldBoundries" type="StaticBody2D" parent="."]
 
@@ -37,7 +38,7 @@ shape = SubResource("WorldBoundaryShape2D_4p44d")
 zoom = Vector2(0.5, 0.5)
 
 [node name="PlayerShip" parent="." instance=ExtResource("1_mn0o8")]
-position = Vector2(2, -4)
+position = Vector2(-631, 455)
 
 [node name="PassengerShip" parent="." instance=ExtResource("2_rhrxj")]
 position = Vector2(-950, 0)
@@ -50,4 +51,10 @@ position = Vector2(683, -37)
 position = Vector2(644, 253)
 
 [node name="Asteroid3" parent="." instance=ExtResource("3_00svk")]
-position = Vector2(1150, -648)
+position = Vector2(685, -107)
+
+[node name="PullPushShip" parent="." instance=ExtResource("6_4jwa6")]
+position = Vector2(-495, 165)
+
+[node name="Asteroid_Generator2" parent="." instance=ExtResource("1_m0rt1")]
+position = Vector2(2514, -78)

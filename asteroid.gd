@@ -19,9 +19,11 @@ func on_ready(rotate):
 
 func speed_up():
 	speed *=1.5
+	speed = max(100,speed)
 	
 func slow_down():
 	speed*=0.5
+	speed = max(1,speed)
 
 func _on_area_entered(area):
 	#queue_free()

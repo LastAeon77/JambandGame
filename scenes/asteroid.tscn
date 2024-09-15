@@ -10,7 +10,8 @@ radius = 18.2483
 script = ExtResource("1_1rshi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1875, 0.171875)
+position = Vector2(0, -3.8147e-06)
+scale = Vector2(0.742188, 0.742188)
 texture = ExtResource("2_wj1av")
 
 [node name="AsteroidCollision" type="CollisionShape2D" parent="."]
