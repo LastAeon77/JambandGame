@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var speed: int = 500.0
 @export var acceleration = 3.0
 
+func _ready():
+	$ShipSpriteAnimated.play("default")
 
 func _process(delta):
 	var direction: Vector2

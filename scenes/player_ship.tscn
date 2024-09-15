@@ -1,16 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsjdvrrnug3ck"]
+[gd_scene load_steps=7 format=3 uid="uid://bsjdvrrnug3ck"]
 
 [ext_resource type="Script" path="res://scripts/player_ship.gd" id="1_4xxtt"]
-[ext_resource type="Texture2D" uid="uid://qerubgc6veti" path="res://sprites/icon.svg" id="2_plyj4"]
+[ext_resource type="Texture2D" uid="uid://byeof48e2y4an" path="res://sprites/Pixie_ship_P1_Cruise.png" id="2_kp05j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwbbc"]
 radius = 62.0081
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi5uo"]
+atlas = ExtResource("2_kp05j")
+region = Rect2(0, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t75a4"]
+atlas = ExtResource("2_kp05j")
+region = Rect2(256, 0, 256, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ben3y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi5uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t75a4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="PlayerShip" type="CharacterBody2D" groups=["Magnetic", "Player"]]
 script = ExtResource("1_4xxtt")
 
-[node name="PlayerSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_plyj4")
-
 [node name="PlayerCollsion" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kwbbc")
+
+[node name="ShipSpriteAnimated" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 13)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ben3y")
