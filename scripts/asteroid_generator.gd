@@ -26,7 +26,6 @@ func _process(delta):
 		var dot_product = vector_to_top_right.dot(vector_to_bottom_right)
 		var angle = acos(dot_product)
 		angle = angle
-		print(rad_to_deg(angle))
 		var temp = asteroid_block.instantiate()
 		add_child(temp)
 		temp.global_position = global_position

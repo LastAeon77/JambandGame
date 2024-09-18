@@ -29,11 +29,12 @@ func _process(delta):
 		position.x-=10
 
 func _on_forcefield_area_entered(area:Area2D):
-	if asteroids_in_your_area.has(area):
-		pass
-	else:
-		print("added asteroid")
-		asteroids_in_your_area[area] = null
+	if(area.is_in_group("asteroid")):
+		if asteroids_in_your_area.has(area):
+			pass
+		else:
+			print("added asteroid")
+			asteroids_in_your_area[area] = null
 
 func _on_forcefield_area_exited(area):
 	if asteroids_in_your_area.has(area):

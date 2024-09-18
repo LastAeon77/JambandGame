@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbw3frru4q7te"]
+[gd_scene load_steps=5 format=3 uid="uid://cbw3frru4q7te"]
 
 [ext_resource type="Texture2D" uid="uid://dykvnivcjbfpb" path="res://sprites/Passenger Ship.png" id="1_eyfjm"]
 [ext_resource type="Script" path="res://scripts/passenger_ship.gd" id="1_o2fu7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kik2n"]
 height = 82.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2r86"]
+bg_color = Color(0.248661, 0.71495, 1.92523e-07, 1)
 
 [node name="PassengerShip" type="CharacterBody2D"]
 collision_layer = 2
@@ -18,3 +21,21 @@ texture = ExtResource("1_eyfjm")
 position = Vector2(10, 1.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kik2n")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="ShipHitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(10, 1.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kik2n")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -56.0
+offset_top = -54.0
+offset_right = 60.0
+offset_bottom = -27.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_b2r86")
+value = 100.0
+show_percentage = false
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

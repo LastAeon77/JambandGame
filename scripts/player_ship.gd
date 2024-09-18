@@ -6,6 +6,8 @@ extends CharacterBody2D
 
 func _ready():
 	$ShipSpriteAnimated.play("default")
+	floor_stop_on_slope =false
+
 
 func _process(delta):
 	var direction: Vector2

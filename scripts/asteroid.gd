@@ -1,7 +1,7 @@
 extends Area2D
 
 var movement_vector := Vector2(-1,0)
-var speed: int = 30
+var speed: int = 120
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#rotation = randf_range(0,2*PI)
@@ -12,7 +12,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += movement_vector.rotated(rotation) * speed * delta
-	# TODO: Check if asteroid is too high or low and queue free it.
+	if position.x < -1000:
+		queue_free()
+
 	
 func on_ready(rotate):
 	rotation = rotate
@@ -24,7 +26,4 @@ func speed_up():
 func slow_down():
 	speed*=0.5
 	speed = max(1,speed)
-
-func _on_area_entered(area):
-	#queue_free()
-	pass
+	

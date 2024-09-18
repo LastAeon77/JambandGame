@@ -10,7 +10,5 @@ func _ready():
 func _process(delta):
 	pass
 
-signal _asteroid_accelerate()
+signal _game_lost()
 
-signal _asteroid_deccelerate()
-	
