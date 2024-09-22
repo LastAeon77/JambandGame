@@ -12,3 +12,13 @@ func _process(delta):
 
 signal _game_lost()
 
+signal _game_won()
+
+func get_camera_top():
+	var camera = get_tree().get_first_node_in_group("camera") as Camera2D
+	var screen_size = get_viewport().get_visible_rect().size
+	var zoom : Vector2 = camera.zoom
+	var top_right = camera.position + (screen_size * Vector2(1/zoom.x,1/zoom.y)) / 2
+	var bottom_right = camera.position + (screen_size * Vector2(1/zoom.x,1/zoom.y)) / 2
+	return top_right.y
+

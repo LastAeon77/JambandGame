@@ -29,7 +29,6 @@ animations = [{
 }]
 
 [node name="PlayerShip" type="CharacterBody2D" groups=["Magnetic", "Player"]]
-visible = false
 script = ExtResource("1_4xxtt")
 
 [node name="PlayerCollsion" type="CollisionShape2D" parent="."]

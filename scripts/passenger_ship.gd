@@ -37,10 +37,10 @@ func _process(delta):
 func damaged():
 	$HealthBar.value -= 10
 	if $HealthBar.value<=0:
-		ship_destroyed()
+		SignalBus.emit_signal("_game_lost")
 	
 func ship_destroyed():
-	pass
+	print("You lost!")
 
 
 func _on_area_2d_area_entered(area:Area2D):

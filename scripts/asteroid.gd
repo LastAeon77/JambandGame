@@ -12,7 +12,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += movement_vector.rotated(rotation) * speed * delta
-	if position.x < -1000:
+	if global_position.x < -1000:
 		queue_free()
 
 	

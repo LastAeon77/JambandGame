@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bn2fmk2fuwcwq"]
+[gd_scene load_steps=8 format=3 uid="uid://bn2fmk2fuwcwq"]
 
+[ext_resource type="PackedScene" uid="uid://uo0ia6d4mdy8" path="res://scenes/parallax_moon_gem.tscn" id="1_gbr5w"]
 [ext_resource type="PackedScene" uid="uid://dp1wusb7lwvr6" path="res://scenes/asteroid_generator.tscn" id="1_m0rt1"]
 [ext_resource type="PackedScene" uid="uid://bsjdvrrnug3ck" path="res://scenes/player_ship.tscn" id="1_mn0o8"]
 [ext_resource type="PackedScene" uid="uid://cbw3frru4q7te" path="res://scenes/passenger_ship.tscn" id="2_rhrxj"]
@@ -10,27 +11,29 @@
 
 [node name="SpaceLevel" type="Node"]
 
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_gbr5w")]
+
 [node name="Asteroid_Generator" parent="." instance=ExtResource("1_m0rt1")]
 position = Vector2(1461, 407)
 
 [node name="WorldBoundries" type="StaticBody2D" parent="."]
 
 [node name="LeftBoundry" type="CollisionShape2D" parent="WorldBoundries"]
-position = Vector2(-1150, 0)
+position = Vector2(-1280, 0)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_4p44d")
 
 [node name="UpperBoundry" type="CollisionShape2D" parent="WorldBoundries"]
-position = Vector2(7, -650)
+position = Vector2(7, -720)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_4p44d")
 
 [node name="LowerBoundry" type="CollisionShape2D" parent="WorldBoundries"]
-position = Vector2(0, 650)
+position = Vector2(0, 720)
 shape = SubResource("WorldBoundaryShape2D_4p44d")
 
 [node name="RightBoundry" type="CollisionShape2D" parent="WorldBoundries"]
-position = Vector2(1150, 0)
+position = Vector2(1280, 0)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_4p44d")
 
@@ -64,4 +67,4 @@ collision_mask = 0
 position = Vector2(1374, -456)
 
 [node name="Asteroid_Generator4" parent="." instance=ExtResource("1_m0rt1")]
-position = Vector2(1483, 1)
+position = Vector2(1299, 370)

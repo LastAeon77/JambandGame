@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 func _ready():
 	$ShipSpriteAnimated.play("default")
+	print(global_position)
 	floor_stop_on_slope =false
 
 
@@ -17,6 +18,7 @@ func _process(delta):
 	direction = direction.normalized()
 	
 	velocity = lerp(velocity, direction * speed, delta * acceleration)
+	
 	#for non-slippery movement
 	#velocity = direction * speed 
 
