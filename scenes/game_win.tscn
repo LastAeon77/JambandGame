@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpuy7o464xvh8"]
+
+[ext_resource type="Texture2D" uid="uid://c3abvtrk14kcc" path="res://sprites/win_page.jpeg" id="1_dp2cq"]
+[ext_resource type="Script" path="res://scenes/game_win.gd" id="1_h7jy5"]
+
+[node name="game_win" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h7jy5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1284.0
+offset_bottom = 722.0
+texture = ExtResource("1_dp2cq")
+expand_mode = 3

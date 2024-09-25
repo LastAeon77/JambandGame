@@ -14,6 +14,8 @@ signal _game_lost()
 
 signal _game_won()
 
+signal _moon_gem_stage_clear()
+
 func get_camera_top():
 	var camera = get_tree().get_first_node_in_group("camera") as Camera2D
 	var screen_size = get_viewport().get_visible_rect().size

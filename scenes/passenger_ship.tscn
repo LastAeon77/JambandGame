@@ -9,7 +9,7 @@ height = 82.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2r86"]
 bg_color = Color(0.248661, 0.71495, 1.92523e-07, 1)
 
-[node name="PassengerShip" type="CharacterBody2D"]
+[node name="PassengerShip" type="CharacterBody2D" groups=["passengerShip"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_o2fu7")
@@ -22,7 +22,9 @@ position = Vector2(10, 1.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kik2n")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["passengerShip"]]
+collision_layer = 5
+collision_mask = 5
 
 [node name="ShipHitbox" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(10, 1.5)

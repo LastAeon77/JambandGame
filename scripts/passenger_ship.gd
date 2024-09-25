@@ -20,7 +20,6 @@ func _ready():
 
 func _process(delta):
 	var direction: Vector2
-	
 	var y_diff = magnetic_ship.global_position.y - global_position.y
 	if abs(y_diff) > follow_tolerance:
 		direction.y = y_diff

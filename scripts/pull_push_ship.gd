@@ -11,12 +11,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("accelerate"):
+		$AnimatedSprite2D.play("accel")
 		for key in asteroids_in_your_area:
-			print("fast")
 			key.speed_up()
 	if Input.is_action_just_pressed("decelerrate"):
+		$AnimatedSprite2D.play("deccel")
 		for key in asteroids_in_your_area:
-			print("slow")
 			key.slow_down()
 	
 	if Input.is_action_pressed("down_player_2"):
@@ -33,11 +33,9 @@ func _on_forcefield_area_entered(area:Area2D):
 		if asteroids_in_your_area.has(area):
 			pass
 		else:
-			print("added asteroid")
 			asteroids_in_your_area[area] = null
 
 func _on_forcefield_area_exited(area):
 	if asteroids_in_your_area.has(area):
-		print("deleting asteroid")
 		asteroids_in_your_area.erase(area)
 

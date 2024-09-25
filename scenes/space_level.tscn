@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn2fmk2fuwcwq"]
+[gd_scene load_steps=9 format=3 uid="uid://bn2fmk2fuwcwq"]
 
+[ext_resource type="PackedScene" uid="uid://bpuy7o464xvh8" path="res://scenes/game_win.tscn" id="1_3d03w"]
 [ext_resource type="PackedScene" uid="uid://uo0ia6d4mdy8" path="res://scenes/parallax_moon_gem.tscn" id="1_gbr5w"]
 [ext_resource type="PackedScene" uid="uid://dp1wusb7lwvr6" path="res://scenes/asteroid_generator.tscn" id="1_m0rt1"]
 [ext_resource type="PackedScene" uid="uid://bsjdvrrnug3ck" path="res://scenes/player_ship.tscn" id="1_mn0o8"]
@@ -10,6 +11,8 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4p44d"]
 
 [node name="SpaceLevel" type="Node"]
+
+[node name="game_win" parent="." instance=ExtResource("1_3d03w")]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_gbr5w")]
 
