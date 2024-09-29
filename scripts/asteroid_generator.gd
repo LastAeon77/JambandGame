@@ -3,6 +3,8 @@ extends Node2D
 var asteroid_block = load("res://scenes/asteroid.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	SignalBus.connect("_pause",pause)
+	SignalBus.connect("_restart_moon_stage", restart)
 	pass # Replace with function body.
 
 
@@ -41,3 +43,14 @@ func _on_timer_timeout():
 	create_asteroid()
 	if ($Timer.is_stopped()):
 		$Timer.start()
+		
+func pause():
+	if $Timer.is_stopped():
+		$Timer.start()
+	else:
+		$Timer.stop()
+		
+func restart():
+	$Timer.stop()
+	
+

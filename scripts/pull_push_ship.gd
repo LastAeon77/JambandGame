@@ -29,6 +29,7 @@ func _process(delta):
 		position.x+=10
 	if Input.is_action_pressed("left_player_2"):
 		position.x-=10
+	move_and_slide()
 
 func _on_forcefield_area_entered(area:Area2D):
 	if(area.is_in_group("asteroid")):

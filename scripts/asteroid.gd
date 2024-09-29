@@ -2,10 +2,13 @@ extends Area2D
 
 var movement_vector := Vector2(-1,0)
 var speed: int = 120
+var prev_speed = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#rotation = randf_range(0,2*PI)
 	rotation = 0
+	SignalBus.connect("_pause",pause)
+	SignalBus.connect("_moon_gem_stage_restart", restart)
 	pass # Replace with function body.
 
 
@@ -26,4 +29,14 @@ func speed_up():
 func slow_down():
 	speed*=0.5
 	speed = max(1,speed)
-	
+
+func pause():
+	if prev_speed ==0:
+		prev_speed = speed
+		speed = 0
+	else:
+		speed = prev_speed
+		prev_speed = 0
+
+func restart():
+	queue_free()

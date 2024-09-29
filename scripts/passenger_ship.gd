@@ -13,6 +13,7 @@ var magnetic_ship: CharacterBody2D
 func _ready():
 	magnetic_ship = get_tree().get_first_node_in_group("Magnetic")
 	SignalBus.connect("_game_lost", ship_destroyed) 
+	SignalBus.connect("_moon_gem_stage_restart",restart)
 	$HealthBar.max_value = health
 	$HealthBar.min_value = 0
 	$HealthBar.value = $HealthBar.max_value
@@ -36,7 +37,9 @@ func _process(delta):
 func damaged():
 	$HealthBar.value -= 10
 	if $HealthBar.value<=0:
+		$ShipSprite.play("get_hit")
 		SignalBus.emit_signal("_game_lost")
+		SignalBus.emit_signal("_pause")
 	
 func ship_destroyed():
 	print("You lost!")
@@ -45,3 +48,15 @@ func ship_destroyed():
 func _on_area_2d_area_entered(area:Area2D):
 	if area.is_in_group("asteroid"):
 		damaged()
+		
+func restart():
+	$ShipSprite.play("default")
+	$HealthBar.value = $HealthBar.max_value
+
+
+
+# General music
+# End game mission success
+# sound of asteroid hitting
+# sound of ship moving
+# sound of ship pull/push

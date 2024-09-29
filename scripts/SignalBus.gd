@@ -1,6 +1,16 @@
 extends Node
 
+signal _game_lost()
 
+signal _game_won()
+
+signal _moon_gem_stage_clear()
+
+signal _moon_gem_stage_restart()
+
+signal _pause()
+
+signal _restart_moon_stage()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -8,13 +18,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("pause"):
+		emit_signal("_pause")
+	if Input.is_action_just_pressed("restart"):
+		emit_signal("_moon_gem_stage_restart")
 
-signal _game_lost()
-
-signal _game_won()
-
-signal _moon_gem_stage_clear()
 
 func get_camera_top():
 	var camera = get_tree().get_first_node_in_group("camera") as Camera2D

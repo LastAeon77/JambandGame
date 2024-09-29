@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfvileha64fqy"]
+
+[ext_resource type="Texture2D" uid="uid://djbsy7gtfcvcj" path="res://sprites/MrBlob/Mr. Blob Casual.png" id="1_a0s0a"]
+
+[node name="Story_Commentary" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_a0s0a")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 590.0
+offset_bottom = 106.0
+text = "I want to Please Ms.Glob
+"

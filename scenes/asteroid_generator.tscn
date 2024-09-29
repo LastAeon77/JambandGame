@@ -12,6 +12,5 @@ scale = Vector2(0.109375, 0.0625)
 texture = ExtResource("2_osi6n")
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
