@@ -13,11 +13,13 @@ func _process(delta):
 	if Input.is_action_just_pressed("accelerate"):
 		$AnimatedSprite2D.play("accel")
 		for key in asteroids_in_your_area:
-			key.speed_up()
+			if key.has_method("speed_up"):
+				key.speed_up()
 	if Input.is_action_just_pressed("decelerrate"):
 		$AnimatedSprite2D.play("deccel")
 		for key in asteroids_in_your_area:
-			key.slow_down()
+			if key.has_method("slow_down"):
+				key.slow_down()
 	
 	if Input.is_action_pressed("down_player_2"):
 		position.y+=10
