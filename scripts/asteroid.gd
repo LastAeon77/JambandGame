@@ -9,6 +9,7 @@ func _ready():
 	rotation = 0
 	SignalBus.connect("_pause",pause)
 	SignalBus.connect("_moon_gem_stage_restart", restart)
+	SignalBus.connect("_moon_gem_stage_clear",restart)
 	pass # Replace with function body.
 
 

@@ -87,10 +87,10 @@ position = Vector2(-950, 0)
 scale = Vector2(3, 3)
 
 [node name="game_win" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("1_3d03w")]
-offset_left = -1298.0
-offset_top = -703.0
-offset_right = -1298.0
-offset_bottom = -703.0
+offset_left = -1337.0
+offset_top = -742.0
+offset_right = -1337.0
+offset_bottom = -742.0
 
 [node name="PullPushShip" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("6_4jwa6")]
 position = Vector2(-495, 165)
