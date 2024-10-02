@@ -1,7 +1,7 @@
 extends PathFollow2D
 
 
-var speed = 0.01
+var speed = 0.008
 var resume = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 

@@ -12,9 +12,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_a5vof"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 6, -2, -86.7141, 86.7141, 86.7141, -86.7141, 673, -707, -296.966, -4.75146, 296.966, 4.75146, 1495, -955, -313.596, -26.133, 313.596, 26.133, 1776, 816, -597.496, -1.18787, 597.496, 1.18787, 2727, -1049, -117.599, 182.931, 117.599, -182.931, 3489, 169, 0, 0, 0, 0, 3755, 759)
+"points": PackedVector2Array(0, 0, 0, 0, 6, -2, -86.7141, 86.7141, 86.7141, -86.7141, 296, -619, -296.966, -4.75146, 296.966, 4.75146, 1040, -1027, 0, 0, 0, 0, 1672, 845, -313.596, -26.133, 313.596, 26.133, 1920, 1061, -597.496, -1.18787, 597.496, 1.18787, 2727, -1049, -117.599, 182.931, 117.599, -182.931, 3288, -171, 0, 0, 0, 0, 3755, 759)
 }
-point_count = 7
+point_count = 8
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4p44d"]
 
@@ -26,18 +26,28 @@ scale = Vector2(5.03984, 4.95556)
 texture = ExtResource("1_3j46u")
 
 [node name="Asteroid" parent="." instance=ExtResource("3_00svk")]
-position = Vector2(2677, -661)
+position = Vector2(2173, -653)
 scale = Vector2(4, 4)
 script = null
 
 [node name="Asteroid2" parent="." instance=ExtResource("3_00svk")]
-position = Vector2(1623, 878)
+position = Vector2(1655, 902)
 scale = Vector2(4, 4)
 script = null
 
 [node name="Asteroid3" parent="." instance=ExtResource("3_00svk")]
-position = Vector2(932, -512)
-scale = Vector2(5, 5)
+position = Vector2(628, -456)
+scale = Vector2(8, 8)
+script = null
+
+[node name="Asteroid4" parent="." instance=ExtResource("3_00svk")]
+position = Vector2(924, -1168)
+scale = Vector2(10, 10)
+script = null
+
+[node name="Asteroid5" parent="." instance=ExtResource("3_00svk")]
+position = Vector2(3613, -365)
+scale = Vector2(12, 12)
 script = null
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -87,6 +97,7 @@ position = Vector2(-950, 0)
 scale = Vector2(3, 3)
 
 [node name="game_win" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("1_3d03w")]
+visible = false
 offset_left = -1337.0
 offset_top = -742.0
 offset_right = -1337.0
