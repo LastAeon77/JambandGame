@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 
-@export var speed: int = 300.0
+@export var speed = 300.0
 @export var acceleration = 2.0
 
 var health = 20
 
-var follow_tolerance: int = 15
+var follow_tolerance = 15
 var magnetic_ship: CharacterBody2D
 
 
@@ -19,7 +19,7 @@ func _ready():
 	$HealthBar.value = $HealthBar.max_value
 
 
-func _process(delta):
+func _physics_process(delta):
 	var direction: Vector2
 	var y_diff = magnetic_ship.global_position.y - global_position.y
 	if abs(y_diff) > follow_tolerance:
