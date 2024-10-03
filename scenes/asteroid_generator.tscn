@@ -12,5 +12,6 @@ scale = Vector2(0.109375, 0.0625)
 texture = ExtResource("2_osi6n")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -3,6 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = true
 	$WinScreen.visible = false
 	$Pause.visible = false
 	SignalBus.connect("_moon_gem_stage_clear",game_win)

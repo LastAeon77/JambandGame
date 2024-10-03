@@ -52,11 +52,8 @@ func _on_area_2d_area_entered(area:Area2D):
 func restart():
 	$ShipSprite.play("default")
 	$HealthBar.value = $HealthBar.max_value
+		
 
-
-
-# General music
-# End game mission success
-# sound of asteroid hitting
-# sound of ship moving
-# sound of ship pull/push
+func _on_ship_sprite_animation_finished():
+	if $ShipSprite.animation == "get_hit":
+		SignalBus.emit_signal("_moon_gem_stage_restart")

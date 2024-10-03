@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bn2fmk2fuwcwq"]
+[gd_scene load_steps=13 format=3 uid="uid://bn2fmk2fuwcwq"]
 
 [ext_resource type="PackedScene" uid="uid://bpuy7o464xvh8" path="res://scenes/game_win.tscn" id="1_3d03w"]
 [ext_resource type="Texture2D" uid="uid://cropil6jeixtb" path="res://sprites/Space Background.png" id="1_3j46u"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bsjdvrrnug3ck" path="res://scenes/player_ship.tscn" id="1_mn0o8"]
 [ext_resource type="PackedScene" uid="uid://cbw3frru4q7te" path="res://scenes/passenger_ship.tscn" id="2_rhrxj"]
 [ext_resource type="PackedScene" uid="uid://c1ino5hpjsofp" path="res://scenes/asteroid.tscn" id="3_00svk"]
+[ext_resource type="PackedScene" uid="uid://2pwwasdg3mp8" path="res://scenes/asteroid_generator_homing.tscn" id="4_edu6f"]
 [ext_resource type="PackedScene" uid="uid://cld4pdgunud8x" path="res://scenes/pull_push_ship.tscn" id="6_4jwa6"]
 [ext_resource type="Script" path="res://scripts/PathFollow2D.gd" id="6_pleg5"]
 [ext_resource type="PackedScene" uid="uid://bfvileha64fqy" path="res://scenes/story_commentary.tscn" id="9_ybynr"]
@@ -65,6 +66,21 @@ rotation = 0.813088
 collision_layer = 768
 collision_mask = 768
 
+[node name="Asteroid_Generator5" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("4_edu6f")]
+position = Vector2(1357, -353)
+
+[node name="Asteroid_Generator3" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("4_edu6f")]
+position = Vector2(1395, 497)
+
+[node name="Asteroid_Generator2" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("1_m0rt1")]
+position = Vector2(1374, -456)
+
+[node name="Asteroid_Generator4" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("1_m0rt1")]
+position = Vector2(1422, -89)
+
+[node name="Asteroid_Generator" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("1_m0rt1")]
+position = Vector2(1425, 293)
+
 [node name="LeftBoundry" type="CollisionShape2D" parent="Path2D/PathFollow2D/WorldBoundries"]
 position = Vector2(-1280, 0)
 rotation = 1.5708
@@ -98,24 +114,16 @@ scale = Vector2(3, 3)
 
 [node name="game_win" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("1_3d03w")]
 visible = false
-offset_left = -1337.0
-offset_top = -742.0
-offset_right = -1337.0
-offset_bottom = -742.0
+offset_left = -1400.0
+offset_top = -807.0
+offset_right = -1400.0
+offset_bottom = -807.0
+scale = Vector2(0.85, 0.85)
 
 [node name="PullPushShip" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("6_4jwa6")]
 position = Vector2(-495, 165)
 collision_layer = 512
 collision_mask = 512
-
-[node name="Asteroid_Generator2" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("1_m0rt1")]
-position = Vector2(1374, -456)
-
-[node name="Asteroid_Generator4" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("1_m0rt1")]
-position = Vector2(1422, -89)
-
-[node name="Asteroid_Generator" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("1_m0rt1")]
-position = Vector2(1425, 293)
 
 [node name="Story_Commentary" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("9_ybynr")]
 offset_left = -1280.0

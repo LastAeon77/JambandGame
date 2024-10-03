@@ -1,7 +1,7 @@
 extends Area2D
 
 var movement_vector := Vector2(-1,0)
-var speed: int = 120
+var speed: int = 220
 var prev_speed = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,6 +20,13 @@ func _process(delta):
 		queue_free()
 
 	
+func set_initial_vector(new_vector):
+	movement_vector = new_vector
+	
+
+func set_speed(new_speed):
+	speed = new_speed
+
 func on_ready(rotate):
 	rotation = rotate
 
