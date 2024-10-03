@@ -1,23 +1,20 @@
 extends CharacterBody2D
 
 
-@export var speed: int = 500.0
-@export var acceleration = 3.0
+@export var max_speed: int = 500.0
+@export var half_life = 0.3
+var decay = 0
 
 func _ready():
 	$ShipSpriteAnimated.play("default")
-	print(global_position)
 	floor_stop_on_slope =false
+	decay = log(2)/half_life
 
-
-func _process(delta):
-	var direction: Vector2
+func _physics_process(delta):
 	
-	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	direction = direction.normalized()
+	var direction = Input.get_vector("left_player_1","right_player_1","up_player_1","down_player_1")
+	velocity = max_speed*direction+(velocity - max_speed*direction)*exp(-delta*decay)
 	
-	velocity = lerp(velocity, direction * speed, delta * acceleration)
 	
 	#for non-slippery movement
 	#velocity = direction * speed 
