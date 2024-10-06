@@ -33,7 +33,7 @@ func on_ready(rotate):
 	rotation = rotate
 
 func speed_up():
-	speed *=3
+	speed *=2
 	speed = max(100,speed)
 	
 func slow_down():
