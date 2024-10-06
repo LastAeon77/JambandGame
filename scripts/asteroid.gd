@@ -18,6 +18,8 @@ func _process(delta):
 	position += movement_vector.rotated(rotation) * speed * delta
 	if global_position.x < -1000:
 		queue_free()
+	if speed<220:
+		speed+=1
 
 	
 func set_initial_vector(new_vector):
