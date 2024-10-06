@@ -11,7 +11,6 @@ func _ready():
 	SignalBus.connect("_pause",pause_function)
 
 func _physics_process(delta):
-	print(progress_ratio)
 	if triggers:
 		if progress_ratio > triggers[0]:
 			triggers.pop_front()

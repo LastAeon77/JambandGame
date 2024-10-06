@@ -5,7 +5,8 @@ var asteroids_in_your_area = {}
 @export var half_life = 0.3
 var decay = 0
 # Called when the node enters the scene tree for the first time.
-
+var cooldown: bool = false
+var past_delta = 10
 func _ready():
 	decay = log(2)/half_life
 	floor_stop_on_slope =false
@@ -15,16 +16,31 @@ func _process(_delta):
 	pass
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("accelerate"):
-		$AnimatedSprite2D.play("accel")
-		for key in asteroids_in_your_area:
-			if key.has_method("speed_up"):
-				key.speed_up()
-	if Input.is_action_just_pressed("decelerrate"):
-		$AnimatedSprite2D.play("deccel")
-		for key in asteroids_in_your_area:
-			if key.has_method("slow_down"):
-				key.slow_down()
+	
+	if not cooldown:
+		if Input.is_action_just_pressed("accelerate"):
+			$AttractSound.play()
+			$AnimatedSprite2D.play("accel")
+			for key in asteroids_in_your_area:
+				if key.has_method("speed_up"):
+					key.speed_up()
+			cooldown = true
+			past_delta = 1.40
+		if Input.is_action_just_pressed("decelerrate"):
+			$AnimatedSprite2D.play("deccel")
+			$AttractSound.play()
+			for key in asteroids_in_your_area:
+				if key.has_method("slow_down"):
+					key.slow_down()
+			cooldown = true
+			past_delta = 1.40
+
+	else:
+		pass
+	if cooldown:
+		past_delta-=delta
+		if past_delta <0:
+			cooldown = false
 	
 	var direction = Input.get_vector("left_player_2","right_player_2","up_player_2","down_player_2")
 	velocity = max_speed*direction+(velocity - max_speed*direction)*exp(-delta*decay)

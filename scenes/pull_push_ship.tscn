@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://cld4pdgunud8x"]
+[gd_scene load_steps=22 format=3 uid="uid://cld4pdgunud8x"]
 
 [ext_resource type="Script" path="res://scripts/pull_push_ship.gd" id="1_j6mqp"]
 [ext_resource type="Texture2D" uid="uid://ve7q71sngmtp" path="res://sprites/Pixie_ship_full_player 2 Pull.png" id="2_kwti4"]
 [ext_resource type="Texture2D" uid="uid://bkled4snqdpw2" path="res://sprites/Pixie_ship_full_player 2 Idle.png" id="2_l0y2c"]
+[ext_resource type="AudioStream" uid="uid://dxw0f141gt0dk" path="res://Sound/Moon/Attractor Ship Crop.wav" id="4_lypq4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6yk6m"]
 radius = 36.3456
@@ -112,7 +113,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"deccel",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -147,6 +148,9 @@ collision_mask = 3
 [node name="Forcefield" type="CollisionShape2D" parent="forcefield"]
 position = Vector2(130, 2)
 shape = SubResource("CircleShape2D_rmfa2")
+
+[node name="AttractSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lypq4")
 
 [connection signal="area_entered" from="forcefield" to="." method="_on_forcefield_area_entered"]
 [connection signal="area_exited" from="forcefield" to="." method="_on_forcefield_area_exited"]
