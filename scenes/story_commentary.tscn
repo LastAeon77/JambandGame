@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfvileha64fqy"]
+[gd_scene load_steps=5 format=3 uid="uid://bfvileha64fqy"]
 
+[ext_resource type="Script" path="res://scripts/story_commentary.gd" id="1_1frkp"]
 [ext_resource type="Texture2D" uid="uid://djbsy7gtfcvcj" path="res://sprites/MrBlob/Mr. Blob Casual.png" id="1_a0s0a"]
+[ext_resource type="Texture2D" uid="uid://bgh1mhulmpsey" path="res://sprites/MrBlob/Mr. Blob Concerned.png" id="3_uqm2w"]
+[ext_resource type="Texture2D" uid="uid://dxbcwdjpgcplq" path="res://sprites/MrBlob/Mr. Blob Scared.png" id="4_6pm6l"]
 
 [node name="Story_Commentary" type="Control"]
 layout_mode = 3
@@ -10,12 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_a0s0a")
+script = ExtResource("1_1frkp")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
@@ -24,3 +22,15 @@ offset_right = 590.0
 offset_bottom = 106.0
 text = "I want to Please Ms.Glob
 "
+
+[node name="Casual" type="Sprite2D" parent="."]
+position = Vector2(31.3333, 33)
+texture = ExtResource("1_a0s0a")
+
+[node name="Concerned" type="Sprite2D" parent="."]
+position = Vector2(31.3333, 33)
+texture = ExtResource("3_uqm2w")
+
+[node name="Scared" type="Sprite2D" parent="."]
+position = Vector2(31.3333, 33)
+texture = ExtResource("4_6pm6l")

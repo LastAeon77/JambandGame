@@ -10,7 +10,7 @@ signal _moon_gem_stage_restart()
 
 signal _pause()
 
-signal _restart_moon_stage()
+signal _moon_story_next()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
