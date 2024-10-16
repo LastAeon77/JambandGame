@@ -15,8 +15,6 @@ func _on_body_entered(body: CharacterBody2D):
 	if body.is_in_group("pixie"):
 		fill_basket(body.flower_num())
 
-
-
 func fill_basket(num:int):
 	current_amount += num
 	if current_amount > victory_amount:
