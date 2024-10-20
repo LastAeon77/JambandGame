@@ -7,6 +7,7 @@ func _ready():
 	$WinScreen.visible = false
 	$Pause.visible = false
 	SignalBus.connect("_moon_gem_stage_clear",game_win)
+	SignalBus.connect("_flower_victory",game_win)
 	SignalBus.connect("_game_lost",game_lost)
 	SignalBus.connect("_moon_gem_stage_restart",restart)
 
