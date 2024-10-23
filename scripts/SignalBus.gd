@@ -14,6 +14,8 @@ signal _moon_story_next()
 
 signal _flower_victory()
 
+signal _flower_defeat()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
