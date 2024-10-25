@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bunyjp8w0yulm"]
+
+[ext_resource type="Texture2D" uid="uid://cq1uyeb6utj1b" path="res://sprites/Alpine Flower Pink-Sheet.png" id="1_p3n0s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n8t1w"]
+radius = 49.2443
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5sr3"]
+atlas = ExtResource("1_p3n0s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n55n5"]
+atlas = ExtResource("1_p3n0s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6cmf"]
+atlas = ExtResource("1_p3n0s")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaoc5"]
+atlas = ExtResource("1_p3n0s")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yq5kp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5sr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n55n5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6cmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vaoc5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WhiteFlower" type="Area2D" groups=["flower"]]
+scale = Vector2(0.3, 0.3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n8t1w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.49012e-08, 0)
+scale = Vector2(3.53125, 3.6875)
+sprite_frames = SubResource("SpriteFrames_yq5kp")

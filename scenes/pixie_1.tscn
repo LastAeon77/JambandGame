@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddprghxhoa1bu"]
+[gd_scene load_steps=15 format=3 uid="uid://ddprghxhoa1bu"]
 
 [ext_resource type="Script" path="res://scripts/Pixie1.gd" id="1_67xp1"]
 [ext_resource type="Texture2D" uid="uid://djdj1mx43wuu8" path="res://sprites/Pixie_1-Sheet.png" id="2_kj7nr"]
+[ext_resource type="Texture2D" uid="uid://caeixerlrx5pg" path="res://sprites/Pixie_1 Pickup-Sheet.png" id="3_7q7fy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8y3f"]
 atlas = ExtResource("2_kj7nr")
@@ -17,6 +18,22 @@ region = Rect2(500, 0, 250, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8b3ho"]
 atlas = ExtResource("2_kj7nr")
+region = Rect2(750, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feoma"]
+atlas = ExtResource("3_7q7fy")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eq2d"]
+atlas = ExtResource("3_7q7fy")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyf4d"]
+atlas = ExtResource("3_7q7fy")
+region = Rect2(500, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6mq3"]
+atlas = ExtResource("3_7q7fy")
 region = Rect2(750, 0, 250, 250)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vlt3h"]
@@ -37,6 +54,23 @@ animations = [{
 "loop": false,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_feoma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2eq2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyf4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6mq3")
+}],
+"loop": false,
+"name": &"flower_pickup",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqtsx"]
@@ -47,10 +81,12 @@ height = 210.0
 bg_color = Color(0.248661, 0.71495, 1.92523e-07, 1)
 
 [node name="Pixie1" type="CharacterBody2D"]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_67xp1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vlt3h")
+animation = &"flower_pickup"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gqtsx")

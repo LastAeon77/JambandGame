@@ -5,11 +5,29 @@ extends Path2D
 func _ready():
 	$PathFollow2D/Blob.play("moving")
 
-
+var check1 = false;
+var check2 = false;
+var check3 = false;
+var check4 = false;
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if $PathFollow2D.progress_ratio >=99:
 		SignalBus.emit_signal("_flower_defeat")
+		
+	if $PathFollow2D.progress_ratio >= 0.2289 and not check1:
+		$PathFollow2D/Blob.scale.y = $PathFollow2D/Blob.scale.y * -1
+		check1 = true
+		
+	if $PathFollow2D.progress_ratio >= 0.3795 and not check2:
+		$PathFollow2D/Blob.scale.y = $PathFollow2D/Blob.scale.y * -1
+		check2 = true
+	if $PathFollow2D.progress_ratio >= 0.5576 and not check3:
+		$PathFollow2D/Blob.scale.y = $PathFollow2D/Blob.scale.y * -1
+		check3 = true
+	if $PathFollow2D.progress_ratio >= 0.8468 and not check4:
+		$PathFollow2D/Blob.scale.y = $PathFollow2D/Blob.scale.y * -1
+		check4 = true		
+		
 
 
 func _on_timer_timeout():

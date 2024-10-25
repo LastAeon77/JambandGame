@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://nx6scdlq0tg6"]
+
+[node name="FlowerSpawner" type="Area2D"]
