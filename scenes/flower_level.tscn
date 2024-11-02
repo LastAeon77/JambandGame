@@ -1,7 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://bh10rhj5i5eoy"]
+[gd_scene load_steps=32 format=3 uid="uid://bh10rhj5i5eoy"]
 
 [ext_resource type="Texture2D" uid="uid://ba8w6a2nx3dfx" path="res://sprites/tilesheet_complete.png" id="1_bty15"]
-[ext_resource type="Texture2D" uid="uid://xoiao75r1gkd" path="res://sprites/Hill Background 3.png" id="1_c66wi"]
+[ext_resource type="Texture2D" uid="uid://dtgx4kteolf4b" path="res://sprites/Hill Background v2.png" id="1_hpy6w"]
 [ext_resource type="PackedScene" uid="uid://ddprghxhoa1bu" path="res://scenes/pixie_1.tscn" id="2_4qrlu"]
 [ext_resource type="PackedScene" uid="uid://datweac4c07w4" path="res://scenes/flower_basket.tscn" id="2_hn0fr"]
 [ext_resource type="Texture2D" uid="uid://cstl1ykt8ead8" path="res://sprites/Tileset.png" id="3_to5ay"]
@@ -12,6 +12,60 @@
 [ext_resource type="Script" path="res://scripts/BlobPath2D.gd" id="7_w5yts"]
 [ext_resource type="PackedScene" uid="uid://cmvumdijn8rwg" path="res://scenes/white_flower.tscn" id="10_3fq2c"]
 [ext_resource type="PackedScene" uid="uid://bpuy7o464xvh8" path="res://scenes/game_win.tscn" id="11_cigcp"]
+[ext_resource type="PackedScene" uid="uid://nx6scdlq0tg6" path="res://scenes/flower_spawner.tscn" id="13_am4od"]
+[ext_resource type="PackedScene" uid="uid://c3swq1dce8dv5" path="res://scenes/pixie_2.tscn" id="14_0djhb"]
+
+[sub_resource type="Curve2D" id="Curve2D_4r3wv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -366, 358, 0, 0, 0, 0, -85, 311, 0, 0, 0, 0, 138, 282, 0, 0, 0, 0, 257, 276, -16.3605, -1.88775, 16.3605, 1.88775, 354, 277, -12.585, 4.40475, 12.585, -4.40475, 402, 290, -15.1194, -9.86424, 15.1194, 9.86424, 410, 267, 0, 0, 0, 0, 360, 248, 0, 0, 0, 0, 317, 213, 0, 0, 0, 0, 294, 209, 0, 0, 0, 0, 228, 204, 0, 0, 0, 0, 160, 204, 32.721, 9.43874, -32.721, -9.43874, 113, 198, 24.3233, 7.572, -24.3233, -7.572, 85, 186, -5.034, 54.1155, 5.034, -54.1155, -66, 143, -6.92174, 16.3605, 6.92174, -16.3605, -12, 86, -17.619, 9.43874, 17.619, -9.43874, 45, 52, -20.136, 11.3265, 20.136, -11.3265, 126, 27, -28.9455, 6.29249, 28.9455, -6.29249, 189, -21, -14.4727, -15.102, 14.4727, 15.102, 240, 18, -33.3502, 22.653, 33.3502, -22.653, 290, 35, 0.629249, 35.8672, -0.629249, -35.8672, 382, -53, 62.2957, 20.7652, -62.2957, -20.7652, 342, -123, 53.4862, -16.9897, -53.4862, 16.9897, 208, -135, 69.2174, -1.2585, -69.2174, 1.2585, 101, -69, 50.9692, 16.3605, -50.9692, -16.3605, 9, -103, 31.4625, -22.0237, -31.4625, 22.0237, -82, -103, -8.80949, 8.80949, 8.80949, -8.80949, -134, -59, 26.4285, -5.66325, -26.4285, 5.66325, -213, -45, 26.4419, -12.3844, -26.4419, 12.3844, -327, -50, 0, 0, 0, 0, -453, 28, 0, 0, 0, 0, -478, 117, 0, 0, 0, 0, -395, 199, 0, 0, 0, 0, -342, 247, 0, 0, 0, 0, -290, 294, 0, 0, 0, 0, -41, 262)
+}
+point_count = 36
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pp05"]
+atlas = ExtResource("7_vyiye")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a7q8"]
+atlas = ExtResource("7_vyiye")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5gvr"]
+atlas = ExtResource("7_vyiye")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5hmo"]
+atlas = ExtResource("7_vyiye")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bx57i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pp05")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a7q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5gvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5hmo")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_4sbmp"]
 tile_data = PackedInt32Array(0, 0, 2, 65536, 0, 4)
@@ -12020,69 +12074,33 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nc7un"]
 normal = Vector2(-1, 0)
 
-[sub_resource type="Curve2D" id="Curve2D_4r3wv"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -366, 358, 0, 0, 0, 0, -85, 311, 0, 0, 0, 0, 138, 282, 0, 0, 0, 0, 257, 276, -16.3605, -1.88775, 16.3605, 1.88775, 354, 277, -12.585, 4.40475, 12.585, -4.40475, 402, 290, -15.1194, -9.86424, 15.1194, 9.86424, 410, 267, 0, 0, 0, 0, 360, 248, 0, 0, 0, 0, 317, 213, 0, 0, 0, 0, 294, 209, 0, 0, 0, 0, 228, 204, 0, 0, 0, 0, 160, 204, 32.721, 9.43874, -32.721, -9.43874, 113, 198, 24.3233, 7.572, -24.3233, -7.572, 85, 186, -5.034, 54.1155, 5.034, -54.1155, -66, 143, -6.92174, 16.3605, 6.92174, -16.3605, -12, 86, -17.619, 9.43874, 17.619, -9.43874, 45, 52, -20.136, 11.3265, 20.136, -11.3265, 126, 27, -28.9455, 6.29249, 28.9455, -6.29249, 189, -21, -14.4727, -15.102, 14.4727, 15.102, 240, 18, -33.3502, 22.653, 33.3502, -22.653, 290, 35, 0.629249, 35.8672, -0.629249, -35.8672, 382, -53, 62.2957, 20.7652, -62.2957, -20.7652, 342, -123, 53.4862, -16.9897, -53.4862, 16.9897, 208, -135, 69.2174, -1.2585, -69.2174, 1.2585, 101, -69, 50.9692, 16.3605, -50.9692, -16.3605, 9, -103, 31.4625, -22.0237, -31.4625, 22.0237, -82, -103, -8.80949, 8.80949, 8.80949, -8.80949, -134, -59, 26.4285, -5.66325, -26.4285, 5.66325, -213, -45, 26.4419, -12.3844, -26.4419, 12.3844, -327, -50, 0, 0, 0, 0, -453, 28, 0, 0, 0, 0, -478, 117, 0, 0, 0, 0, -395, 199, 0, 0, 0, 0, -342, 247, 0, 0, 0, 0, -290, 294, 0, 0, 0, 0, -41, 262)
-}
-point_count = 36
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1pp05"]
-atlas = ExtResource("7_vyiye")
-region = Rect2(0, 0, 80, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0a7q8"]
-atlas = ExtResource("7_vyiye")
-region = Rect2(0, 0, 80, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a5gvr"]
-atlas = ExtResource("7_vyiye")
-region = Rect2(80, 0, 80, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d5hmo"]
-atlas = ExtResource("7_vyiye")
-region = Rect2(160, 0, 80, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bx57i"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1pp05")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0a7q8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a5gvr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d5hmo")
-}],
-"loop": true,
-"name": &"moving",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
-}]
-
 [node name="flower_level" type="Node"]
 
-[node name="FLowerBorder" type="StaticBody2D" parent="." groups=["FLowerBorder"]]
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_4r3wv")
+script = ExtResource("7_w5yts")
 
-[node name="TextureRect" type="TextureRect" parent="FLowerBorder"]
-modulate = Color(0.510601, 0.510601, 0.510601, 1)
+[node name="TextureRect" type="TextureRect" parent="Path2D"]
 offset_left = -637.0
 offset_top = -358.0
 offset_right = 643.0
 offset_bottom = 362.0
-texture = ExtResource("1_c66wi")
+texture = ExtResource("1_hpy6w")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-366, 358)
+rotation = -0.165726
+
+[node name="Blob" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_bx57i")
+animation = &"moving"
+
+[node name="Timer" type="Timer" parent="Path2D"]
+wait_time = 0.1
+autostart = true
+
+[node name="FLowerBorder" type="StaticBody2D" parent="." groups=["FLowerBorder"]]
 
 [node name="Flower_Basket" parent="FLowerBorder" instance=ExtResource("2_hn0fr")]
 position = Vector2(-8, 255)
@@ -12118,24 +12136,6 @@ shape = SubResource("WorldBoundaryShape2D_nc7un")
 [node name="Moving Platform" parent="FLowerBorder" instance=ExtResource("7_tv5vo")]
 position = Vector2(-357, -101)
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_4r3wv")
-script = ExtResource("7_w5yts")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-471.275, 93.0588)
-rotation = 1.84464
-progress = 2952.72
-
-[node name="Blob" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
-scale = Vector2(-1, 1)
-sprite_frames = SubResource("SpriteFrames_bx57i")
-animation = &"moving"
-
-[node name="Timer" type="Timer" parent="Path2D"]
-wait_time = 0.1
-autostart = true
-
 [node name="Flower" parent="." instance=ExtResource("10_3fq2c")]
 position = Vector2(352, 0)
 
@@ -12152,5 +12152,17 @@ offset_top = -807.0
 offset_right = -1400.0
 offset_bottom = -807.0
 scale = Vector2(0.85, 0.85)
+
+[node name="PinkFlowerSpawner" parent="." instance=ExtResource("13_am4od")]
+position = Vector2(-311, -8)
+
+[node name="PinkFlowerSpawner2" parent="." instance=ExtResource("13_am4od")]
+position = Vector2(301, 0)
+
+[node name="PinkFlowerSpawner3" parent="." instance=ExtResource("13_am4od")]
+position = Vector2(-6, -299)
+
+[node name="Pixie2" parent="." instance=ExtResource("14_0djhb")]
+position = Vector2(-303, 195)
 
 [connection signal="timeout" from="Path2D/Timer" to="Path2D" method="_on_timer_timeout"]

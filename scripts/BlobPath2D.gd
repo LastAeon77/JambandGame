@@ -26,7 +26,9 @@ func _process(delta):
 		check3 = true
 	if $PathFollow2D.progress_ratio >= 0.8468 and not check4:
 		$PathFollow2D/Blob.scale.y = $PathFollow2D/Blob.scale.y * -1
-		check4 = true		
+		check4 = true
+	
+	$TextureRect.modulate = Color.from_hsv(0,0,1 - $PathFollow2D.progress_ratio)
 		
 
 

@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://nx6scdlq0tg6"]
+[gd_scene load_steps=3 format=3 uid="uid://nx6scdlq0tg6"]
+
+[ext_resource type="Script" path="res://scripts/flower_spawner.gd" id="1_s0n60"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_veffl"]
 
 [node name="FlowerSpawner" type="Area2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_s0n60")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_veffl")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
