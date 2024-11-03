@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bh10rhj5i5eoy"]
+[gd_scene load_steps=35 format=3 uid="uid://bh10rhj5i5eoy"]
 
 [ext_resource type="Texture2D" uid="uid://ba8w6a2nx3dfx" path="res://sprites/tilesheet_complete.png" id="1_bty15"]
 [ext_resource type="Texture2D" uid="uid://dtgx4kteolf4b" path="res://sprites/Hill Background v2.png" id="1_hpy6w"]
@@ -11,10 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://c7eso331n05bb" path="res://sprites/Mr. Blob Movement-Sheet.png" id="7_vyiye"]
 [ext_resource type="Script" path="res://scripts/BlobPath2D.gd" id="7_w5yts"]
 [ext_resource type="PackedScene" uid="uid://cmvumdijn8rwg" path="res://scenes/white_flower.tscn" id="10_3fq2c"]
-[ext_resource type="PackedScene" uid="uid://drd5tmi700yxx" path="res://scenes/guard_bee.tscn" id="10_b8o00"]
+[ext_resource type="PackedScene" path="res://scenes/guard_bee.tscn" id="10_b8o00"]
 [ext_resource type="PackedScene" uid="uid://bpuy7o464xvh8" path="res://scenes/game_win.tscn" id="11_cigcp"]
 [ext_resource type="PackedScene" uid="uid://nx6scdlq0tg6" path="res://scenes/flower_spawner.tscn" id="13_am4od"]
 [ext_resource type="PackedScene" uid="uid://c3swq1dce8dv5" path="res://scenes/pixie_2.tscn" id="14_0djhb"]
+[ext_resource type="AudioStream" uid="uid://b73ec88otoe0e" path="res://Sound/Flower Collection Song.mp3" id="16_ba2fw"]
 
 [sub_resource type="Curve2D" id="Curve2D_4r3wv"]
 _data = {
@@ -12107,7 +12108,7 @@ sprite_frames = SubResource("SpriteFrames_bx57i")
 animation = &"moving"
 
 [node name="Timer" type="Timer" parent="Path2D"]
-wait_time = 0.1
+wait_time = 0.2
 autostart = true
 
 [node name="FLowerBorder" type="StaticBody2D" parent="." groups=["FLowerBorder"]]
@@ -12193,5 +12194,9 @@ position = Vector2(301, 0)
 
 [node name="PinkFlowerSpawner3" parent="." instance=ExtResource("13_am4od")]
 position = Vector2(-6, -299)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_ba2fw")
+autoplay = true
 
 [connection signal="timeout" from="Path2D/Timer" to="Path2D" method="_on_timer_timeout"]
