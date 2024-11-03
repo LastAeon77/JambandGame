@@ -9,8 +9,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #var gravity = 10
 var carrying_flower = 0
 var max_capacity = 3
-
+@onready var stung_timer : Timer = $StungTimer 
 func _physics_process(delta):
+
 	if velocity.x != 0 or velocity.y != 0:
 		$AnimatedSprite2D.play("default")
 	# Add the gravity.
@@ -33,6 +34,11 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED/(carrying_flower/3+1))
 
+	if !stung_timer.is_stopped():
+		velocity = Vector2.ZERO
+		$AnimatedSprite2D.play("stung")
+		carrying_flower = 0
+	
 	move_and_slide()
 
 
@@ -61,3 +67,4 @@ func _on_area_2d_area_entered(area : Area2D):
 		area.queue_free()
 	if area.is_in_group("bee"):
 		print("stung")
+		stung_timer.start()

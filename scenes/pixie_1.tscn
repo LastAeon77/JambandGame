@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddprghxhoa1bu"]
+[gd_scene load_steps=20 format=3 uid="uid://ddprghxhoa1bu"]
 
 [ext_resource type="Script" path="res://scripts/pixie_1.gd" id="1_67xp1"]
 [ext_resource type="Texture2D" uid="uid://djdj1mx43wuu8" path="res://sprites/Pixie_1-Sheet.png" id="2_kj7nr"]
 [ext_resource type="Texture2D" uid="uid://caeixerlrx5pg" path="res://sprites/Pixie_1 Pickup-Sheet.png" id="3_7q7fy"]
+[ext_resource type="Texture2D" uid="uid://7otqxqrha2vu" path="res://sprites/Pixie_1 Stung -Sheet.png" id="4_o1mhu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8y3f"]
 atlas = ExtResource("2_kj7nr")
@@ -34,6 +35,22 @@ region = Rect2(500, 0, 250, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m6mq3"]
 atlas = ExtResource("3_7q7fy")
+region = Rect2(750, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0wqy"]
+atlas = ExtResource("4_o1mhu")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u37lm"]
+atlas = ExtResource("4_o1mhu")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77xhe"]
+atlas = ExtResource("4_o1mhu")
+region = Rect2(500, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwe1w"]
+atlas = ExtResource("4_o1mhu")
 region = Rect2(750, 0, 250, 250)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vlt3h"]
@@ -71,6 +88,23 @@ animations = [{
 "loop": false,
 "name": &"flower_pickup",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0wqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u37lm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77xhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwe1w")
+}],
+"loop": true,
+"name": &"stung",
+"speed": 25.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqtsx"]
@@ -86,7 +120,8 @@ script = ExtResource("1_67xp1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vlt3h")
-animation = &"flower_pickup"
+animation = &"stung"
+frame_progress = 0.576551
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gqtsx")
@@ -104,5 +139,8 @@ show_percentage = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_gqtsx")
+
+[node name="StungTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

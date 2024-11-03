@@ -12125,6 +12125,9 @@ layer_0/tile_data = PackedInt32Array(3, 851968, 0, 1834958, 3, 8, 1834959, 3, 8,
 position = Vector2(-177, 251)
 platform_wall_layers = 1
 
+[node name="Pixie2" parent="FLowerBorder" groups=["pixie"] instance=ExtResource("14_0djhb")]
+position = Vector2(-303, 195)
+
 [node name="Camera2D" type="Camera2D" parent="FLowerBorder"]
 
 [node name="GuardBee1" parent="FLowerBorder" node_paths=PackedStringArray("flower_spawner") instance=ExtResource("10_b8o00")]
@@ -12158,13 +12161,11 @@ shape = SubResource("WorldBoundaryShape2D_lm8s6")
 position = Vector2(644, -1)
 shape = SubResource("WorldBoundaryShape2D_nc7un")
 
-[node name="Pixie2" parent="FLowerBorder" groups=["pixie"] instance=ExtResource("14_0djhb")]
-position = Vector2(-303, 195)
-
 [node name="Moving Platform" parent="FLowerBorder" instance=ExtResource("7_tv5vo")]
 position = Vector2(-357, -101)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="FLowerBorder"]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_ju1cb")
 
 [node name="Flower" parent="." instance=ExtResource("10_3fq2c")]
