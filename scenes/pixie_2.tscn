@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3swq1dce8dv5"]
+[gd_scene load_steps=15 format=3 uid="uid://c3swq1dce8dv5"]
 
 [ext_resource type="Script" path="res://scripts/pixie_2.gd" id="1_b1pq7"]
 [ext_resource type="Texture2D" uid="uid://bbin8tgsayclo" path="res://sprites/Pixie_2-Sheet.png" id="2_deenf"]
+[ext_resource type="Texture2D" uid="uid://r5b2lhd1jqc1" path="res://sprites/Pixie_2 Stung-Sheet.png" id="3_vv6v8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1yov"]
 atlas = ExtResource("2_deenf")
@@ -17,6 +18,22 @@ region = Rect2(500, 0, 250, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o665j"]
 atlas = ExtResource("2_deenf")
+region = Rect2(750, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7alhp"]
+atlas = ExtResource("3_vv6v8")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n1ja"]
+atlas = ExtResource("3_vv6v8")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyltc"]
+atlas = ExtResource("3_vv6v8")
+region = Rect2(500, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyne2"]
+atlas = ExtResource("3_vv6v8")
 region = Rect2(750, 0, 250, 250)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vlt3h"]
@@ -42,6 +59,23 @@ animations = [{
 "loop": false,
 "name": &"flower_pickup",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7alhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n1ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyltc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyne2")
+}],
+"loop": true,
+"name": &"stung",
+"speed": 25.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqtsx"]
@@ -55,9 +89,13 @@ bg_color = Color(0.248661, 0.71495, 1.92523e-07, 1)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_b1pq7")
 
+[node name="StungTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vlt3h")
-animation = &"flower_pickup"
+animation = &"stung"
+frame_progress = 0.288357
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gqtsx")
