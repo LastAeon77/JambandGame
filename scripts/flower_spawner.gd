@@ -12,18 +12,19 @@ func _ready():
 func _process(delta):
 	pass
 
+signal flower_spawned(flower : Node2D);
 
 func _on_timer_timeout():
 	if get_overlapping_areas().is_empty():
 		var first_value = bool(randi() % 2)
+		var flower_instance
 		if first_value:
-			var flower_instance = pink_flower.instantiate()
+			flower_instance = pink_flower.instantiate()
 			add_child(flower_instance)
 			flower_instance.global_position = global_position
 		else:
-			var flower_instance = white_flower.instantiate()
+			flower_instance = white_flower.instantiate()
 			add_child(flower_instance)
 			flower_instance.global_position = global_position
-
-
+		flower_spawned.emit(flower_instance)
 

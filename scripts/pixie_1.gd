@@ -59,3 +59,5 @@ func _on_area_2d_area_entered(area : Area2D):
 	if area.is_in_group("flower"):
 		carrying_flower +=1
 		area.queue_free()
+	if area.is_in_group("bee"):
+		print("stung")

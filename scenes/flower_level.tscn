@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bh10rhj5i5eoy"]
+[gd_scene load_steps=34 format=3 uid="uid://bh10rhj5i5eoy"]
 
 [ext_resource type="Texture2D" uid="uid://ba8w6a2nx3dfx" path="res://sprites/tilesheet_complete.png" id="1_bty15"]
 [ext_resource type="Texture2D" uid="uid://dtgx4kteolf4b" path="res://sprites/Hill Background v2.png" id="1_hpy6w"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c7eso331n05bb" path="res://sprites/Mr. Blob Movement-Sheet.png" id="7_vyiye"]
 [ext_resource type="Script" path="res://scripts/BlobPath2D.gd" id="7_w5yts"]
 [ext_resource type="PackedScene" uid="uid://cmvumdijn8rwg" path="res://scenes/white_flower.tscn" id="10_3fq2c"]
+[ext_resource type="PackedScene" uid="uid://drd5tmi700yxx" path="res://scenes/guard_bee.tscn" id="10_b8o00"]
 [ext_resource type="PackedScene" uid="uid://bpuy7o464xvh8" path="res://scenes/game_win.tscn" id="11_cigcp"]
 [ext_resource type="PackedScene" uid="uid://nx6scdlq0tg6" path="res://scenes/flower_spawner.tscn" id="13_am4od"]
 [ext_resource type="PackedScene" uid="uid://c3swq1dce8dv5" path="res://scenes/pixie_2.tscn" id="14_0djhb"]
@@ -12054,7 +12055,8 @@ texture = ExtResource("6_k4cyj")
 9:11/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_ui0of"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_nu5s1")
 terrain_set_0/mode = 0
 sources/2 = SubResource("TileSetAtlasSource_vedan")
@@ -12073,6 +12075,14 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nc7un"]
 normal = Vector2(-1, 0)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ju1cb"]
+vertices = PackedVector2Array(318, -228, 156, -228, -374, -233, -126, -233, 318, -143, 510, -23, 169, -23, 138, -79, 156, -143, 374, -233, 535, -233, 374, -318, 126, -233, 126, -318, 510, 62, 610, 143, 335, 143, 169, 62, 535, -318, 610, -323, -602, -322, -169, -143, -169, -228, -138, -164, -138, -79, 138, -164, 335, 228, 126, 215, 126, 130, -126, 130, -182, 62, -182, -23, 609, 284, -605, 284, -604, 228, -335, 228, 609, 228, -126, 215, -335, 143, -522, 62, -604, 143, -522, -23, -535, -233, -126, -318, -330, -228, -330, -143, -535, -318, -374, -318)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(9, 10, 5, 4, 0), PackedInt32Array(11, 9, 0, 12, 13), PackedInt32Array(14, 15, 16, 17), PackedInt32Array(10, 18, 19, 15), PackedInt32Array(20, 19, 18, 11), PackedInt32Array(10, 15, 14, 5), PackedInt32Array(21, 22, 23, 24), PackedInt32Array(8, 7, 25, 1), PackedInt32Array(17, 16, 26, 27, 28), PackedInt32Array(24, 7, 6, 17, 28, 29, 30, 31), PackedInt32Array(32, 33, 34, 35), PackedInt32Array(26, 36, 32), PackedInt32Array(27, 26, 32, 35, 37), PackedInt32Array(29, 37, 35, 38, 30), PackedInt32Array(39, 30, 38, 40), PackedInt32Array(41, 39, 40, 20, 42), PackedInt32Array(20, 11, 13), PackedInt32Array(20, 13, 43), PackedInt32Array(1, 25, 23, 22), PackedInt32Array(2, 1, 22), PackedInt32Array(2, 22, 44), PackedInt32Array(2, 44, 45, 41, 42), PackedInt32Array(45, 21, 24, 31, 41), PackedInt32Array(46, 42, 20), PackedInt32Array(47, 46, 20), PackedInt32Array(47, 20, 43), PackedInt32Array(47, 43, 3, 2), PackedInt32Array(0, 3, 12)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(647, -360, -638, -358, -641, 361, 645, 364)])
+source_geometry_mode = 1
+source_geometry_group_name = &"obstacles"
+agent_radius = 36.01
 
 [node name="flower_level" type="Node"]
 
@@ -12105,7 +12115,7 @@ autostart = true
 [node name="Flower_Basket" parent="FLowerBorder" instance=ExtResource("2_hn0fr")]
 position = Vector2(-8, 255)
 
-[node name="TileMap" type="TileMap" parent="FLowerBorder"]
+[node name="TileMap" type="TileMap" parent="FLowerBorder" groups=["obstacles"]]
 scale = Vector2(0.8, 0.8)
 tile_set = SubResource("TileSet_ui0of")
 format = 2
@@ -12116,6 +12126,21 @@ position = Vector2(-177, 251)
 platform_wall_layers = 1
 
 [node name="Camera2D" type="Camera2D" parent="FLowerBorder"]
+
+[node name="GuardBee1" parent="FLowerBorder" node_paths=PackedStringArray("flower_spawner") instance=ExtResource("10_b8o00")]
+position = Vector2(-253, -41)
+flower_spawner = NodePath("../../PinkFlowerSpawner")
+wander_distance = 150.0
+
+[node name="GuardBee2" parent="FLowerBorder" node_paths=PackedStringArray("flower_spawner") instance=ExtResource("10_b8o00")]
+position = Vector2(266, -63)
+flower_spawner = NodePath("../../PinkFlowerSpawner2")
+wander_distance = 150.0
+
+[node name="GuardBee3" parent="FLowerBorder" node_paths=PackedStringArray("flower_spawner") instance=ExtResource("10_b8o00")]
+position = Vector2(-145, -306)
+flower_spawner = NodePath("../../PinkFlowerSpawner3")
+wander_distance = 150.0
 
 [node name="Top" type="CollisionShape2D" parent="FLowerBorder"]
 position = Vector2(0, -363)
@@ -12133,8 +12158,14 @@ shape = SubResource("WorldBoundaryShape2D_lm8s6")
 position = Vector2(644, -1)
 shape = SubResource("WorldBoundaryShape2D_nc7un")
 
+[node name="Pixie2" parent="FLowerBorder" groups=["pixie"] instance=ExtResource("14_0djhb")]
+position = Vector2(-303, 195)
+
 [node name="Moving Platform" parent="FLowerBorder" instance=ExtResource("7_tv5vo")]
 position = Vector2(-357, -101)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="FLowerBorder"]
+navigation_polygon = SubResource("NavigationPolygon_ju1cb")
 
 [node name="Flower" parent="." instance=ExtResource("10_3fq2c")]
 position = Vector2(352, 0)
@@ -12161,8 +12192,5 @@ position = Vector2(301, 0)
 
 [node name="PinkFlowerSpawner3" parent="." instance=ExtResource("13_am4od")]
 position = Vector2(-6, -299)
-
-[node name="Pixie2" parent="." instance=ExtResource("14_0djhb")]
-position = Vector2(-303, 195)
 
 [connection signal="timeout" from="Path2D/Timer" to="Path2D" method="_on_timer_timeout"]

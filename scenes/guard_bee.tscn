@@ -1,0 +1,157 @@
+[gd_scene load_steps=19 format=3 uid="uid://drd5tmi700yxx"]
+
+[ext_resource type="Script" path="res://scripts/guard_bee.gd" id="1_t3rcl"]
+[ext_resource type="Shader" path="res://shaders/guard_bee_fader.gdshader" id="2_bltos"]
+[ext_resource type="Texture2D" uid="uid://dm1wij0mh2m86" path="res://sprites/Bee Fly Sheet.png" id="2_tnohy"]
+[ext_resource type="Texture2D" uid="uid://74kkl0jik7qa" path="res://sprites/Bee Sting-Sheet.png" id="3_61iux"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddtb2"]
+resource_local_to_scene = true
+shader = ExtResource("2_bltos")
+shader_parameter/fade_amount = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yqqr"]
+atlas = ExtResource("2_tnohy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8okie"]
+atlas = ExtResource("2_tnohy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7py5j"]
+atlas = ExtResource("2_tnohy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dsle"]
+atlas = ExtResource("2_tnohy")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu5kf"]
+atlas = ExtResource("3_61iux")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hektt"]
+atlas = ExtResource("3_61iux")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6g67"]
+atlas = ExtResource("3_61iux")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miwg2"]
+atlas = ExtResource("3_61iux")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_db5op"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yqqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8okie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7py5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dsle")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu5kf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hektt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6g67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miwg2")
+}],
+"loop": true,
+"name": &"sting",
+"speed": 20.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l4rp3"]
+radius = 20.0
+height = 71.07
+
+[sub_resource type="Animation" id="Animation_4b5t6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/fade_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_q5ooe"]
+resource_name = "delete"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/fade_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eg136"]
+_data = {
+"RESET": SubResource("Animation_4b5t6"),
+"delete": SubResource("Animation_q5ooe")
+}
+
+[node name="GuardBee" type="CharacterBody2D" groups=["bee"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_t3rcl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_ddtb2")
+sprite_frames = SubResource("SpriteFrames_db5op")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l4rp3")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 48.0
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eg136")
+}
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["bee"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l4rp3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
