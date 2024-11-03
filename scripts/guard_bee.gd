@@ -70,18 +70,21 @@ func on_flower_spawned(spawned_flower : Node2D):
 	spawned_flower.connect("tree_exited", on_flower_picked_up)
 	print("flower spawned")
 func begin_aggression(new_target: Node2D):
-	angry = true
+	
 	animation.play("sting")
 	target = new_target
-	$CollisionShape2D.transform = $CollisionShape2D.transform.rotated(-PI/2)
-	$Area2D.transform = $Area2D.transform.rotated(-PI/2)
+	if(! angry):
+		$CollisionShape2D.transform = $CollisionShape2D.transform.rotated(-PI/2)
+		$Area2D.transform = $Area2D.transform.rotated(-PI/2)
+	angry = true
 	
 func end_aggression():
-	angry = false
+	
 	animation.play("default")
-	$CollisionShape2D.transform = $CollisionShape2D.transform.rotated(PI/2)
-	$Area2D.transform = $Area2D.transform.rotated(PI/2)
-
+	if(angry):
+		$CollisionShape2D.transform = $CollisionShape2D.transform.rotated(PI/2)
+		$Area2D.transform = $Area2D.transform.rotated(PI/2)
+	angry = false
 func queue_visibility_on():
 	if(death_animation.is_playing()):
 		death_animation.connect("animation_finished", visibility_on)
