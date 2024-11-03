@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://2ukr6go01vcg"]
 
 [ext_resource type="Script" path="res://scripts/moving_platform.gd" id="1_3busd"]
-[ext_resource type="Texture2D" uid="uid://c3lo2octcvp64" path="res://sprites/Log.png" id="2_y0gtp"]
+[ext_resource type="Texture2D" uid="uid://cdh14ivlnnh8g" path="res://sprites/Log v2.png" id="2_gr6qv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l46w7"]
 size = Vector2(188, 29.625)
@@ -11,7 +11,7 @@ script = ExtResource("1_3busd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(60.5, 6)
-texture = ExtResource("2_y0gtp")
+texture = ExtResource("2_gr6qv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
