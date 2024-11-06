@@ -21,7 +21,6 @@ var animation :AnimatedSprite2D
 var target : Node2D
 func _ready():
 	pixies = get_tree().get_nodes_in_group("pixie")
-	visible = false
 	animation = $AnimatedSprite2D
 	animation.play("default")
 	aggro_cooldown_timer.wait_time = aggro_cooldown
@@ -44,7 +43,7 @@ func _physics_process(_delta):
 			current_speed = angry_speed
 			navigation_agent.target_position = target.position
 		else:
-			if(navigation_agent.is_target_reached() && global_position.distance_to(spawn_point) < wander_distance):
+			if((navigation_agent.is_target_reached() || !navigation_agent.is_target_reachable()) && global_position.distance_to(spawn_point) < wander_distance):
 				while (true):
 					var random_distance = randf() * wander_distance
 					var random_angle = randf() * 2 * PI
@@ -65,10 +64,9 @@ func _physics_process(_delta):
 
 
 func on_flower_spawned(spawned_flower : Node2D):
+	pass
 	death_animation.stop()
-	queue_visibility_on()
-	spawned_flower.connect("tree_exited", on_flower_picked_up)
-	print("flower spawned")
+
 func begin_aggression(new_target: Node2D):
 	
 	animation.play("sting")
@@ -95,12 +93,7 @@ func visibility_on():
 	visible = true
 	death_animation.disconnect("animation_finished", visibility_on)
 func on_flower_picked_up():
-	target = null
-	death_animation.play("delete")
-	end_aggression()
-	await death_animation.animation_finished
-	visible = false
-	global_position = spawn_point
+	pass
 
 
 func _on_area_2d_body_entered(body:Node2D):
