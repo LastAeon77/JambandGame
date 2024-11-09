@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://ddprghxhoa1bu"]
+[gd_scene load_steps=25 format=3 uid="uid://ddprghxhoa1bu"]
 
 [ext_resource type="Script" path="res://scripts/pixie_1.gd" id="1_67xp1"]
 [ext_resource type="Texture2D" uid="uid://djdj1mx43wuu8" path="res://sprites/Pixie_1-Sheet.png" id="2_kj7nr"]
 [ext_resource type="Texture2D" uid="uid://caeixerlrx5pg" path="res://sprites/Pixie_1 Pickup-Sheet.png" id="3_7q7fy"]
+[ext_resource type="Texture2D" uid="uid://bg2uj3qj7qo4u" path="res://sprites/Pixie_1 with White Flower-Sheet.png" id="3_creec"]
 [ext_resource type="Texture2D" uid="uid://7otqxqrha2vu" path="res://sprites/Pixie_1 Stung -Sheet.png" id="4_o1mhu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8y3f"]
@@ -19,6 +20,22 @@ region = Rect2(500, 0, 250, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8b3ho"]
 atlas = ExtResource("2_kj7nr")
+region = Rect2(750, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0pmq"]
+atlas = ExtResource("3_creec")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlwka"]
+atlas = ExtResource("3_creec")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_200aw"]
+atlas = ExtResource("3_creec")
+region = Rect2(500, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sghfo"]
+atlas = ExtResource("3_creec")
 region = Rect2(750, 0, 250, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_feoma"]
@@ -74,6 +91,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_l0pmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlwka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_200aw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sghfo")
+}],
+"loop": true,
+"name": &"default_flower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_feoma")
 }, {
 "duration": 1.0,
@@ -121,9 +155,9 @@ collision_mask = 5
 script = ExtResource("1_67xp1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3.33333, 0)
 sprite_frames = SubResource("SpriteFrames_vlt3h")
-animation = &"stung"
-frame_progress = 0.576551
+animation = &"default_flower"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gqtsx")
@@ -147,4 +181,5 @@ shape = SubResource("CapsuleShape2D_gqtsx")
 [node name="StungTimer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

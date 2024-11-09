@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3swq1dce8dv5"]
+[gd_scene load_steps=25 format=3 uid="uid://c3swq1dce8dv5"]
 
 [ext_resource type="Script" path="res://scripts/pixie_2.gd" id="1_b1pq7"]
 [ext_resource type="Texture2D" uid="uid://bbin8tgsayclo" path="res://sprites/Pixie_2-Sheet.png" id="2_deenf"]
+[ext_resource type="Texture2D" uid="uid://de841uduxtvey" path="res://sprites/Pixie_2 with flower-Sheet.png" id="3_epqhl"]
 [ext_resource type="Texture2D" uid="uid://r5b2lhd1jqc1" path="res://sprites/Pixie_2 Stung-Sheet.png" id="3_vv6v8"]
+[ext_resource type="Texture2D" uid="uid://dc4i0qbc1svao" path="res://sprites/Pixie_2 Pickup-Sheet.png" id="4_10e2t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1yov"]
 atlas = ExtResource("2_deenf")
@@ -18,6 +20,38 @@ region = Rect2(500, 0, 250, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o665j"]
 atlas = ExtResource("2_deenf")
+region = Rect2(750, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atyfa"]
+atlas = ExtResource("3_epqhl")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4l7v"]
+atlas = ExtResource("3_epqhl")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0m71"]
+atlas = ExtResource("3_epqhl")
+region = Rect2(500, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30l70"]
+atlas = ExtResource("3_epqhl")
+region = Rect2(750, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r3lg"]
+atlas = ExtResource("4_10e2t")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eshis"]
+atlas = ExtResource("4_10e2t")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wba7q"]
+atlas = ExtResource("4_10e2t")
+region = Rect2(500, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibnrx"]
+atlas = ExtResource("4_10e2t")
 region = Rect2(750, 0, 250, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7alhp"]
@@ -55,7 +89,36 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atyfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4l7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0m71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30l70")
+}],
+"loop": false,
+"name": &"default_flower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5r3lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eshis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wba7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibnrx")
+}],
 "loop": false,
 "name": &"flower_pickup",
 "speed": 5.0
@@ -96,8 +159,7 @@ one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vlt3h")
-animation = &"stung"
-frame_progress = 0.288357
+animation = &"default_flower"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gqtsx")
@@ -118,4 +180,5 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_gqtsx")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -12132,6 +12132,7 @@ position = Vector2(-303, 195)
 [node name="Camera2D" type="Camera2D" parent="FLowerBorder"]
 
 [node name="game_win_flower" parent="FLowerBorder/Camera2D" instance=ExtResource("11_x1dhl")]
+visible = false
 z_index = 20
 offset_left = -670.0
 offset_top = -384.0
@@ -12155,7 +12156,7 @@ flower_spawner = NodePath("../../PinkFlowerSpawner3")
 wander_distance = 150.0
 
 [node name="Top" type="CollisionShape2D" parent="FLowerBorder"]
-position = Vector2(0, -363)
+position = Vector2(0, -538)
 shape = SubResource("WorldBoundaryShape2D_y6j53")
 
 [node name="Bottom" type="CollisionShape2D" parent="FLowerBorder"]
