@@ -9,6 +9,7 @@ func _ready():
 	SignalBus.connect("_moon_gem_stage_clear",game_win)
 	SignalBus.connect("_flower_victory",game_win)
 	SignalBus.connect("_game_lost",game_lost)
+	SignalBus.connect("_flower_defeat",flower_defeat)
 	SignalBus.connect("_moon_gem_stage_restart",restart)
 
 
@@ -17,6 +18,9 @@ func game_win():
 	
 func game_lost():
 	pass
-	
+
+func flower_defeat():
+	$LoseScreen.visible = true
+
 func restart():
 	$WinScreen.visible = false

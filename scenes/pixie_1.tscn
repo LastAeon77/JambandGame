@@ -157,7 +157,9 @@ script = ExtResource("1_67xp1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3.33333, 0)
 sprite_frames = SubResource("SpriteFrames_vlt3h")
-animation = &"default_flower"
+animation = &"stung"
+frame = 2
+frame_progress = 0.412448
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gqtsx")
