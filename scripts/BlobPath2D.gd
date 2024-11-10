@@ -11,7 +11,7 @@ var check3 = false;
 var check4 = false;
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if $PathFollow2D.progress_ratio >=99:
+	if $PathFollow2D.progress_ratio >= 0.99:
 		SignalBus.emit_signal("_flower_defeat")
 		
 	if $PathFollow2D.progress_ratio >= 0.2289 and not check1:
@@ -29,8 +29,9 @@ func _process(delta):
 		check4 = true
 	
 	$TextureRect.modulate = Color.from_hsv(0,0,1 - $PathFollow2D.progress_ratio)
-		
+	
 
 
 func _on_timer_timeout():
-	$PathFollow2D.progress_ratio+=0.001
+	if $PathFollow2D.progress_ratio < .991:
+		$PathFollow2D.progress_ratio+=0.001

@@ -12,6 +12,9 @@ var max_capacity = 3
 var pickup_playing : bool = false
 
 @onready var stung_timer : Timer = $StungTimer
+func _ready():
+	stung_timer.stop()
+
 func _physics_process(delta):
 	if stung_timer.is_stopped():
 		if not is_on_floor():
@@ -55,7 +58,7 @@ func damaged():
 	$HealthBar.value -=10
 	
 func pick_flower():
-	pickup_playing = false
+	pickup_playing = true
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.play("flower_pickup")
 	velocity.x = 0

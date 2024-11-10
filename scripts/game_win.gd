@@ -12,7 +12,9 @@ func _ready():
 	SignalBus.connect("_flower_defeat",flower_defeat)
 	SignalBus.connect("_moon_gem_stage_restart",restart)
 
-
+func _process(_delta):
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
 func game_win():
 	$WinScreen.visible = true
 	

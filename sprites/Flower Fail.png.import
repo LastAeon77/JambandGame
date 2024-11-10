@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgucubdku3ftp"
-path="res://.godot/imported/Flower Fail.png-04742a7cfa315a25503822444eefea3f.ctex"
+path="res://.godot/imported/Flower Fail.png-b0a54bd5c4afc3a4f5a708476e27ac83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scripts/Flower Fail.png"
-dest_files=["res://.godot/imported/Flower Fail.png-04742a7cfa315a25503822444eefea3f.ctex"]
+source_file="res://sprites/Flower Fail.png"
+dest_files=["res://.godot/imported/Flower Fail.png-b0a54bd5c4afc3a4f5a708476e27ac83.ctex"]
 
 [params]
 
