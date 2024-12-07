@@ -12133,7 +12133,10 @@ position = Vector2(-303, 195)
 
 [node name="game_win_flower" parent="FLowerBorder/Camera2D" instance=ExtResource("11_x1dhl")]
 z_index = 20
-scale = Vector2(1.67, 1.67)
+z_as_relative = false
+offset_left = -6.10352e-05
+offset_right = -6.10352e-05
+scale = Vector2(2.225, 2.225)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

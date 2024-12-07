@@ -1,6 +1,6 @@
 extends Area2D
 
-var victory_amount = 12
+var victory_amount = 2
 var current_amount = 0
 func _ready():
 	current_amount = 0
@@ -22,4 +22,5 @@ func fill_basket(num:int):
 	$AnimatedSprite2D.play(str(min(current_amount,12)))
 	if current_amount > victory_amount:
 		SignalBus.emit_signal("_flower_victory")
+
 
