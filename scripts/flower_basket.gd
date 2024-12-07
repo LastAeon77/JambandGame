@@ -1,6 +1,6 @@
 extends Area2D
 
-var victory_amount = 2
+var victory_amount = 12
 var current_amount = 0
 func _ready():
 	current_amount = 0
