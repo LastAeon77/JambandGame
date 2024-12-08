@@ -4,7 +4,7 @@ var asteroid_block = load("res://scenes/asteroid.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBus.connect("_pause",pause)
-	SignalBus.connect("_restart_moon_stage", restart)
+	SignalBus.connect("_moon_gem_stage_restart", restart)
 	pass # Replace with function body.
 
 
