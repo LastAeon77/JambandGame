@@ -9,6 +9,7 @@ var check1 = false;
 var check2 = false;
 var check3 = false;
 var check4 = false;
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if $PathFollow2D.progress_ratio >= 0.99:

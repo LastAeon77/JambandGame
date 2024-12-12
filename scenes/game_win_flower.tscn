@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/game_win.gd" id="1_1ddtn"]
 [ext_resource type="Texture2D" uid="uid://bjmwk3621r5i" path="res://sprites/Level Succeed.png" id="2_1kk5u"]
-[ext_resource type="Texture2D" uid="uid://bgucubdku3ftp" path="res://sprites/MainMenu/Flower Fail.png" id="3_6epf1"]
 [ext_resource type="Texture2D" uid="uid://dftd62hg3qn0t" path="res://sprites/MainMenu/Flower Fail Main Menu.png" id="4_6xwtn"]
+[ext_resource type="Texture2D" uid="uid://4gmxel1emry" path="res://sprites/MainMenu/Flower Fail Try Again.png" id="4_eh6bm"]
 
 [node name="game_win_flower" type="Control"]
 layout_mode = 3
@@ -48,4 +48,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_6epf1")
+texture = ExtResource("4_eh6bm")
