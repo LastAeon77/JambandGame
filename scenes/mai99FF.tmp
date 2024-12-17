@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://brib3w1lqtnsk"]
+[gd_scene load_steps=13 format=3 uid="uid://brib3w1lqtnsk"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_46mfs"]
 [ext_resource type="Texture2D" uid="uid://cj0gv61kqy20g" path="res://sprites/MainMenu/Main Menu Background.png" id="2_hekra"]
@@ -8,30 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://chcj277v4psxu" path="res://sprites/MainMenu/ReDecorate Red.png" id="6_tqqtp"]
 [ext_resource type="Texture2D" uid="uid://bbx1tjtnyxh7s" path="res://sprites/MainMenu/Settings Red.png" id="7_mgsgi"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bm8kx"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7lur1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bk44"]
-bg_color = Color(0, 0, 0, 0.486275)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8xu5l"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bul4w"]
-bg_color = Color(0, 0, 0, 0.486275)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_53yso"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n665p"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7aj8w"]
-bg_color = Color(0, 0, 0, 0.486275)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbrek"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0na4g"]
-bg_color = Color(0, 0, 0, 0.486275)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vb0g8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lok5q"]
-bg_color = Color(0, 0, 0, 0.486275)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -54,8 +39,7 @@ offset_left = -69.0
 offset_top = -21.0
 offset_right = 70.0
 offset_bottom = 22.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_bm8kx")
-theme_override_styles/focus = SubResource("StyleBoxFlat_7bk44")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7lur1")
 
 [node name="MoonGem" type="Sprite2D" parent="MainScene"]
 position = Vector2(-1, 40)
@@ -66,8 +50,7 @@ offset_left = -69.0
 offset_top = -21.0
 offset_right = 70.0
 offset_bottom = 22.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8xu5l")
-theme_override_styles/focus = SubResource("StyleBoxFlat_bul4w")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_53yso")
 
 [node name="Flowers" type="Sprite2D" parent="MainScene"]
 position = Vector2(-1, 96)
@@ -79,7 +62,6 @@ offset_top = -21.0
 offset_right = 70.0
 offset_bottom = 22.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n665p")
-theme_override_styles/focus = SubResource("StyleBoxFlat_7aj8w")
 
 [node name="Redecorate" type="Sprite2D" parent="MainScene"]
 position = Vector2(-1, 152)
@@ -91,7 +73,6 @@ offset_top = -21.0
 offset_right = 70.0
 offset_bottom = 22.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tbrek")
-theme_override_styles/focus = SubResource("StyleBoxFlat_0na4g")
 
 [node name="Settings" type="Sprite2D" parent="MainScene"]
 position = Vector2(-1, 208)
@@ -103,7 +84,6 @@ offset_top = -21.0
 offset_right = 70.0
 offset_bottom = 22.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_vb0g8")
-theme_override_styles/focus = SubResource("StyleBoxFlat_lok5q")
 
 [connection signal="pressed" from="MainScene/Intro/IntroButton" to="." method="_on_intro_button_pressed"]
 [connection signal="pressed" from="MainScene/MoonGem/MoonGemButton" to="." method="_on_moon_gem_button_pressed"]

@@ -1,15 +1,33 @@
 extends Control
 var moon_scene = preload("res://scenes/space_level.tscn")
 var flower_scene = preload("res://scenes/flower_level.tscn")
+var buttons = []
+var curr_highlight = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	for x in $MainScene.get_children():
+		if(x.get_child(0) is Button):
+			buttons.append(x.get_child(0))
+	print(buttons)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("up_player_1") or Input.is_action_just_pressed("up_player_2"):
+		if curr_highlight == -1:
+			curr_highlight = 0
+		else:
+			curr_highlight = max(0,curr_highlight-1)
+		highlight_button(curr_highlight)
+	if Input.is_action_just_pressed("down_player_1") or Input.is_action_just_pressed("down_player_2"):
+		if curr_highlight == -1:
+			curr_highlight = 0
+		else:
+			curr_highlight = min(len(buttons)-1,curr_highlight+1)
+		highlight_button(curr_highlight)
+	if Input.is_action_just_pressed("submit"):
+		press_hightlighted_button(curr_highlight)
 
 
 func _on_intro_button_pressed():
@@ -31,3 +49,18 @@ func _on_redecorate_button_pressed():
 
 func _on_settings_button_pressed():
 	pass
+
+func highlight_button(index):
+	for button in buttons:
+		button.toggle_mode = false
+
+	var curr_button = buttons[index] as Button
+	curr_button.toggle_mode = true
+	curr_button.grab_focus()
+	print(index)
+	print(curr_button)
+
+func press_hightlighted_button(index):
+	var button = buttons[index] as Button
+	if buttons[index].toggle_mode:
+		button.pressed.emit()
