@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://brib3w1lqtnsk"]
+[gd_scene load_steps=19 format=3 uid="uid://brib3w1lqtnsk"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_46mfs"]
 [ext_resource type="Texture2D" uid="uid://cj0gv61kqy20g" path="res://sprites/MainMenu/Main Menu Background.png" id="2_hekra"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://pvxv6hptn2ku" path="res://sprites/MainMenu/Flowers Red.png" id="5_0id41"]
 [ext_resource type="Texture2D" uid="uid://chcj277v4psxu" path="res://sprites/MainMenu/ReDecorate Red.png" id="6_tqqtp"]
 [ext_resource type="Texture2D" uid="uid://bbx1tjtnyxh7s" path="res://sprites/MainMenu/Settings Red.png" id="7_mgsgi"]
+[ext_resource type="Texture2D" uid="uid://m23x4eexultq" path="res://sprites/MainMenu/checkboxNo.PNG" id="8_r2skf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bm8kx"]
 
@@ -104,6 +105,18 @@ offset_right = 70.0
 offset_bottom = 22.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_vb0g8")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lok5q")
+
+[node name="MoonGemCheckbox" type="Sprite2D" parent="."]
+position = Vector2(528, 400)
+texture = ExtResource("8_r2skf")
+
+[node name="FlowerCheckbox" type="Sprite2D" parent="."]
+position = Vector2(528, 456)
+texture = ExtResource("8_r2skf")
+
+[node name="RedecorateCheckbox" type="Sprite2D" parent="."]
+position = Vector2(528, 512)
+texture = ExtResource("8_r2skf")
 
 [connection signal="pressed" from="MainScene/Intro/IntroButton" to="." method="_on_intro_button_pressed"]
 [connection signal="pressed" from="MainScene/MoonGem/MoonGemButton" to="." method="_on_moon_gem_button_pressed"]

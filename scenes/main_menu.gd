@@ -1,6 +1,7 @@
 extends Control
 var moon_scene = preload("res://scenes/space_level.tscn")
 var flower_scene = preload("res://scenes/flower_level.tscn")
+var checkbox_yes = preload("res://sprites/MainMenu/checkboxYes.PNG")
 var buttons = []
 var curr_highlight = -1
 
@@ -9,8 +10,13 @@ func _ready():
 	for x in $MainScene.get_children():
 		if(x.get_child(0) is Button):
 			buttons.append(x.get_child(0))
-	print(buttons)
-
+	if SignalBus.beat_moon:
+		$MoonGemCheckbox.texture = checkbox_yes
+	if SignalBus.beat_flower:
+		$FlowerCheckbox.texture = checkbox_yes
+	if SignalBus.beat_redecorate:
+		$FlowerCheckbox.texture = checkbox_yes
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

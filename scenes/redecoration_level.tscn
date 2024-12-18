@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dsc6yg45446x7"]
 
-[ext_resource type="Script" path="res://scenes/GameBoard.gd" id="1_cqbwm"]
+[ext_resource type="Script" path="res://scripts/GameBoard.gd" id="1_cqbwm"]
 [ext_resource type="Texture2D" uid="uid://drl6ujtbribub" path="res://sprites/Brown Tile.png" id="1_jd4k3"]
 [ext_resource type="Texture2D" uid="uid://djvwiknrujs4b" path="res://sprites/Spider Plant.png" id="2_usmop"]
 [ext_resource type="PackedScene" uid="uid://ca4owim0jx2l7" path="res://scenes/player_2_redecoration.tscn" id="3_vxrsv"]
