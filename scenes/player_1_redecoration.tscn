@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca4owim0jx2l7"]
+[gd_scene load_steps=4 format=3 uid="uid://bcp4r4686wjpc"]
 
-[ext_resource type="Texture2D" uid="uid://bpfgwe6qpvxf1" path="res://sprites/Mover 2 stationary.png" id="1_8j523"]
-[ext_resource type="Script" path="res://scripts/player_redecoration.gd" id="2_s127h"]
+[ext_resource type="Texture2D" uid="uid://bpfgwe6qpvxf1" path="res://sprites/Mover 2 stationary.png" id="1_7tcxf"]
+[ext_resource type="Script" path="res://scripts/player_redecoration.gd" id="2_qqbyd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vsdmt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("1_7tcxf")
 }],
 "loop": true,
 "name": &"default",
@@ -15,10 +15,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("1_7tcxf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("1_7tcxf")
 }],
 "loop": false,
 "name": &"move_ne",
@@ -26,10 +26,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("1_7tcxf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("1_7tcxf")
 }],
 "loop": false,
 "name": &"move_nw",
@@ -37,10 +37,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("1_7tcxf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("1_7tcxf")
 }],
 "loop": false,
 "name": &"move_se",
@@ -48,24 +48,24 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("1_7tcxf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("1_7tcxf")
 }],
 "loop": false,
 "name": &"move_sw",
 "speed": 4.0
 }]
 
-[node name="RedecorationPlayer2" type="AnimatedSprite2D" groups=["tilemap_bound"]]
+[node name="RedecorationPlayer1" type="AnimatedSprite2D" groups=["tilemap_bound"]]
 z_index = 2
 y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_vsdmt")
 animation = &"move_sw"
 offset = Vector2(32, -64)
-script = ExtResource("2_s127h")
+script = ExtResource("2_qqbyd")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
