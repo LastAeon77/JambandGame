@@ -66,6 +66,7 @@ func _process(delta):
 		#handle input
 		var movement_direction = null
 		var should_move = false
+		var should_end_turn = false
 		if turn % 2 == 0:
 			if Input.is_action_just_pressed("up_player_1"):
 				movement_direction = Direction.NE
@@ -78,7 +79,7 @@ func _process(delta):
 			
 			if Input.is_action_just_pressed("accept_player_1"):
 				should_move = true
-				print("hello")
+			
 		else:
 			if Input.is_action_just_pressed("up_player_2"):
 				movement_direction = Direction.NE
@@ -91,6 +92,7 @@ func _process(delta):
 			
 			if Input.is_action_just_pressed("accept_player_2"):
 				should_move = true
+			
 		if movement_direction != null:
 			var cell_neighbor = direction_to_cell_neighbor[movement_direction]
 			var candidate_position = tilemap.get_neighbor_cell(selected_tile,cell_neighbor)
@@ -104,15 +106,16 @@ func _process(delta):
 					selected_tile = candidate_position
 					path.append(candidate_position)
 					tilemap.set_cell(0,selected_tile,1,Vector2i.ZERO)
-		
+
 		if should_move:
 			get_current_player().move(path)
 			for point in path:
 				tilemap.set_cell(0,point,0,Vector2i.ZERO)
 			moves_left -= path.size() - 1
+			var final_position = path[path.size()-1]
 			path = []
-			path.append(get_current_player().tilemap_position)
-			
+			path.append(final_position)
+
 func update_tilemap_positions():
 	var tilemap_bound_objects = get_tree().get_nodes_in_group("tilemap_bound")
 	for node in tilemap_bound_objects:

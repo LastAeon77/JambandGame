@@ -14,59 +14,69 @@ func _ready():
 	
 	
 func _input(event):
-	
 	if event.device == player_one_controller and player_one_controller != -1:
+		var strength = 1.0
 		if event is InputEventJoypadMotion:
-			var strength = abs(event.axis_value)
-			if event.is_action_pressed("controller_up"):
-				Input.action_press("up_player_1",strength)
-			if event.is_action_released("controller_up"):
-				Input.action_release("up_player_1")
-				
-			if event.is_action_pressed("controller_down"):
-				Input.action_press("down_player_1",strength)
-			if event.is_action_released("controller_down"):
-				Input.action_release("down_player_1")
-				
-			if event.is_action_pressed("controller_left"):
-				Input.action_press("left_player_1",strength)
-			if event.is_action_released("controller_left"):
-				Input.action_release("left_player_1")
-				
-			if event.is_action_pressed("controller_right"):
-				Input.action_press("right_player_1",strength)
-			if event.is_action_released("controller_right"):
-				Input.action_release("right_player_1")
+			strength = abs(event.axis_value)
+		if event.is_action_pressed("controller_up"):
+			Input.action_press("up_player_1",strength)
+		if event.is_action_released("controller_up"):
+			Input.action_release("up_player_1")
+			
+		if event.is_action_pressed("controller_down"):
+			Input.action_press("down_player_1",strength)
+		if event.is_action_released("controller_down"):
+			Input.action_release("down_player_1")
+			
+		if event.is_action_pressed("controller_left"):
+			Input.action_press("left_player_1",strength)
+		if event.is_action_released("controller_left"):
+			Input.action_release("left_player_1")
+			
+		if event.is_action_pressed("controller_right"):
+			Input.action_press("right_player_1",strength)
+		if event.is_action_released("controller_right"):
+			Input.action_release("right_player_1")
+			
+		if event.is_action_pressed("controller_accelerate"):
+			Input.action_press("button_1_player_1")
+		if event.is_action_released("controller_accelerate"):	
+			Input.action_release("button_1_player_1")
+		
+		if event.is_action_pressed("controller_decelerate"):
+			Input.action_press("button_2_player_1")
+		if event.is_action_released("controller_decelerate"):
+			Input.action_release("button_2_player_2")
 	if event.device == player_two_controller and player_two_controller != -1:
+		var strength = 1.0
 		if event is InputEventJoypadMotion:
-			var strength = abs(event.axis_value)
-			if event.is_action_pressed("controller_up"):
-				Input.action_press("up_player_2",strength)
-			if event.is_action_released("controller_up"):
-				Input.action_release("up_player_2")
-				
-			if event.is_action_pressed("controller_down"):
-				Input.action_press("down_player_2",strength)
-			if event.is_action_released("controller_down"):
-				Input.action_release("down_player_2")
-				
-			if event.is_action_pressed("controller_left"):
-				Input.action_press("left_player_2",strength)
-			if event.is_action_released("controller_left"):
-				Input.action_release("left_player_2")
-				
-			if event.is_action_pressed("controller_right"):
-				Input.action_press("right_player_2",strength)
-			if event.is_action_released("controller_right"):
-				Input.action_release("right_player_2")
+			strength = abs(event.axis_value)
+		if event.is_action_pressed("controller_up"):
+			Input.action_press("up_player_2",strength)
+		if event.is_action_released("controller_up"):
+			Input.action_release("up_player_2")
+			
+		if event.is_action_pressed("controller_down"):
+			Input.action_press("down_player_2",strength)
+		if event.is_action_released("controller_down"):
+			Input.action_release("down_player_2")
+			
+		if event.is_action_pressed("controller_left"):
+			Input.action_press("left_player_2",strength)
+		if event.is_action_released("controller_left"):
+			Input.action_release("left_player_2")
+			
+		if event.is_action_pressed("controller_right"):
+			Input.action_press("right_player_2",strength)
+		if event.is_action_released("controller_right"):
+			Input.action_release("right_player_2")
 				
 		if event.is_action_pressed("controller_accelerate"):
-			print("accel")
-			Input.action_press("accelerate")
+			Input.action_press("accelerate_player_2")
 		if event.is_action_released("controller_accelerate"):
-			Input.action_release("accelerate")
+			Input.action_release("accelerate_player_2")
 			
 		if event.is_action_pressed("controller_decelerate"):
-			Input.action_press("decelerrate")
+			Input.action_press("decelerrate_player_2")
 		if event.is_action_released("controller_decelerate"):
-			Input.action_release("decelerrate")
+			Input.action_release("decelerrate_player_2")
