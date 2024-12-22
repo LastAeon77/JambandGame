@@ -51,6 +51,9 @@ func pause():
 		$Timer.stop()
 		
 func restart():
-	$Timer.stop()
+	if $Timer.is_stopped():
+		$Timer.start()
+	else:
+		$Timer.stop()
 	
 
