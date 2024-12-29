@@ -4,6 +4,12 @@ extends Path2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$PathFollow2D/Blob.play("moving")
+	if(SignalBus.curr_difficulty == SignalBus.Difficulties.EASY):
+		$Timer.wait_time = 0.1
+	if(SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM):
+		$Timer.wait_time = 0.05
+	if(SignalBus.curr_difficulty == SignalBus.Difficulties.HARD):
+		$Timer.wait_time = 0.02
 
 var check1 = false;
 var check2 = false;

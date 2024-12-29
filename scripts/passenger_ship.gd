@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var speed = 300.0
 @export var acceleration = 2.0
 
-var health = 2000
+var health = 100
 
 var follow_tolerance = 15
 var magnetic_ship: CharacterBody2D
