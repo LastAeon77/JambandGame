@@ -22,10 +22,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 104.0
+offset_right = -576.0
+offset_bottom = -320.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.78, 1.78)
 texture = ExtResource("2_1kk5u")
-expand_mode = 1
 
 [node name="MainMenu" type="TextureRect" parent="."]
 visible = false
@@ -33,10 +36,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 104.0
+offset_right = -576.0
+offset_bottom = -320.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.78, 1.78)
 texture = ExtResource("4_6xwtn")
-expand_mode = 3
 
 [node name="Pause_Continue" type="TextureRect" parent="."]
 visible = false
@@ -44,10 +50,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 248.0
+offset_top = 40.0
+offset_right = -776.0
+offset_bottom = -470.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(3.04, 3.04)
 texture = ExtResource("4_s3j10")
-expand_mode = 1
 
 [node name="Pause_MainMenu" type="TextureRect" parent="."]
 visible = false
@@ -55,10 +65,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 248.0
+offset_top = 40.0
+offset_right = -776.0
+offset_bottom = -470.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(3.04, 3.04)
 texture = ExtResource("5_f4qdn")
-expand_mode = 1
 
 [node name="TryAgain" type="TextureRect" parent="."]
 visible = false
@@ -66,7 +80,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 104.0
+offset_right = -576.0
+offset_bottom = -320.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.78, 1.78)
 texture = ExtResource("4_eh6bm")
-expand_mode = 2

@@ -19,49 +19,45 @@ script = ExtResource("1_leqg3")
 [node name="WinScreen" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
-offset_right = 3295.0
-offset_bottom = 1889.0
+offset_left = 384.0
+offset_top = 128.0
+offset_right = 984.0
+offset_bottom = 528.0
+scale = Vector2(4.165, 4.165)
 texture = ExtResource("2_ilr3x")
-expand_mode = 3
 
 [node name="Pause_Continue" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 169.0
-offset_top = 136.0
-offset_right = 3464.0
-offset_bottom = 2025.0
-scale = Vector2(0.897545, 0.867174)
+offset_left = 584.0
+offset_top = 128.0
+offset_right = 840.0
+offset_bottom = 338.0
+scale = Vector2(8.203, 7.92)
 texture = ExtResource("3_ny6de")
-expand_mode = 3
 
 [node name="Pause_MainMenu" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 169.0
-offset_top = 136.0
-offset_right = 3464.0
-offset_bottom = 2025.0
-scale = Vector2(0.89153, 0.867094)
+offset_left = 584.0
+offset_top = 128.0
+offset_right = 840.0
+offset_bottom = 338.0
+scale = Vector2(8.203, 7.92)
 texture = ExtResource("4_nl6ym")
-expand_mode = 3
 
 [node name="MainMenu" type="TextureRect" parent="."]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 400.0
+scale = Vector2(4.165, 4.165)
 texture = ExtResource("5_5yl67")
 
 [node name="TryAgain" type="TextureRect" parent="."]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 400.0
+scale = Vector2(4.165, 4.165)
 texture = ExtResource("6_eeakd")
