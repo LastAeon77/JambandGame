@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7ek72k1ewfm"]
+
+[ext_resource type="Script" path="res://scripts/furniture.gd" id="1_1allu"]
+[ext_resource type="Texture2D" uid="uid://djvwiknrujs4b" path="res://sprites/RedecorationLevel/Furniture/Spider Plant.png" id="1_x8lot"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0rg3x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_x8lot")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SpiderPlant" type="Node2D" groups=["tilemap_bound"]]
+script = ExtResource("1_1allu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0rg3x")
+offset = Vector2(0, -42)

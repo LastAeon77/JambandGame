@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh244b64q54kt"
-path="res://.godot/imported/Grey Tile.png-f2519a5381c29103b1308cd13bb089e7.ctex"
+uid="uid://bswshc6t7kqm8"
+path="res://.godot/imported/Mover 1 NE.png-848d337daa2ff7550794a0dbc23affe0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Grey Tile.png"
-dest_files=["res://.godot/imported/Grey Tile.png-f2519a5381c29103b1308cd13bb089e7.ctex"]
+source_file="res://sprites/RedecorationLevel/Mover1/Mover 1 NE.png"
+dest_files=["res://.godot/imported/Mover 1 NE.png-848d337daa2ff7550794a0dbc23affe0.ctex"]
 
 [params]
 

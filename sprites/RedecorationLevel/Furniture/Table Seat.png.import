@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpfgwe6qpvxf1"
-path="res://.godot/imported/Mover 2 stationary.png-a93d35a0215992ec7fb97f9df5a6e1eb.ctex"
+uid="uid://daltknx67ke1s"
+path="res://.godot/imported/Table Seat.png-cd5bb287195156c9cd56ee85698f39eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Mover 2 stationary.png"
-dest_files=["res://.godot/imported/Mover 2 stationary.png-a93d35a0215992ec7fb97f9df5a6e1eb.ctex"]
+source_file="res://sprites/RedecorationLevel/Furniture/Table Seat.png"
+dest_files=["res://.godot/imported/Table Seat.png-cd5bb287195156c9cd56ee85698f39eb.ctex"]
 
 [params]
 

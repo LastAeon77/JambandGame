@@ -27,7 +27,7 @@ signal _bee_sting(pixie : Node2D)
 func _ready():
 	ensure_save_file_exists()
 	connect("_moon_gem_stage_clear",win_moon)
-	connect("flower_victory", win_flower)
+	connect("_flower_victory", win_flower)
 	curr_difficulty = Difficulties.MEDIUM
 	load_game()
 
