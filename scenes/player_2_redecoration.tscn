@@ -1,24 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca4owim0jx2l7"]
+[gd_scene load_steps=7 format=3 uid="uid://ca4owim0jx2l7"]
 
-[ext_resource type="Texture2D" uid="uid://bpfgwe6qpvxf1" path="res://sprites/Mover 2 stationary.png" id="1_8j523"]
 [ext_resource type="Script" path="res://scripts/player_redecoration.gd" id="2_s127h"]
+[ext_resource type="Texture2D" uid="uid://ca63p33wkmkku" path="res://sprites/RedecorationLevel/Mover2/Mover 2 NE.png" id="2_srxyj"]
+[ext_resource type="Texture2D" uid="uid://bvt8gp0gllrmv" path="res://sprites/RedecorationLevel/Mover2/Mover 2 NW.png" id="3_lgd4a"]
+[ext_resource type="Texture2D" uid="uid://bpfgwe6qpvxf1" path="res://sprites/RedecorationLevel/Furniture/Mover 2 stationary.png" id="4_5y7o5"]
+[ext_resource type="Texture2D" uid="uid://dbtn510ko3pdp" path="res://sprites/RedecorationLevel/Mover2/Mover 2 SE.png" id="4_j1q0a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vsdmt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("2_srxyj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("2_srxyj")
 }],
 "loop": false,
 "name": &"move_ne",
@@ -26,10 +21,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("3_lgd4a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("3_lgd4a")
 }],
 "loop": false,
 "name": &"move_nw",
@@ -37,10 +32,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("4_j1q0a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("4_j1q0a")
 }],
 "loop": false,
 "name": &"move_se",
@@ -48,22 +43,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("4_5y7o5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8j523")
+"texture": ExtResource("4_5y7o5")
 }],
 "loop": false,
 "name": &"move_sw",
 "speed": 4.0
 }]
 
-[node name="RedecorationPlayer2" type="AnimatedSprite2D" groups=["tilemap_bound"]]
+[node name="RedecorationPlayer2" type="AnimatedSprite2D" groups=["obstacle", "tilemap_bound"]]
 z_index = 2
 y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_vsdmt")
-animation = &"move_sw"
+animation = &"move_ne"
 offset = Vector2(32, -64)
 script = ExtResource("2_s127h")
 

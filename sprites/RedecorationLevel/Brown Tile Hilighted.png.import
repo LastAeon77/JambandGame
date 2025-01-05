@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djvwiknrujs4b"
-path="res://.godot/imported/Spider Plant.png-da881e54d8819df0b5a8933471699e9a.ctex"
+uid="uid://d0lr22iivvluj"
+path="res://.godot/imported/Brown Tile Hilighted.png-85490f5aae39c09a017d8b5617f0ce35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Spider Plant.png"
-dest_files=["res://.godot/imported/Spider Plant.png-da881e54d8819df0b5a8933471699e9a.ctex"]
+source_file="res://sprites/RedecorationLevel/Brown Tile Hilighted.png"
+dest_files=["res://.godot/imported/Brown Tile Hilighted.png-85490f5aae39c09a017d8b5617f0ce35.ctex"]
 
 [params]
 
