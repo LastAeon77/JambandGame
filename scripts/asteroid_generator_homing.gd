@@ -5,7 +5,12 @@ var asteroid_block = load("res://scenes/asteroid.tscn")
 func _ready():
 	SignalBus.connect("_pause",pause)
 	SignalBus.connect("_moon_gem_stage_restart", restart)
-	pass # Replace with function body.
+	if SignalBus.curr_difficulty == SignalBus.Difficulties.EASY:
+		$Timer.wait_time = 8
+	elif SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM:
+		$Timer.wait_time = 5
+	elif SignalBus.curr_difficulty == SignalBus.Difficulties.HARD:
+		$Timer.wait_time = 3
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,6 +43,9 @@ func pause():
 		$Timer.stop()
 		
 func restart():
-	$Timer.stop()
+	if $Timer.is_stopped():
+		$Timer.start()
+	else:
+		$Timer.stop()
 	
 

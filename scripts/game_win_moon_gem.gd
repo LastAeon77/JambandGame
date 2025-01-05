@@ -8,7 +8,12 @@ func _ready():
 	SignalBus.connect("_moon_gem_stage_clear",game_win)
 	SignalBus.connect("_moon_gem_stage_restart",restart)
 
-		
+
+func _process(_delta):
+	if Input.is_action_just_pressed("submit"):
+		if ($WinScreen.visible==true):
+			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
 func game_win():
 	$WinScreen.visible = true
 
@@ -18,3 +23,4 @@ func game_lost():
 
 func restart():
 	$WinScreen.visible = false
+

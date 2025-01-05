@@ -134,3 +134,5 @@ offset_bottom = -720.0
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_aaeu0")
 autoplay = true
+max_distance = 1e+13
+attenuation = 1e-05

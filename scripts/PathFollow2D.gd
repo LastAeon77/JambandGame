@@ -2,13 +2,14 @@ extends PathFollow2D
 
 
 var speed = 0.008
-var resume = false
+var resume = true
 var triggers = [0.1,0.12,0.15]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _ready():
 	SignalBus.connect("_moon_gem_stage_restart",restart)
 	SignalBus.connect("_pause",pause_function)
+	SignalBus.emit_signal("_moon_gem_stage_restart")
 
 func _physics_process(delta):
 	if triggers:

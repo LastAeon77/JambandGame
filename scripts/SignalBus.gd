@@ -1,5 +1,7 @@
 extends Node
 
+enum Difficulties { EASY, MEDIUM, HARD }
+var curr_difficulty
 var beat_moon
 var beat_flower
 var beat_redecorate
@@ -23,16 +25,40 @@ signal _flower_defeat()
 signal _bee_sting(pixie : Node2D)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("loading game")
+	ensure_save_file_exists()
+	connect("_moon_gem_stage_clear",win_moon)
+	connect("flower_victory", win_flower)
+	curr_difficulty = Difficulties.MEDIUM
 	load_game()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	if Input.is_action_just_pressed("pause"):
 		emit_signal("_pause")
 	if Input.is_action_just_pressed("restart"):
 		emit_signal("_moon_gem_stage_restart")
+
+
+func ensure_save_file_exists():
+	var save_path = "user://save.json"
+	if not FileAccess.file_exists(save_path):
+		var default_save_data = {
+		"beat_moon": false,
+		"beat_flower": false,
+		"beat_redecorate": false
+			}
+		var json = JSON.new()
+		var save_file = FileAccess.open(save_path, FileAccess.WRITE)
+		if save_file:
+			save_file.store_string(json.stringify(default_save_data))  # Write default data as JSON
+			save_file.close()
+			print("save.json created at:", save_path)
+		else:
+			print("Failed to create save.json at:", save_path)
+	else:
+		print("save.json already exists at:", save_path)
 
 
 func get_camera_top():
@@ -53,18 +79,47 @@ func save():
 	return save_dict
 
 func save_game():
-	var save_file = FileAccess.open("res://Save/save.json", FileAccess.WRITE)
-	save_file.store_line(save())
+	var json = JSON.new()
+	var save_file = FileAccess.open("user://save.json", FileAccess.WRITE)
+	if save_file:
+		var parsed_json: String = json.stringify(save())  # Convert Dictionary to JSON string
+		save_file.store_line(parsed_json)
+		print("Game saved successfully!")
+	else:
+		print("Failed to save the game.")
+	save_file.close()
 	
 func load_game():
-	var save_file = FileAccess.open("res://Save/save.json", FileAccess.READ)
+	var save_file = FileAccess.open("user://save.json", FileAccess.READ)
 	var json_string = save_file.get_as_text()
+	save_file.close()
 	var json = JSON.new()
-	var parse_result = json.parse(json_string)
-	if not parse_result == OK:
+	var parse_result = json.parse_string(json_string)
+	if not parse_result:
 		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 	
-	var node_data = json.data
-	beat_moon = node_data["beat_moon"]
-	beat_flower = node_data["beat_flower"]
-	beat_redecorate = node_data["beat_redecorate"]
+	var node_data = parse_result
+	if node_data.has("beat_moon"):
+		beat_moon = node_data["beat_moon"]
+	if node_data.has("beat_flower"):
+		beat_flower = node_data["beat_flower"]
+	if node_data.has("beat_redecorate"):
+		beat_redecorate = node_data["beat_redecorate"]
+
+	
+
+func win_moon():
+	beat_moon = true
+	save_game()
+	
+func win_flower():
+	beat_flower = true
+	save_game()
+	
+func win_redecorate():
+	beat_redecorate = true
+	save_game()
+	
+func change_difficulty(diff):
+	curr_difficulty = diff
+		

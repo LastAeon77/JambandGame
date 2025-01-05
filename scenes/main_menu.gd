@@ -1,7 +1,10 @@
 extends Control
 var moon_scene = preload("res://scenes/space_level.tscn")
 var flower_scene = preload("res://scenes/flower_level.tscn")
+
+var settings_scene = preload("res://scenes/settings.tscn")
 var checkbox_yes = preload("res://sprites/MainMenu/checkboxYes.PNG")
+
 var buttons = []
 var curr_highlight = -1
 
@@ -54,7 +57,7 @@ func _on_redecorate_button_pressed():
 
 
 func _on_settings_button_pressed():
-	pass
+	get_tree().change_scene_to_packed(settings_scene)
 
 func highlight_button(index):
 	for button in buttons:
@@ -63,8 +66,6 @@ func highlight_button(index):
 	var curr_button = buttons[index] as Button
 	curr_button.toggle_mode = true
 	curr_button.grab_focus()
-	print(index)
-	print(curr_button)
 
 func press_hightlighted_button(index):
 	var button = buttons[index] as Button

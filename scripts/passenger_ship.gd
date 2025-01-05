@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var speed = 300.0
 @export var acceleration = 2.0
 
-var health = 2000
+var health = 100
 
 var follow_tolerance = 15
 var magnetic_ship: CharacterBody2D
@@ -14,6 +14,12 @@ func _ready():
 	magnetic_ship = get_tree().get_first_node_in_group("Magnetic")
 	SignalBus.connect("_game_lost", ship_destroyed) 
 	SignalBus.connect("_moon_gem_stage_restart",restart)
+	if SignalBus.curr_difficulty == SignalBus.Difficulties.EASY:
+		health = 70
+	elif SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM:
+		health = 60
+	elif SignalBus.curr_difficulty == SignalBus.Difficulties.HARD:
+		health = 40
 	$HealthBar.max_value = health
 	$HealthBar.min_value = 0
 	$HealthBar.value = $HealthBar.max_value
