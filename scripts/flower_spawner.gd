@@ -5,8 +5,12 @@ var white_flower = preload("res://scenes/white_flower.tscn")
 var has_flower: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	if(SignalBus.curr_difficulty == SignalBus.Difficulties.EASY):
+		$Timer.wait_time = 10
+	if(SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM):
+		$Timer.wait_time = 15
+	if(SignalBus.curr_difficulty == SignalBus.Difficulties.HARD):
+		$Timer.wait_time = 20
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

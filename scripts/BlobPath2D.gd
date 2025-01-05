@@ -5,11 +5,11 @@ extends Path2D
 func _ready():
 	$PathFollow2D/Blob.play("moving")
 	if(SignalBus.curr_difficulty == SignalBus.Difficulties.EASY):
-		$Timer.wait_time = 0.1
+		$Timer.wait_time = 0.10
 	if(SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM):
-		$Timer.wait_time = 0.05
+		$Timer.wait_time = 0.10
 	if(SignalBus.curr_difficulty == SignalBus.Difficulties.HARD):
-		$Timer.wait_time = 0.02
+		$Timer.wait_time = 0.10
 
 var check1 = false;
 var check2 = false;
