@@ -8,7 +8,6 @@ var triggers = [0.1,0.12,0.15]
 
 func _ready():
 	SignalBus.connect("_moon_gem_stage_restart",restart)
-	SignalBus.connect("_pause",pause_function)
 	SignalBus.emit_signal("_moon_gem_stage_restart")
 
 func _physics_process(delta):
@@ -27,6 +26,4 @@ func _physics_process(delta):
 func restart():
 	progress_ratio = 0
 	
-func pause_function():
-	resume = !resume
 	

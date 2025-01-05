@@ -119,6 +119,7 @@ collision_layer = 512
 collision_mask = 512
 
 [node name="game_win" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("1_3d03w")]
+z_index = 100
 offset_left = -1400.0
 offset_top = -807.0
 offset_right = -1400.0

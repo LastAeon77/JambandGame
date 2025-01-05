@@ -12129,17 +12129,6 @@ platform_wall_layers = 1
 [node name="Pixie2" parent="FLowerBorder" groups=["pixie"] instance=ExtResource("14_0djhb")]
 position = Vector2(-303, 195)
 
-[node name="Camera2D" type="Camera2D" parent="FLowerBorder"]
-
-[node name="game_win_flower" parent="FLowerBorder/Camera2D" instance=ExtResource("11_x1dhl")]
-z_index = 20
-z_as_relative = false
-offset_left = -6.10352e-05
-offset_right = -6.10352e-05
-scale = Vector2(2.225, 2.225)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="GuardBee1" parent="FLowerBorder" node_paths=PackedStringArray("flower_spawner") instance=ExtResource("10_b8o00")]
 position = Vector2(-253, -41)
 flower_spawner = NodePath("../../PinkFlowerSpawner")
@@ -12177,6 +12166,17 @@ position = Vector2(-357, -101)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="FLowerBorder"]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_ju1cb")
+
+[node name="Camera2D" type="Camera2D" parent="FLowerBorder"]
+
+[node name="game_win_flower" parent="FLowerBorder/Camera2D" instance=ExtResource("11_x1dhl")]
+z_index = 20
+z_as_relative = false
+offset_left = 6.10352e-05
+offset_right = 6.10352e-05
+scale = Vector2(2.225, 2.225)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Flower" parent="." instance=ExtResource("10_3fq2c")]
 position = Vector2(352, 0)
