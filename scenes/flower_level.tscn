@@ -12172,11 +12172,15 @@ navigation_polygon = SubResource("NavigationPolygon_ju1cb")
 [node name="game_win_flower" parent="FLowerBorder/Camera2D" instance=ExtResource("11_x1dhl")]
 z_index = 20
 z_as_relative = false
-offset_left = 6.10352e-05
-offset_right = 6.10352e-05
-scale = Vector2(2.225, 2.225)
-size_flags_horizontal = 3
-size_flags_vertical = 3
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -632.0
+offset_top = -352.0
+offset_right = 632.0
+offset_bottom = 352.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Flower" parent="." instance=ExtResource("10_3fq2c")]
 position = Vector2(352, 0)

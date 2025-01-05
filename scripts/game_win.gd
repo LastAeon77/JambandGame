@@ -15,6 +15,8 @@ func _ready():
 	$MainMenu.visible = false
 	$MainMenu.visible = false
 	$TryAgain.visible = false
+	$Pause_Continue.visible = false
+	$Pause_MainMenu.visible = false
 
 
 func _process(_delta):
