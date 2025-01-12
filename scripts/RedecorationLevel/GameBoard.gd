@@ -84,6 +84,10 @@ func is_obstacle(tilemap_position : Vector2i) -> bool:
 	var wall_position = tilemap.get_neighbor_cell(tilemap_position,TileSet.CELL_NEIGHBOR_TOP_CORNER)
 	if tilemap.get_cell_source_id(1, wall_position) != -1:
 		return true
+		
+	var cell_type = tilemap.get_cell_source_id(0, tilemap_position)
+	if  cell_type != 0 and cell_type != 1:
+		return true
 	
 	if get_other_player().tilemap_position == tilemap_position:
 		return true

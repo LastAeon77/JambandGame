@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0lr22iivvluj"
-path="res://.godot/imported/Brown Tile Hilighted.png-85490f5aae39c09a017d8b5617f0ce35.ctex"
+uid="uid://bh244b64q54kt"
+path="res://.godot/imported/Grey Tile.png-e9d045388c89426a3198de6e12635379.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/RedecorationLevel/Brown Tile Hilighted.png"
-dest_files=["res://.godot/imported/Brown Tile Hilighted.png-85490f5aae39c09a017d8b5617f0ce35.ctex"]
+source_file="res://sprites/RedecorationLevel/Tiles/Grey Tile.png"
+dest_files=["res://.godot/imported/Grey Tile.png-e9d045388c89426a3198de6e12635379.ctex"]
 
 [params]
 
