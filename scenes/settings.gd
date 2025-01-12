@@ -32,7 +32,7 @@ func _process(delta):
 			curr_highlight = min(difficulities-1,curr_highlight+1)
 		highlight_image(curr_highlight)
 	
-	if Input.is_action_just_pressed("down_player_1") or Input.is_action_just_pressed("down_player_2"):
+	if Input.is_action_just_pressed("submit"):
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func highlight_image(index):
