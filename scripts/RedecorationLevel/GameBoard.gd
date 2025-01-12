@@ -12,7 +12,7 @@ var selected_tile = null
 var path = []
 var path_directions = []
 var in_pickup_mode = false
-var obstacles :Array[Vector2i] = []
+var obstacle_positions :Dictionary = {}
 const MOVEMENT_PER_TURN = 5
 var moves_left = MOVEMENT_PER_TURN
 @export var align_to_tilemap : bool = false
@@ -36,7 +36,7 @@ func update_obstacles():
 		var position = obstacle.tilemap_position
 		if "dimensions" in obstacle:
 			for i in obstacle.dimensions.x:
-				obstacles.append(position)
+				obstacle_positions[position] = obstacle
 				for j in obstacle.dimensions.y-1:
 					if i%2 == 0:
 						var neighbor_dir = direction_to_cell_neighbor[Direction.SW]
@@ -44,11 +44,11 @@ func update_obstacles():
 					else:
 						var neighbor_dir = direction_to_cell_neighbor[Direction.SE]
 						position = tilemap.get_neighbor_cell(position,neighbor_dir)
-					obstacles.append(position)
+					obstacle_positions[position] = obstacle
 				var neighbor_dir = direction_to_cell_neighbor[Direction.NE]
 				position = tilemap.get_neighbor_cell(position,neighbor_dir)
 		else:
-			obstacles.append(position)
+			obstacle_positions[position] = obstacle
 
 func _ready():
 	update_obstacles()
@@ -70,6 +70,7 @@ func get_other_player() -> RedecorationPlayer:
 func start_next_turn():
 	turn += 1
 	moves_left = MOVEMENT_PER_TURN
+	in_pickup_mode = false
 	if turn % 3 != 0:
 		selected_tile = get_current_player().tilemap_position
 		path.clear()
@@ -92,7 +93,7 @@ func is_obstacle(tilemap_position : Vector2i) -> bool:
 	if get_other_player().tilemap_position == tilemap_position:
 		return true
 		
-	if tilemap_position in obstacles:
+	if tilemap_position in obstacle_positions:
 		return true
 	return false
 
@@ -112,7 +113,10 @@ func _process(delta):
 		var movement_direction = null
 		var should_move = false
 		var should_end_turn = false
-
+		var should_pick_up = false
+		var should_toggle_pick_up_mode =false
+		
+		var player = get_current_player()
 		if turn % 3 == 1:
 			if Input.is_action_just_pressed("up_player_1"):
 				movement_direction = Direction.NE
@@ -124,15 +128,13 @@ func _process(delta):
 				movement_direction = Direction.SE
 			
 			if Input.is_action_just_pressed("button_1_player_1"):
-				should_move = true
+				if !in_pickup_mode:
+					should_move = true
+				else:
+					should_pick_up = true
 			
 			if Input.is_action_just_pressed("button_2_player_1"):
-				if !in_pickup_mode:
-					var player_position = path[0]
-					clear_path(player_position)
-					in_pickup_mode= true
-				else:
-					in_pickup_mode= false
+				should_toggle_pick_up_mode = true
 					
 			if Input.is_action_just_pressed("end_turn"):
 				should_end_turn = true
@@ -149,23 +151,19 @@ func _process(delta):
 			if Input.is_action_just_pressed("button_1_player_2"):
 				if !in_pickup_mode:
 					should_move = true
+				else:
+					should_pick_up = true
 				
 			if Input.is_action_just_pressed("button_2_player_2"):
-				if !in_pickup_mode:
-					var player_position = path[0]
-					clear_path(player_position)
-					in_pickup_mode= true
-				else:
-					in_pickup_mode= false
-			
+				should_toggle_pick_up_mode = true
 			if Input.is_action_just_pressed("end_turn"):
 				should_end_turn = true
 		else:
 			#MR.blob's turn
 			if blob_timer.is_stopped():
-				start_next_turn()
+				should_end_turn = true
 			pass
-			
+		
 		if !in_pickup_mode && movement_direction != null:
 			var cell_neighbor = direction_to_cell_neighbor[movement_direction]
 			var candidate_position = tilemap.get_neighbor_cell(selected_tile,cell_neighbor)
@@ -184,15 +182,39 @@ func _process(delta):
 		elif movement_direction != null:
 			get_current_player().set_direction(movement_direction)
 		
+		if should_toggle_pick_up_mode:
+			if !in_pickup_mode:
+				var player_position = player.final_position
+				clear_path(player_position)
+				in_pickup_mode= true
+			else:
+				in_pickup_mode= false
+				
+		if should_pick_up:
+			
+			var direction = player.facing_direction
+			var cell_neighbor_dir = direction_to_cell_neighbor[direction]
+			var neighbor_cell = tilemap.get_neighbor_cell(player.final_position,cell_neighbor_dir)
+			if neighbor_cell in obstacle_positions:
+				
+				var obstacle = obstacle_positions[neighbor_cell]
+				if obstacle.has_method("pick_up"):
+					var success = obstacle.pick_up()
+					if success:
+						player.held_object = obstacle
+						print("blah")
+			update_obstacles()
+		
 		if should_move:
 			get_current_player().move(path,path_directions)
 			moves_left -= path.size() - 1
-			var final_position = path[path.size()-1]
-			clear_path(final_position)
+			clear_path(player.final_position)
+			
 		if should_end_turn:
-			clear_path(path[0])
+			if player != null:
+				clear_path(path[0])
 			start_next_turn()
-
+		
 func clear_path(player_position):
 	for point in path:
 		tilemap.set_cell(0,point,0,Vector2i.ZERO)

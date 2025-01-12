@@ -4,14 +4,16 @@ class_name RedecorationPlayer
 var max_movement = 5
 @export var tilemap_position : Vector2i
 var final_position : Vector2i
+var held_object
 @export var move_time : float = 0.1
 var facing_direction : GameBoard.Direction = GameBoard.Direction.NE
 var move_timer : Timer
 func _ready():
 	move_timer = $Timer
 	move_timer.wait_time = move_time
-	
+	final_position = tilemap_position
 func move(path,directions):
+	final_position = path[len(path)-1]
 	for i in range(len(path) - 1):
 		var point = path[i+1]
 		var dir = directions[i]
