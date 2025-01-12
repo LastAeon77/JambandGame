@@ -20,7 +20,8 @@ func move(path,directions):
 		await move_timer.timeout
 		tilemap_position = point
 		
-		
+
+
 func set_direction(direction : GameBoard.Direction):
 	facing_direction = direction
 	match direction:

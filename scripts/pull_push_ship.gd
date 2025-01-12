@@ -18,7 +18,7 @@ func _process(_delta):
 func _physics_process(delta):
 	
 	if not cooldown:
-		if Input.is_action_just_pressed("accelerate_player_2"):
+		if Input.is_action_just_pressed("button_1_player_2"):
 			$AttractSound.play()
 			$AnimatedSprite2D.play("accel")
 			for key in asteroids_in_your_area:
@@ -26,7 +26,7 @@ func _physics_process(delta):
 					key.speed_up()
 			cooldown = true
 			past_delta = 1.40
-		if Input.is_action_just_pressed("decelerrate_player_2"):
+		if Input.is_action_just_pressed("button_2_player_2"):
 			$AnimatedSprite2D.play("deccel")
 			$AttractSound.play()
 			for key in asteroids_in_your_area:

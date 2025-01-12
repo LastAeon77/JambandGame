@@ -38,15 +38,15 @@ func _input(event):
 		if event.is_action_released("controller_right"):
 			Input.action_release("right_player_1")
 			
-		if event.is_action_pressed("controller_accelerate"):
+		if event.is_action_pressed("controller_button_1"):
 			Input.action_press("button_1_player_1")
-		if event.is_action_released("controller_accelerate"):	
+		if event.is_action_released("controller_button_1"):	
 			Input.action_release("button_1_player_1")
 		
-		if event.is_action_pressed("controller_decelerate"):
+		if event.is_action_pressed("controller_button_2"):
 			Input.action_press("button_2_player_1")
-		if event.is_action_released("controller_decelerate"):
-			Input.action_release("button_2_player_2")
+		if event.is_action_released("controller_button_2"):
+			Input.action_release("button_2_player_1")
 	if event.device == player_two_controller and player_two_controller != -1:
 		var strength = 1.0
 		if event is InputEventJoypadMotion:
@@ -71,12 +71,12 @@ func _input(event):
 		if event.is_action_released("controller_right"):
 			Input.action_release("right_player_2")
 				
-		if event.is_action_pressed("controller_accelerate"):
-			Input.action_press("accelerate_player_2")
-		if event.is_action_released("controller_accelerate"):
-			Input.action_release("accelerate_player_2")
+		if event.is_action_pressed("controller_button_1"):
+			Input.action_press("button_1_player_2")
+		if event.is_action_released("controller_button_1"):
+			Input.action_release("button_1_player_2")
 			
-		if event.is_action_pressed("controller_decelerate"):
-			Input.action_press("decelerrate_player_2")
-		if event.is_action_released("controller_decelerate"):
-			Input.action_release("decelerrate_player_2")
+		if event.is_action_pressed("controller_button_2"):
+			Input.action_press("button_2_player_2")
+		if event.is_action_released("controller_button_2"):
+			Input.action_release("button_2_player_2")

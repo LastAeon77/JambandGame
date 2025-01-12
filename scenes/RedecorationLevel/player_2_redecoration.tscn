@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ca4owim0jx2l7"]
 
-[ext_resource type="Script" path="res://scripts/player_redecoration.gd" id="2_s127h"]
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/player_redecoration.gd" id="2_s127h"]
 [ext_resource type="Texture2D" uid="uid://ca63p33wkmkku" path="res://sprites/RedecorationLevel/Mover2/Mover 2 NE.png" id="2_srxyj"]
 [ext_resource type="Texture2D" uid="uid://bvt8gp0gllrmv" path="res://sprites/RedecorationLevel/Mover2/Mover 2 NW.png" id="3_lgd4a"]
 [ext_resource type="Texture2D" uid="uid://bpfgwe6qpvxf1" path="res://sprites/RedecorationLevel/Furniture/Mover 2 stationary.png" id="4_5y7o5"]
@@ -53,7 +53,7 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="RedecorationPlayer2" type="AnimatedSprite2D" groups=["obstacle", "tilemap_bound"]]
+[node name="RedecorationPlayer2" type="AnimatedSprite2D" groups=["tilemap_bound"]]
 z_index = 2
 y_sort_enabled = true
 scale = Vector2(0.5, 0.5)

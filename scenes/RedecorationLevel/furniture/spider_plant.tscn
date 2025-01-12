@@ -14,7 +14,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="SpiderPlant" type="Node2D" groups=["tilemap_bound"]]
+[node name="SpiderPlant" type="Node2D" groups=["obstacles", "tilemap_bound"]]
+z_index = 2
 script = ExtResource("1_1allu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

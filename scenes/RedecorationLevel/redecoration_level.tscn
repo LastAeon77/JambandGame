@@ -1,20 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsc6yg45446x7"]
+[gd_scene load_steps=12 format=3 uid="uid://dsc6yg45446x7"]
 
-[ext_resource type="Script" path="res://scripts/GameBoard.gd" id="1_cqbwm"]
-[ext_resource type="Texture2D" uid="uid://drl6ujtbribub" path="res://sprites/RedecorationLevel/Brown Tile.png" id="1_jd4k3"]
-[ext_resource type="Texture2D" uid="uid://d0lr22iivvluj" path="res://sprites/RedecorationLevel/Brown Tile Hilighted.png" id="3_ftagv"]
-[ext_resource type="PackedScene" uid="uid://ca4owim0jx2l7" path="res://scenes/player_2_redecoration.tscn" id="3_vxrsv"]
-[ext_resource type="PackedScene" uid="uid://bcp4r4686wjpc" path="res://scenes/player_1_redecoration.tscn" id="4_bunjw"]
-[ext_resource type="PackedScene" uid="uid://b7ek72k1ewfm" path="res://scenes/spider_plant.tscn" id="6_wydfb"]
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/TurnLabel.gd" id="1_s5xym"]
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/GameBoard.gd" id="2_aijxb"]
+[ext_resource type="Texture2D" uid="uid://drl6ujtbribub" path="res://sprites/RedecorationLevel/Brown Tile.png" id="3_508ce"]
+[ext_resource type="Texture2D" uid="uid://d0lr22iivvluj" path="res://sprites/RedecorationLevel/Brown Tile Hilighted.png" id="4_mj6gh"]
+[ext_resource type="PackedScene" uid="uid://bcp4r4686wjpc" path="res://scenes/RedecorationLevel/player_1_redecoration.tscn" id="5_puxre"]
+[ext_resource type="PackedScene" uid="uid://ca4owim0jx2l7" path="res://scenes/RedecorationLevel/player_2_redecoration.tscn" id="6_txd5c"]
+[ext_resource type="PackedScene" uid="uid://b7ek72k1ewfm" path="res://scenes/RedecorationLevel/furniture/spider_plant.tscn" id="7_eb060"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_knwib"]
+font_size = 30
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wje77"]
-texture = ExtResource("1_jd4k3")
+texture = ExtResource("3_508ce")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r47rp"]
-texture = ExtResource("3_ftagv")
+texture = ExtResource("4_mj6gh")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -8)
@@ -32,10 +36,19 @@ sources/1 = SubResource("TileSetAtlasSource_r47rp")
 position = Vector2(55, -90)
 zoom = Vector2(2.14, 2.14)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer"]
+offset_right = 39.0
+offset_bottom = 23.0
+text = "Mr. Blob's turn!"
+label_settings = SubResource("LabelSettings_knwib")
+script = ExtResource("1_s5xym")
+
 [node name="GameBoard" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(1, 0)
-script = ExtResource("1_cqbwm")
+script = ExtResource("2_aijxb")
 metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="GameBoard"]
@@ -67,13 +80,17 @@ layer_5/z_index = 6
 layer_5/tile_data = PackedInt32Array()
 metadata/_edit_lock_ = true
 
-[node name="RedecorationPlayer1" parent="GameBoard" instance=ExtResource("4_bunjw")]
+[node name="RedecorationPlayer1" parent="GameBoard" instance=ExtResource("5_puxre")]
 tilemap_position = Vector2i(-1, -1)
 
-[node name="RedecorationPlayer2" parent="GameBoard" instance=ExtResource("3_vxrsv")]
-position = Vector2(64, -32)
-tilemap_position = Vector2i(3, -3)
+[node name="RedecorationPlayer2" parent="GameBoard" instance=ExtResource("6_txd5c")]
+position = Vector2(128, -64)
+tilemap_position = Vector2i(7, -5)
 
-[node name="SpiderPlant" parent="GameBoard" groups=["obstacle"] instance=ExtResource("6_wydfb")]
-position = Vector2(48, -104)
-tilemap_position = Vector2i(2, -7)
+[node name="SpiderPlant" parent="GameBoard" instance=ExtResource("7_eb060")]
+position = Vector2(32, -32)
+tilemap_position = Vector2i(1, -3)
+
+[node name="Timer" type="Timer" parent="GameBoard"]
+wait_time = 4.0
+one_shot = true
