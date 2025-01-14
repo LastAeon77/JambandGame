@@ -1,0 +1,42 @@
+[
+	{
+		"id":0,
+		"talker":"",
+		"text": ""
+	},
+	{
+		"id":1,
+		"talker":"blob",
+		"text": "What happened Mr. Neighbor? Why are you crying?"
+	},
+	{
+		"id":2,
+		"talker":"neighbor",
+		"text": "My wife, she left me!"
+	},
+	{
+		"id":3,
+		"talker":"neighbor",
+		"text": "She told me I was negligent, that I no longer loved her!"
+	},
+	{
+		"id":4,
+		"talker":"neighbor",
+		"text": "She'll never return again. I've lost the love of my life."
+	},
+	{
+		"id":5,
+		"talker":"blob",
+		"text": "Oh dear... I haven't talked to my wife in a while."
+	},
+	{
+		"id":6,
+		"talker":"neighbor",
+		"text": "Don't end up like me boy. If you don't show her love, she will leave you."
+	},
+	{
+		"id":7,
+		"talker":"blob",
+		"text": "!!!"
+	}
+]
