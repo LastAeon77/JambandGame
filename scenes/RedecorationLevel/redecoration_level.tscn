@@ -1,17 +1,20 @@
-[gd_scene load_steps=23 format=3 uid="uid://dsc6yg45446x7"]
+[gd_scene load_steps=27 format=3 uid="uid://dsc6yg45446x7"]
 
 [ext_resource type="Script" path="res://scripts/RedecorationLevel/TurnLabel.gd" id="1_s5xym"]
 [ext_resource type="Script" path="res://scripts/RedecorationLevel/GameBoard.gd" id="2_aijxb"]
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/debug_label.gd" id="2_bcffd"]
 [ext_resource type="Texture2D" uid="uid://drl6ujtbribub" path="res://sprites/RedecorationLevel/Tiles/Brown Tile.png" id="3_508ce"]
+[ext_resource type="PackedScene" uid="uid://d0j7maoh01nji" path="res://scenes/RedecorationLevel/MrBlob.tscn" id="4_7pp7k"]
 [ext_resource type="Texture2D" uid="uid://d0lr22iivvluj" path="res://sprites/RedecorationLevel/Tiles/Brown Tile Hilighted.png" id="4_mj6gh"]
+[ext_resource type="Texture2D" uid="uid://cbmuew6jkao30" path="res://sprites/RedecorationLevel/Tiles/Brown Tile Green Highlight.png" id="5_gdl05"]
 [ext_resource type="PackedScene" uid="uid://bcp4r4686wjpc" path="res://scenes/RedecorationLevel/player_1_redecoration.tscn" id="5_puxre"]
 [ext_resource type="Texture2D" uid="uid://b5h5wad5tf6j7" path="res://sprites/RedecorationLevel/Tiles/Grass 1.png" id="5_rdit2"]
 [ext_resource type="PackedScene" uid="uid://ca4owim0jx2l7" path="res://scenes/RedecorationLevel/player_2_redecoration.tscn" id="6_txd5c"]
 [ext_resource type="Texture2D" uid="uid://m5sfp5d36fn0" path="res://sprites/RedecorationLevel/Tiles/Grass 2.png" id="6_vwagx"]
-[ext_resource type="PackedScene" uid="uid://b7ek72k1ewfm" path="res://scenes/RedecorationLevel/furniture/spider_plant.tscn" id="7_eb060"]
 [ext_resource type="Texture2D" uid="uid://bwfbsgvii6kf2" path="res://sprites/RedecorationLevel/Tiles/Road.png" id="7_k7fpl"]
 [ext_resource type="Texture2D" uid="uid://bs3sg8bdhefmm" path="res://sprites/RedecorationLevel/Furniture/Door Frame.png" id="8_3pehu"]
 [ext_resource type="Texture2D" uid="uid://bh244b64q54kt" path="res://sprites/RedecorationLevel/Tiles/Grey Tile.png" id="8_jtqr2"]
+[ext_resource type="PackedScene" uid="uid://d1l3ig3o36xhq" path="res://scenes/RedecorationLevel/furniture/couch.tscn" id="13_qg4ad"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_knwib"]
 font_size = 30
@@ -24,6 +27,12 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r47rp"]
 texture = ExtResource("4_mj6gh")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0mxhd"]
+texture = ExtResource("5_gdl05")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -8)
@@ -84,6 +93,7 @@ sources/5 = SubResource("TileSetAtlasSource_5ep4d")
 sources/6 = SubResource("TileSetAtlasSource_trv0f")
 sources/7 = SubResource("TileSetAtlasSource_h2eqq")
 sources/8 = SubResource("TileSetAtlasSource_ir8eb")
+sources/2 = SubResource("TileSetAtlasSource_0mxhd")
 
 [node name="RedecorationLevel" type="Node"]
 
@@ -100,11 +110,24 @@ text = "Mr. Blob's turn!"
 label_settings = SubResource("LabelSettings_knwib")
 script = ExtResource("1_s5xym")
 
+[node name="debug" type="Label" parent="Camera2D/CanvasLayer"]
+visible = false
+offset_left = 127.0
+offset_top = 74.0
+offset_right = 167.0
+offset_bottom = 97.0
+script = ExtResource("2_bcffd")
+
 [node name="GameBoard" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(1, 0)
 script = ExtResource("2_aijxb")
 metadata/_edit_lock_ = true
+
+[node name="MrBlob" parent="GameBoard" instance=ExtResource("4_7pp7k")]
+position = Vector2(352, -224)
+scale = Vector2(0.62, 0.62)
+tilemap_position = Vector2i(21, -15)
 
 [node name="TileMap" type="TileMap" parent="GameBoard"]
 y_sort_enabled = true
@@ -142,13 +165,13 @@ tilemap_position = Vector2i(-1, -1)
 position = Vector2(128, -64)
 tilemap_position = Vector2i(7, -5)
 
-[node name="SpiderPlant" parent="GameBoard" instance=ExtResource("7_eb060")]
-position = Vector2(32, -32)
-tilemap_position = Vector2i(1, -3)
-
 [node name="Timer" type="Timer" parent="GameBoard"]
 wait_time = 2.0
 one_shot = true
+
+[node name="Couch" parent="GameBoard" instance=ExtResource("13_qg4ad")]
+position = Vector2(32, -32)
+tilemap_position = Vector2i(1, -3)
 
 [node name="DoorFrame" type="Sprite2D" parent="."]
 z_index = 2

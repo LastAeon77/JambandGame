@@ -47,6 +47,11 @@ func _input(event):
 			Input.action_press("button_2_player_1")
 		if event.is_action_released("controller_button_2"):
 			Input.action_release("button_2_player_1")
+			
+		if event.is_action_pressed("controller_select"):
+			Input.action_press("select_player_1")
+		if event.is_action_released("controller_select"):
+			Input.action_release("select_player_1")
 	if event.device == player_two_controller and player_two_controller != -1:
 		var strength = 1.0
 		if event is InputEventJoypadMotion:
@@ -80,3 +85,8 @@ func _input(event):
 			Input.action_press("button_2_player_2")
 		if event.is_action_released("controller_button_2"):
 			Input.action_release("button_2_player_2")
+		
+		if event.is_action_pressed("controller_select"):
+			Input.action_press("select_player_2")
+		if event.is_action_released("controller_select"):
+			Input.action_release("select_player_2")
