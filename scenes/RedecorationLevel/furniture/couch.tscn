@@ -34,10 +34,12 @@ normal_dimensions = Vector2i(2, 4)
 flipped_dimensions = Vector2i(4, 2)
 
 [node name="Normal" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(-34, -28)
 sprite_frames = SubResource("SpriteFrames_ffyfo")
 
 [node name="Flipped" type="AnimatedSprite2D" parent="."]
 visible = false
+y_sort_enabled = true
 position = Vector2(34, -32)
 sprite_frames = SubResource("SpriteFrames_tsbkm")

@@ -16,15 +16,22 @@ func _ready():
 		dimensions = flipped_dimensions
 	if has_node("Flipped"):
 		flipped_animation = $Flipped
+		
 	
 func flip():
 	if flipped_animation!= null:
 		if !flipped:
 			flipped = true
+			if flipped_animation != null:
+				flipped_animation.visible = true
+				animation.visible = false
 			dimensions = flipped_dimensions
 		else:
+			flipped = false
+			if flipped_animation != null:
+				flipped_animation.visible = false
+				animation.visible = true
 			dimensions = normal_dimensions
-
 func pick_up():
 	if moveable and on_ground:
 		on_ground = false
@@ -32,6 +39,12 @@ func pick_up():
 		visible = false
 		return true
 	return false
+
+func place():
+	on_ground=true
+	add_to_group("obstacles")
+	visible = true
+	return true
 
 func set_down(position:Vector2i, flipped):
 	if !on_ground:
