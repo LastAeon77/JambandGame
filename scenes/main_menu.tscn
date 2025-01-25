@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://brib3w1lqtnsk"]
 
-[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_46mfs"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_46mfs"]
 [ext_resource type="Texture2D" uid="uid://cj0gv61kqy20g" path="res://sprites/MainMenu/Main Menu Background.png" id="2_hekra"]
 [ext_resource type="Texture2D" uid="uid://bsmp5h4nadqjx" path="res://sprites/MainMenu/Intro red.png" id="3_swjf0"]
 [ext_resource type="Texture2D" uid="uid://dfd4f72lt0up8" path="res://sprites/MainMenu/Moon Gem red.png" id="4_eomn2"]

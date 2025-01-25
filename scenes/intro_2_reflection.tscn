@@ -1,0 +1,143 @@
+[gd_scene load_steps=20 format=3 uid="uid://dq6nb7dunb1xj"]
+
+[ext_resource type="Script" path="res://intro_2_reflection.gd" id="1_6nw78"]
+[ext_resource type="Texture2D" uid="uid://bovbds360mfr0" path="res://sprites/Intro/Scene 2 Background.png" id="2_chp8d"]
+[ext_resource type="Texture2D" uid="uid://batrye0nqad2f" path="res://sprites/Intro/Standard Thinking.png" id="3_utgm8"]
+[ext_resource type="Texture2D" uid="uid://dknb5705udkcm" path="res://sprites/Intro/Blob looking around-Sheet.png" id="4_i5q1v"]
+[ext_resource type="Texture2D" uid="uid://0ijout5l7eea" path="res://sprites/Intro/Intense Thinking.png" id="5_i4w8l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4kka"]
+atlas = ExtResource("3_utgm8")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d5qk"]
+atlas = ExtResource("3_utgm8")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksctw"]
+atlas = ExtResource("3_utgm8")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l7o3"]
+atlas = ExtResource("5_i4w8l")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wowe"]
+atlas = ExtResource("5_i4w8l")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh6py"]
+atlas = ExtResource("5_i4w8l")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh0cp"]
+atlas = ExtResource("5_i4w8l")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssu4f"]
+atlas = ExtResource("5_i4w8l")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6ird"]
+atlas = ExtResource("5_i4w8l")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xevmr"]
+atlas = ExtResource("4_i5q1v")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tll2o"]
+atlas = ExtResource("4_i5q1v")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqcpc"]
+atlas = ExtResource("4_i5q1v")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlm8l"]
+atlas = ExtResource("4_i5q1v")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oduxi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4kka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d5qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksctw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l7o3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wowe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lh6py")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh0cp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssu4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6ird")
+}],
+"loop": true,
+"name": &"look_around",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xevmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tll2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqcpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlm8l")
+}],
+"loop": true,
+"name": &"serious",
+"speed": 5.0
+}]
+
+[node name="intro_2_reflection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6nw78")
+
+[node name="TextEdit" type="TextureRect" parent="."]
+offset_right = 1271.0
+offset_bottom = 729.0
+texture = ExtResource("2_chp8d")
+
+[node name="MR_BLOB" type="AnimatedSprite2D" parent="."]
+position = Vector2(590, 275)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_oduxi")
+animation = &"look_around"
+frame_progress = 0.40136
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 163.0
+offset_top = 549.0
+offset_right = 1116.0
+offset_bottom = 706.0

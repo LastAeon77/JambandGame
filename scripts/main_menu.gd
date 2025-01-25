@@ -1,4 +1,5 @@
 extends Control
+var intro_scene = preload("res://scenes/intro.tscn")
 var moon_scene = preload("res://scenes/space_level.tscn")
 var flower_scene = preload("res://scenes/flower_level.tscn")
 
@@ -40,7 +41,7 @@ func _process(delta):
 
 
 func _on_intro_button_pressed():
-	#Play Intro
+	get_tree().change_scene_to_packed(intro_scene)
 	pass # Replace with function body.
 
 

@@ -1,0 +1,52 @@
+[
+	{
+		"id":0,
+		"talker":"",
+		"text": ""
+	},
+	{
+		"id":1,
+		"talker":"Blob Default",
+		"text": "I can't believe I'm not in some blobiciously deep trouble."
+	},
+	{
+		"id":2,
+		"talker":"Blob Default",
+		"text": "Lovely Ms. Blob hasn't been talking much to me... Could it be..."
+	},
+	{
+		"id":3,
+		"talker":"Blob Serious",
+		"text": "She's going to divorce me???"
+	},
+	{
+		"id":4,
+		"talker":"Blob Serious",
+		"text": "If Ms.Blob leaves me I'll never be happy again!"
+	},
+	{
+		"id":5,
+		"talker":"Blob Think",
+		"text": "I must think of a plan... Anything! Come on blob brain! Think of a solution!"
+	},
+	{
+		"id":6,
+		"talker":"Blob Think",
+		"text": "..."
+	},
+	{
+		"id":7,
+		"talker":"Blob Default",
+		"text": "I suppose dropping out of Blobby Dating School wasn't the wisest choice."
+	},
+	{
+		"id":8,
+		"talker":"Blob Default",
+		"text": "If only there was some sort of way to make a wish come true..."
+	},
+	{
+		"id":9,
+		"talker":"Blob Default",
+		"text": "Oh right, the fountain!"
+	}
+]
