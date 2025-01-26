@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8j3r3i6od57r"]
+
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/furniture.gd" id="1_nr12x"]
+[ext_resource type="Texture2D" uid="uid://cncvqmfkk8rn7" path="res://sprites/RedecorationLevel/Furniture/Book Shelf.png" id="2_o6elh"]
+[ext_resource type="Texture2D" uid="uid://p0w4lcd6chku" path="res://sprites/RedecorationLevel/Furniture/Book Shelf flipped.png" id="3_0qype"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m5p1e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o6elh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_waqgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0qype")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bookshelf" type="Node2D" groups=["obstacles", "tilemap_bound"]]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("1_nr12x")
+normal_dimensions = Vector2i(3, 1)
+flipped_dimensions = Vector2i(1, 3)
+
+[node name="Normal" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(32, -25)
+sprite_frames = SubResource("SpriteFrames_m5p1e")
+frame_progress = 0.405243
+offset = Vector2(0, -16)
+
+[node name="Flipped" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -25)
+sprite_frames = SubResource("SpriteFrames_waqgp")
+frame_progress = 0.719671
+offset = Vector2(0, -16)

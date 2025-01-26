@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://bn0d6loxcu01r"]
+
+[ext_resource type="Texture2D" uid="uid://bvwsves0ljqm3" path="res://sprites/RedecorationLevel/Furniture/Glass Table.png" id="1_5pb7d"]
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/furniture.gd" id="1_t2vhj"]
+[ext_resource type="Texture2D" uid="uid://boh2erd7bmn13" path="res://sprites/RedecorationLevel/Furniture/Glass Table Flip.png" id="2_cv5l4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m5p1e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5pb7d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_waqgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cv5l4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GlassTable" type="Node2D" groups=["obstacles", "tilemap_bound"]]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("1_t2vhj")
+normal_dimensions = Vector2i(2, 3)
+flipped_dimensions = Vector2i(3, 2)
+
+[node name="Normal" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -26)
+sprite_frames = SubResource("SpriteFrames_m5p1e")
+offset = Vector2(0, -16)
+
+[node name="Flipped" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(19, -26)
+sprite_frames = SubResource("SpriteFrames_waqgp")
+offset = Vector2(0, -16)

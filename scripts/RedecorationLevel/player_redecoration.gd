@@ -8,7 +8,7 @@ var held_object
 @export var move_time : float = 0.1
 var facing_direction : GameBoard.Direction = GameBoard.Direction.NE
 var move_timer : Timer
-
+var moving = false
 func _ready():
 	move_timer = $Timer
 	move_timer.wait_time = move_time
@@ -16,6 +16,7 @@ func _ready():
 	
 func move(path,directions):
 	final_position = path[len(path)-1]
+	moving = true
 	for i in range(len(path) - 1):
 		var point = path[i+1]
 		var dir = directions[i]
@@ -23,7 +24,7 @@ func move(path,directions):
 		move_timer.start()
 		await move_timer.timeout
 		tilemap_position = point
-		
+	moving = false
 func set_direction(direction : GameBoard.Direction):
 	facing_direction = direction
 	match direction:

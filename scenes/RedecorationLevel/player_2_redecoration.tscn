@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/RedecorationLevel/player_redecoration.gd" id="2_s127h"]
 [ext_resource type="Texture2D" uid="uid://ca63p33wkmkku" path="res://sprites/RedecorationLevel/Mover2/Mover 2 NE.png" id="2_srxyj"]
 [ext_resource type="Texture2D" uid="uid://bvt8gp0gllrmv" path="res://sprites/RedecorationLevel/Mover2/Mover 2 NW.png" id="3_lgd4a"]
-[ext_resource type="Texture2D" uid="uid://bpfgwe6qpvxf1" path="res://sprites/RedecorationLevel/Furniture/Mover 2 stationary.png" id="4_5y7o5"]
 [ext_resource type="Texture2D" uid="uid://dbtn510ko3pdp" path="res://sprites/RedecorationLevel/Mover2/Mover 2 SE.png" id="4_j1q0a"]
+[ext_resource type="Texture2D" uid="uid://dcpwjgbanmqg6" path="res://sprites/RedecorationLevel/Mover2/Mover 2 SW.png" id="4_r7sxj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vsdmt"]
 animations = [{
@@ -43,10 +43,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_5y7o5")
+"texture": ExtResource("4_r7sxj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_5y7o5")
+"texture": ExtResource("4_r7sxj")
 }],
 "loop": false,
 "name": &"move_sw",
@@ -58,7 +58,7 @@ z_index = 3
 y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_vsdmt")
-animation = &"move_ne"
+animation = &"move_sw"
 offset = Vector2(32, -64)
 script = ExtResource("2_s127h")
 

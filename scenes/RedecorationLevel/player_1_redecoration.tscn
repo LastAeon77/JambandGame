@@ -67,6 +67,7 @@ script = ExtResource("2_qqbyd")
 one_shot = true
 
 [node name="icons" type="Node2D" parent="."]
+visible = false
 
 [node name="SpiderPlant" type="Sprite2D" parent="icons"]
 visible = false

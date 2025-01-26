@@ -1,0 +1,112 @@
+[gd_scene load_steps=16 format=3 uid="uid://bjq4utkagxaxx"]
+
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/furniture.gd" id="1_0pp6g"]
+[ext_resource type="Texture2D" uid="uid://b2g6ci4jpmn8" path="res://sprites/RedecorationLevel/Furniture/Stereo-Sheet.png" id="2_6s15w"]
+[ext_resource type="Texture2D" uid="uid://by08jnkcg7mxu" path="res://sprites/RedecorationLevel/Furniture/Stereo Flipped-Sheet.png" id="3_xgfno"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhtku"]
+atlas = ExtResource("2_6s15w")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq28q"]
+atlas = ExtResource("2_6s15w")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rot60"]
+atlas = ExtResource("2_6s15w")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktv0c"]
+atlas = ExtResource("2_6s15w")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ov05"]
+atlas = ExtResource("2_6s15w")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m5p1e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhtku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq28q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rot60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktv0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ov05")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs1wl"]
+atlas = ExtResource("3_xgfno")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_no5kh"]
+atlas = ExtResource("3_xgfno")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sywsq"]
+atlas = ExtResource("3_xgfno")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5penl"]
+atlas = ExtResource("3_xgfno")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do8bn"]
+atlas = ExtResource("3_xgfno")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_waqgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs1wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_no5kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sywsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5penl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do8bn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Stereo" type="Node2D" groups=["obstacles", "tilemap_bound"]]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("1_0pp6g")
+normal_dimensions = Vector2i(1, 3)
+flipped_dimensions = Vector2i(3, 1)
+
+[node name="Normal" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -26)
+sprite_frames = SubResource("SpriteFrames_m5p1e")
+frame_progress = 0.405243
+offset = Vector2(0, -16)
+
+[node name="Flipped" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(30, -26)
+sprite_frames = SubResource("SpriteFrames_waqgp")
+frame_progress = 0.719671
+offset = Vector2(0, -16)

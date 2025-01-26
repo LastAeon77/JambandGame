@@ -16,7 +16,8 @@ func _ready():
 		dimensions = flipped_dimensions
 	if has_node("Flipped"):
 		flipped_animation = $Flipped
-		
+		flipped_animation.play()
+	animation.play()
 	
 func flip():
 	if flipped_animation!= null:

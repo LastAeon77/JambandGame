@@ -5,6 +5,7 @@ enum Direction {NW,NE, SW, SE}
 @onready var tilemap = $TileMap
 @onready var player1 = $RedecorationPlayer1
 @onready var player2 = $RedecorationPlayer2
+@onready var mrBlob = $MrBlob
 @export var dimensions : Vector2i = Vector2i(9,11)
 @onready var blob_timer : Timer = $Timer
 const PICKUP_HOLD_TIME = 0.25
@@ -24,6 +25,11 @@ const MOVEMENT_PER_TURN = 100
 var moves_left = MOVEMENT_PER_TURN
 @export var align_to_tilemap : bool = false
 @onready var plant_scene = load("res://scenes/RedecorationLevel/furniture/spider_plant.tscn")
+@onready var stereo_scene = load("res://scenes/RedecorationLevel/furniture/stereo.tscn")
+@onready var table_scene = load("res://scenes/RedecorationLevel/furniture/glass_table.tscn")
+
+
+
 
 var direction_to_animation_name = {
 	Direction.NW:"move_nw",
@@ -39,10 +45,11 @@ var direction_to_cell_neighbor = {
 	Direction.SE: TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_SIDE,
 }
 func _ready():
-	item_in_staging_area = plant_scene.instantiate()
-	item_in_staging_area.tilemap_position = staging_area_position
-	add_child(item_in_staging_area)
-	update_obstacles()
+	if !Engine.is_editor_hint():
+		item_in_staging_area = plant_scene.instantiate()
+		item_in_staging_area.tilemap_position = staging_area_position
+		add_child(item_in_staging_area)
+		update_obstacles()
 
 func _process(delta):
 	if Engine.is_editor_hint():
@@ -139,73 +146,78 @@ func _process(delta):
 				var position
 				should_end_turn = true
 		
-		if !in_pickup_mode && movement_direction != null:
-			var cell_neighbor = direction_to_cell_neighbor[movement_direction]
-			var candidate_position = tilemap.get_neighbor_cell(selected_tile,cell_neighbor)
-			if !is_obstacle(candidate_position):
-				if path.size() > 1 and candidate_position in path:
-					if path[path.size()-2] == candidate_position:
-						tilemap.set_cell(0,path[path.size()-1] ,0,Vector2i.ZERO)
-						path.pop_back()
-						path_directions.pop_back()
+		if player == null or (player != null and not player.moving):
+			if !in_pickup_mode && movement_direction != null:
+				var cell_neighbor = direction_to_cell_neighbor[movement_direction]
+				var candidate_position = tilemap.get_neighbor_cell(selected_tile,cell_neighbor)
+				if !is_obstacle(candidate_position):
+					if path.size() > 1 and candidate_position in path:
+						if path[path.size()-2] == candidate_position:
+							tilemap.set_cell(0,path[path.size()-1] ,0,Vector2i.ZERO)
+							path.pop_back()
+							path_directions.pop_back()
+							selected_tile = candidate_position
+					elif moves_left > path.size()-1:
 						selected_tile = candidate_position
-				elif moves_left > path.size()-1:
-					selected_tile = candidate_position
-					path_directions.append(movement_direction)
-					path.append(candidate_position)
-					tilemap.set_cell(0,selected_tile,1,Vector2i.ZERO)
-		elif movement_direction != null:
-			get_current_player().set_direction(movement_direction)
-			update_green_highlight(player)
-		if should_toggle_pick_up_mode:
-			if !in_pickup_mode:
-				var player_position = player.final_position
-				clear_path(player_position)
-				in_pickup_mode = true
+						path_directions.append(movement_direction)
+						path.append(candidate_position)
+						tilemap.set_cell(0,selected_tile,1,Vector2i.ZERO)
+			elif movement_direction != null:
+				get_current_player().set_direction(movement_direction)
 				update_green_highlight(player)
-			else:
-				in_pickup_mode = false
-				clear_green_highlight()
-		if should_flip_object and player!= null and player.held_object != null:
-			should_flip_object = false
-			player.held_object.flip()
-			update_green_highlight(player)
-		
-		if should_pick_up_or_place:
-			var direction = player.facing_direction
-			var cell_neighbor_dir = direction_to_cell_neighbor[direction]
-			var neighbor_cell = tilemap.get_neighbor_cell(player.final_position,cell_neighbor_dir)
-			if(player.held_object != null):
-				var potential_collisions = get_obstacle_tiles(player.held_object)
-				var can_place = true
-				for coord in potential_collisions:
-					if is_obstacle(coord):
-						can_place = false
-						break
-				if can_place:
-					var success = player.held_object.place()
-					if success:
-						player.held_object = null
-						update_green_highlight(player)
-			if neighbor_cell in obstacle_positions:
-				var obstacle = obstacle_positions[neighbor_cell]
-				if obstacle.has_method("pick_up"):
-					var success = obstacle.pick_up()
-					if success:
-						player.held_object = obstacle
-						update_green_highlight(player)
-			update_obstacles()
-		
-		if should_move:
-			get_current_player().move(path,path_directions)
-			moves_left -= path.size() - 1
-			clear_path(player.final_position)
-		
-		if should_end_turn:
-			if player != null:
-				clear_path(path[0])
-			start_next_turn()
-
+			if should_toggle_pick_up_mode:
+				if !in_pickup_mode:
+					var player_position = player.final_position
+					clear_path(player_position)
+					in_pickup_mode = true
+					update_green_highlight(player)
+				else:
+					in_pickup_mode = false
+					clear_green_highlight()
+			if should_flip_object and player!= null and player.held_object != null:
+				should_flip_object = false
+				player.held_object.flip()
+				update_green_highlight(player)
+			
+			if should_pick_up_or_place:
+				var direction = player.facing_direction
+				var cell_neighbor_dir = direction_to_cell_neighbor[direction]
+				var neighbor_cell = tilemap.get_neighbor_cell(player.final_position,cell_neighbor_dir)
+				if(player.held_object != null):
+					var potential_collisions = get_obstacle_tiles(player.held_object)
+					var can_place = true
+					for coord in potential_collisions:
+						if is_obstacle(coord):
+							can_place = false
+							break
+					if can_place:
+						var success = player.held_object.place()
+						if success:
+							player.held_object = null
+							update_green_highlight(player)
+				if neighbor_cell in obstacle_positions:
+					var obstacle = obstacle_positions[neighbor_cell]
+					if obstacle.has_method("pick_up"):
+						var success = obstacle.pick_up()
+						if success:
+							player.held_object = obstacle
+							update_green_highlight(player)
+				update_obstacles()
+			
+			if should_move:
+				get_current_player().move(path,path_directions)
+				moves_left -= path.size() - 1
+				clear_path(player.final_position)
+			
+			if should_end_turn:
+				if player != null:
+					clear_path(path[0])
+				start_next_turn()
+		should_flip_object = false
+		should_move = false
+		should_end_turn = false
+		should_pick_up_or_place = false
+			
 
 func clear_green_highlight():
 	for cell_coord in green_highlight_cells:
