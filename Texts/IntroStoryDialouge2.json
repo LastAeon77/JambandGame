@@ -7,7 +7,7 @@
 	{
 		"id":1,
 		"talker":"Blob Default",
-		"text": "I can't believe I'm not in some blobiciously deep trouble."
+		"text": "I can't believe I'm in some blobiciously deep trouble."
 	},
 	{
 		"id":2,
@@ -17,7 +17,7 @@
 	{
 		"id":3,
 		"talker":"Blob Serious",
-		"text": "She's going to divorce me???"
+		"text": "What if she divorces me???"
 	},
 	{
 		"id":4,
@@ -46,7 +46,7 @@
 	},
 	{
 		"id":9,
-		"talker":"Blob Default",
-		"text": "Oh right, the fountain!"
+		"talker":"Blob Serious",
+		"text": "The fountain!"
 	}
 ]

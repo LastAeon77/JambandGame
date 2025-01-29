@@ -125,6 +125,7 @@ grow_vertical = 2
 script = ExtResource("1_6nw78")
 
 [node name="TextEdit" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 1271.0
 offset_bottom = 729.0
 texture = ExtResource("2_chp8d")
@@ -137,6 +138,7 @@ animation = &"look_around"
 frame_progress = 0.40136
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 163.0
 offset_top = 549.0
 offset_right = 1116.0
