@@ -49,7 +49,7 @@ func _on_obstacle_changed():
 func _ready():
 	if !Engine.is_editor_hint():
 		update_obstacles()
-		##furniture_queue.shuffle()
+		furniture_queue.shuffle()
 		furniture_queue.push_front("res://scenes/RedecorationLevel/furniture/books.tscn")
 		stage_next_item()
 		SignalBus._obstacle_changed.connect(_on_obstacle_changed)
