@@ -18,7 +18,7 @@ func _ready():
 		flipped_animation = $Flipped
 		flipped_animation.play()
 	animation.play()
-	
+
 func flip():
 	if flipped_animation!= null:
 		if !flipped:
@@ -43,8 +43,9 @@ func pick_up():
 	return false
 
 func place():
-	on_ground = true
+	on_ground=true
 	add_to_group("obstacles")
-	visible = true
 	SignalBus._obstacle_changed.emit()
+	visible = true
+	return true
 

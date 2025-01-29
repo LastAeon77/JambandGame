@@ -50,4 +50,7 @@ script = ExtResource("1_ylqaj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3, -11)
 sprite_frames = SubResource("SpriteFrames_0hh4e")
-animation = &"NE"
+animation = &"SW"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

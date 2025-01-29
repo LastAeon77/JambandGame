@@ -6,7 +6,7 @@ var max_movement = 5
 var final_position : Vector2i
 var held_object
 @export var move_time : float = 0.1
-var facing_direction : GameBoard.Direction = GameBoard.Direction.NE
+var facing_direction : GameBoard.Direction = GameBoard.Direction.NW
 var move_timer : Timer
 var moving = false
 func _ready():
@@ -25,6 +25,7 @@ func move(path,directions):
 		await move_timer.timeout
 		tilemap_position = point
 	moving = false
+	
 func set_direction(direction : GameBoard.Direction):
 	facing_direction = direction
 	match direction:

@@ -7,8 +7,8 @@ enum Direction {NW,NE, SW, SE}
 @onready var player2 = $RedecorationPlayer2
 @onready var mrBlob = $MrBlob
 @export var dimensions : Vector2i = Vector2i(9,11)
-@onready var blob_timer : Timer = $Timer
 const PICKUP_HOLD_TIME = 0.25
+var input_row_length = 6
 var pickup_button_hold_start = null
 var turn : int = -1
 var selected_tile = null
@@ -21,22 +21,21 @@ var staging_area_position = Vector2i(16,-13)
 var house_top_left = Vector2i(3,-11)
 var item_in_staging_area = null
 var should_flip_object = false
-const MOVEMENT_PER_TURN = 100
+const MOVEMENT_PER_TURN = 5
 var moves_left = MOVEMENT_PER_TURN
 @export var align_to_tilemap : bool = false
-@onready var plant_scene = load("res://scenes/RedecorationLevel/furniture/spider_plant.tscn")
-@onready var stereo_scene = load("res://scenes/RedecorationLevel/furniture/stereo.tscn")
-@onready var table_scene = load("res://scenes/RedecorationLevel/furniture/glass_table.tscn")
 
-
-
-
-var direction_to_animation_name = {
-	Direction.NW:"move_nw",
-	Direction.NE: "move_ne",
-	Direction.SW: "move_sw",
-	Direction.SE: "move_se",
-}
+@onready var furniture_queue = [
+		preload("res://scenes/RedecorationLevel/furniture/couch.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/glass_table.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/lamp.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/spider_plant.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/stereo.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/table_seat.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/table_seat.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/world_globe.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/bookshelf.tscn"),
+]
 
 var direction_to_cell_neighbor = {
 	Direction.NW: TileSet.CELL_NEIGHBOR_TOP_LEFT_SIDE,
@@ -44,13 +43,16 @@ var direction_to_cell_neighbor = {
 	Direction.SW: TileSet.CELL_NEIGHBOR_BOTTOM_LEFT_SIDE,
 	Direction.SE: TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_SIDE,
 }
+func _on_obstacle_changed():
+	update_obstacles()
+
 func _ready():
 	if !Engine.is_editor_hint():
-		item_in_staging_area = plant_scene.instantiate()
-		item_in_staging_area.tilemap_position = staging_area_position
-		add_child(item_in_staging_area)
 		update_obstacles()
-
+		##furniture_queue.shuffle()
+		furniture_queue.push_front("res://scenes/RedecorationLevel/furniture/books.tscn")
+		stage_next_item()
+		SignalBus._obstacle_changed.connect(_on_obstacle_changed)
 func _process(delta):
 	if Engine.is_editor_hint():
 		update_tilemap_positions()
@@ -103,7 +105,7 @@ func _process(delta):
 				if in_pickup_mode and pickup_button_hold_start != null:
 					should_flip_object = true
 				pickup_button_hold_start = null
-				
+			
 			if Input.is_action_just_pressed("select_player_1"):
 				should_end_turn = true
 		elif turn % 3 == 2:
@@ -140,13 +142,13 @@ func _process(delta):
 				should_end_turn = true
 		else:
 			#MR.blob's turn
-			if blob_timer.is_stopped():
-				#TODO temporary code to get the placement feature
-				item_in_staging_area
-				var position
-				should_end_turn = true
+			unstage_item()
+			move_item_into_house()
+			stage_next_item()
+			
+			should_end_turn = true
 		
-		if player == null or (player != null and not player.moving):
+		if(player != null and not player.moving):
 			if !in_pickup_mode && movement_direction != null:
 				var cell_neighbor = direction_to_cell_neighbor[movement_direction]
 				var candidate_position = tilemap.get_neighbor_cell(selected_tile,cell_neighbor)
@@ -185,17 +187,15 @@ func _process(delta):
 				var neighbor_cell = tilemap.get_neighbor_cell(player.final_position,cell_neighbor_dir)
 				if(player.held_object != null):
 					var potential_collisions = get_obstacle_tiles(player.held_object)
-					var can_place = true
-					for coord in potential_collisions:
-						if is_obstacle(coord):
-							can_place = false
-							break
+					var can_place = can_place_object(player.held_object)
+					
 					if can_place:
-						var success = player.held_object.place()
-						if success:
-							player.held_object = null
-							update_green_highlight(player)
-				if neighbor_cell in obstacle_positions:
+						player.held_object.place()
+
+						player.held_object = null
+						update_green_highlight(player)
+					
+				elif neighbor_cell in obstacle_positions:
 					var obstacle = obstacle_positions[neighbor_cell]
 					if obstacle.has_method("pick_up"):
 						var success = obstacle.pick_up()
@@ -217,7 +217,64 @@ func _process(delta):
 		should_move = false
 		should_end_turn = false
 		should_pick_up_or_place = false
-			
+
+func stage_next_item():
+	item_in_staging_area = furniture_queue.pop_back().instantiate()
+	item_in_staging_area.tilemap_position = staging_area_position
+	add_child(item_in_staging_area)
+
+func unstage_item():
+	if item_in_staging_area != null:
+		item_in_staging_area.pick_up()
+var place_tests = []
+func move_item_into_house():
+	var pos = house_top_left
+	var flipped_pos = house_top_left
+	var x_dim = item_in_staging_area.normal_dimensions.x - 1
+	var flipped_x_dim = item_in_staging_area.flipped_dimensions.x - 1
+	for i in range(x_dim):
+		var dir = direction_to_cell_neighbor[Direction.SW]
+		pos = tilemap.get_neighbor_cell(pos,dir)
+		
+	for i in range(flipped_x_dim):
+		var dir = direction_to_cell_neighbor[Direction.SW]
+		flipped_pos = tilemap.get_neighbor_cell(flipped_pos,dir)
+	var dir = direction_to_cell_neighbor[Direction.SE]
+	for x in range(input_row_length): 
+		place_tests.append(pos)
+		item_in_staging_area.tilemap_position = pos
+		if can_place_object(item_in_staging_area):
+			item_in_staging_area.place()
+			return
+		item_in_staging_area.flip()
+		item_in_staging_area.tilemap_position = flipped_pos
+		if can_place_object(item_in_staging_area):
+			item_in_staging_area.place()
+			return
+		item_in_staging_area.flip()
+		pos = tilemap.get_neighbor_cell(pos,dir)
+		flipped_pos = tilemap.get_neighbor_cell(flipped_pos,dir)
+	print(place_tests)
+func can_place_object(object):
+	var potential_collisions = get_obstacle_tiles(object)
+	var can_place = true
+	var is_books = object.is_in_group("books")
+	for coord in potential_collisions:
+		if is_obstacle(coord):
+			var obstacle = obstacle_positions.get(coord)
+			var coord_is_bookshelf = false
+			if obstacle != null:
+				coord_is_bookshelf = obstacle.is_in_group("bookshelf")
+			can_place = is_books and coord_is_bookshelf
+			break
+	return can_place
+func get_blob_path1():
+	return [
+		Vector2i(),
+		Vector2i(),
+		Vector2i(),
+		Vector2i(),
+	]
 
 func clear_green_highlight():
 	for cell_coord in green_highlight_cells:
@@ -248,6 +305,7 @@ func update_green_highlight(player : RedecorationPlayer):
 			green_highlight_cells.erase(cell_coord)
 		for cell_coord in green_highlight_cells:
 			tilemap.set_cell(0,cell_coord, 2, Vector2i.ZERO)
+
 func get_obstacle_tiles(obstacle):
 	var output = []
 	var position = obstacle.tilemap_position
@@ -283,33 +341,22 @@ func update_obstacles():
 			var neighbor_dir = direction_to_cell_neighbor[Direction.NE]
 			position = tilemap.get_neighbor_cell(position,neighbor_dir)
 
-func get_current_player() -> RedecorationPlayer:
+func get_current_player():
 	if turn % 3 == 1:
 		return player1
 	elif turn % 3 == 2: 
 		return player2
-	return null
-	
-func get_other_player() -> RedecorationPlayer:
-	if turn % 3 == 1:
-		return player2
-	elif turn % 3 == 2: 
-		return player1
-	return null
+	return mrBlob
 	
 func start_next_turn():
 	turn += 1
 	moves_left = MOVEMENT_PER_TURN
 	in_pickup_mode = false
 	clear_green_highlight()
-	if turn % 3 != 0:
-		selected_tile = get_current_player().tilemap_position
-		path.clear()
-		path.append(selected_tile)
+	selected_tile = get_current_player().tilemap_position
+	path.clear()
+	path.append(selected_tile)
 	SignalBus.emit_signal("_turn_changed",turn)
-	if turn % 3 == 0:
-		blob_timer.start()
-		
 func is_obstacle(tilemap_position : Vector2i) -> bool:
 	if tilemap.get_cell_source_id(0,tilemap_position) == -1:
 		return true
@@ -321,9 +368,12 @@ func is_obstacle(tilemap_position : Vector2i) -> bool:
 	if  cell_type != 0 and cell_type != 1 and cell_type != 2:
 		return true
 	
-	if get_other_player().tilemap_position == tilemap_position:
+	if get_current_player() != player1 and player1.tilemap_position == tilemap_position:
 		return true
-		
+	if get_current_player() != player2 and player2.tilemap_position == tilemap_position:
+		return true
+	
+	
 	if tilemap_position in obstacle_positions:
 		return true
 	return false

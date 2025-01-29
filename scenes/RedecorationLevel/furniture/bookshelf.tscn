@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b8j3r3i6od57r"]
 
-[ext_resource type="Script" path="res://scripts/RedecorationLevel/furniture.gd" id="1_nr12x"]
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/bookshelf.gd" id="1_dvmtp"]
 [ext_resource type="Texture2D" uid="uid://cncvqmfkk8rn7" path="res://sprites/RedecorationLevel/Furniture/Book Shelf.png" id="2_o6elh"]
 [ext_resource type="Texture2D" uid="uid://p0w4lcd6chku" path="res://sprites/RedecorationLevel/Furniture/Book Shelf flipped.png" id="3_0qype"]
 
@@ -29,7 +29,7 @@ animations = [{
 [node name="Bookshelf" type="Node2D" groups=["obstacles", "tilemap_bound"]]
 z_index = 3
 y_sort_enabled = true
-script = ExtResource("1_nr12x")
+script = ExtResource("1_dvmtp")
 normal_dimensions = Vector2i(3, 1)
 flipped_dimensions = Vector2i(1, 3)
 

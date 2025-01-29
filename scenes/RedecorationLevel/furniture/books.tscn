@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci7vnowvcehe7"]
+
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/books.gd" id="1_ulwgc"]
+[ext_resource type="Texture2D" uid="uid://bi8n4hp2k03ek" path="res://sprites/RedecorationLevel/Furniture/Books.png" id="1_xwgq1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0albf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xwgq1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Books" type="Node2D" groups=["obstacles", "tilemap_bound"]]
+script = ExtResource("1_ulwgc")
+
+[node name="Normal" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5, -25)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_0albf")

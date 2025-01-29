@@ -22,8 +22,10 @@ signal _flower_victory()
 
 signal _flower_defeat()
 
-signal _turn_changed(turn_number:int)
+signal _redecoration_defeat()
 
+signal _turn_changed(turn_number:int)
+signal _obstacle_changed()
 signal _bee_sting(pixie : Node2D)
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,15 +35,12 @@ func _ready():
 	curr_difficulty = Difficulties.MEDIUM
 	load_game()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	
 	if Input.is_action_just_pressed("pause"):
 		emit_signal("_pause")
 	if Input.is_action_just_pressed("restart"):
 		emit_signal("_moon_gem_stage_restart")
-
 
 func ensure_save_file_exists():
 	var save_path = "user://save.json"
@@ -50,7 +49,7 @@ func ensure_save_file_exists():
 		"beat_moon": false,
 		"beat_flower": false,
 		"beat_redecorate": false
-			}
+		}
 		var json = JSON.new()
 		var save_file = FileAccess.open(save_path, FileAccess.WRITE)
 		if save_file:
@@ -70,7 +69,6 @@ func get_camera_top():
 	var top_right = camera.position + (screen_size * Vector2(1/zoom.x,1/zoom.y)) / 2
 	var bottom_right = camera.position + (screen_size * Vector2(1/zoom.x,1/zoom.y)) / 2
 	return top_right.y
-
 
 func save():
 	var save_dict = {
@@ -107,8 +105,6 @@ func load_game():
 		beat_flower = node_data["beat_flower"]
 	if node_data.has("beat_redecorate"):
 		beat_redecorate = node_data["beat_redecorate"]
-
-	
 
 func win_moon():
 	beat_moon = true

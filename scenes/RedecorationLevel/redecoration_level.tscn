@@ -155,16 +155,12 @@ layer_5/z_index = 6
 layer_5/tile_data = PackedInt32Array()
 
 [node name="RedecorationPlayer1" parent="GameBoard" instance=ExtResource("5_puxre")]
-position = Vector2(-16, -40)
-tilemap_position = Vector2i(-2, -3)
+position = Vector2(192, -96)
+tilemap_position = Vector2i(11, -7)
 
 [node name="RedecorationPlayer2" parent="GameBoard" instance=ExtResource("6_txd5c")]
-position = Vector2(128, -64)
-tilemap_position = Vector2i(7, -5)
-
-[node name="Timer" type="Timer" parent="GameBoard"]
-wait_time = 2.0
-one_shot = true
+position = Vector2(176, -88)
+tilemap_position = Vector2i(10, -6)
 
 [node name="DoorFrame" type="Sprite2D" parent="."]
 z_index = 2

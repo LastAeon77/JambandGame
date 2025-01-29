@@ -8,6 +8,7 @@ var on_ground = true
 @onready var animation : AnimatedSprite2D = $Normal
 var flipped = false
 var flipped_animation
+var has_books = false
 
 func _ready():
 	if !flipped:
@@ -18,7 +19,7 @@ func _ready():
 		flipped_animation = $Flipped
 		flipped_animation.play()
 	animation.play()
-	
+	SignalBus._obstacle_changed.emit()
 func flip():
 	if flipped_animation!= null:
 		if !flipped:
@@ -43,8 +44,7 @@ func pick_up():
 	return false
 
 func place():
-	on_ground = true
+	on_ground=true
 	add_to_group("obstacles")
 	visible = true
 	SignalBus._obstacle_changed.emit()
-
