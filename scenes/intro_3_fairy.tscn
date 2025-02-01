@@ -1,12 +1,56 @@
-[gd_scene load_steps=44 format=3 uid="uid://281pi36jk8bb"]
+[gd_scene load_steps=53 format=3 uid="uid://281pi36jk8bb"]
 
 [ext_resource type="Script" path="res://intro_3_fairy.gd" id="1_q3dc4"]
 [ext_resource type="Texture2D" uid="uid://btbdislipi266" path="res://sprites/Intro/Intro3/Water Fountain Background.png" id="2_m4x0v"]
 [ext_resource type="Texture2D" uid="uid://bjj3qtmh0urhv" path="res://sprites/Intro/Intro3/Water Fountain Background After Flute.png" id="3_nmuwf"]
 [ext_resource type="Texture2D" uid="uid://diixenjqyyssk" path="res://sprites/Intro/Intro3/Mr. Blob Flip Coin-Sheet.png" id="4_e7b8n"]
+[ext_resource type="Texture2D" uid="uid://dlaqcgqbgamus" path="res://sprites/Intro/Intro3/Mr. Blob Fountaint Talking-Sheet.png" id="4_hmclf"]
 [ext_resource type="Texture2D" uid="uid://dk24xeijipuuw" path="res://sprites/Intro/Intro3/Water Fountain-Sheet.png" id="5_brlqn"]
 [ext_resource type="Texture2D" uid="uid://cr76bk07podbu" path="res://sprites/Intro/Intro3/Pixie_1 Playing Flute-Sheet.png" id="6_cqdg4"]
 [ext_resource type="Texture2D" uid="uid://c143j6pdmgro1" path="res://sprites/Intro/Intro3/Pixie_2 Playing Flute-Sheet.png" id="7_fyd6n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5onxg"]
+atlas = ExtResource("4_hmclf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrhsy"]
+atlas = ExtResource("4_hmclf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq0m7"]
+atlas = ExtResource("4_hmclf")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br4kv"]
+atlas = ExtResource("4_hmclf")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3bc6"]
+atlas = ExtResource("4_hmclf")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ta6u7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5onxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrhsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq0m7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br4kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3bc6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6yc1k"]
 atlas = ExtResource("4_e7b8n")
@@ -102,7 +146,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qqyaf")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -135,6 +179,12 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Curve2D" id="Curve2D_nnle1"]
+_data = {
+"points": PackedVector2Array(83.074, -15.3449, 0, 0, 80, -88, 3.87804, -43.1577, -3.87804, 43.1577, 159.232, 1.66144, 0, 0, 0, 0, 304, 248)
+}
+point_count = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qykgw"]
 atlas = ExtResource("6_cqdg4")
@@ -199,6 +249,12 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Curve2D" id="Curve2D_jfemo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 224, -96, 20.2704, -39.1266, -20.2704, 39.1266, 288, 16, 0, 0, 0, 0, 424, 240)
+}
+point_count = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8a8f"]
 atlas = ExtResource("7_fyd6n")
@@ -274,20 +330,22 @@ grow_vertical = 2
 script = ExtResource("1_q3dc4")
 
 [node name="FountainBefore" type="TextureRect" parent="."]
-visible = false
+layout_mode = 0
 offset_right = 1271.0
 offset_bottom = 729.0
 texture = ExtResource("2_m4x0v")
 
 [node name="FountainAfter" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 729.0
 texture = ExtResource("3_nmuwf")
 
 [node name="MR_BLOB" type="AnimatedSprite2D" parent="."]
-position = Vector2(694, 363)
+position = Vector2(912, 424)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_6p0el")
+sprite_frames = SubResource("SpriteFrames_ta6u7")
 
 [node name="MR_BLOB_THROW_COIN" type="AnimatedSprite2D" parent="."]
 position = Vector2(694, 363)
@@ -295,21 +353,43 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6p0el")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 163.0
-offset_top = 549.0
-offset_right = 1116.0
-offset_bottom = 706.0
+layout_mode = 0
+offset_left = 160.0
+offset_top = 592.0
+offset_right = 1113.0
+offset_bottom = 728.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
 
 [node name="Fountain" type="AnimatedSprite2D" parent="."]
 position = Vector2(442, 400)
 sprite_frames = SubResource("SpriteFrames_87n2k")
 
-[node name="Fairy1" type="AnimatedSprite2D" parent="."]
-position = Vector2(399, 246)
+[node name="Path2DFairy1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_nnle1")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DFairy1"]
+position = Vector2(80, -88)
+rotation = 0.847071
+
+[node name="Fairy1" type="AnimatedSprite2D" parent="Path2DFairy1/PathFollow2D"]
+position = Vector2(0.490448, 1.28424)
+rotation = 5.49779
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_28vf0")
 
-[node name="Fairy2" type="AnimatedSprite2D" parent="."]
-position = Vector2(315, 257)
+[node name="Path2DFairy2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jfemo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DFairy2"]
+position = Vector2(224, -96)
+rotation = 1.05165
+
+[node name="Fairy2" type="AnimatedSprite2D" parent="Path2DFairy2/PathFollow2D"]
+position = Vector2(-1.52588e-05, 7.62939e-06)
+rotation = -1.0472
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_70u37")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

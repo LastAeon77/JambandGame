@@ -1,0 +1,62 @@
+[
+	{
+		"id":0,
+		"talker":"",
+		"text": ""
+	},
+	{
+		"id":1,
+		"talker":"Blob",
+		"text": "The Blobby Fountain of Wishes!"
+	},
+	{
+		"id":2,
+		"talker":"Blob",
+		"text": "Oh fairy of Bloo, please grant me my wish."
+	},
+	{
+		"id":3,
+		"talker":"Blob",
+		"text": "Grant me strength and wisdom to reforge my life's love for me!"
+	},
+	{
+		"id":3.5,
+		"talker":"",
+		"text": "Mr.Blob throws the coin into the fountain."
+	},
+	{
+		"id":4,
+		"talker":"Red Fairy",
+		"text": "Upon the fountain, your wishes take flight,"
+	},
+	{
+		"id":5,
+		"talker":"Blue Fairy",
+		"text": "Landed upon our most curious line of sight."
+	},
+	{
+		"id":6,
+		"talker":"Red Fairy",
+		"text": "With our powers we've been granted."
+	},
+	{
+		"id":7,
+		"talker":"Blue Fairy",
+		"text": "We shall grant you a honeymoon most perfected!"
+	},
+	{
+		"id":8,
+		"talker":"",
+		"text": "Mist surrounds Mr.Blob and transform Blobby town."
+	},
+	{
+		"id":9,
+		"talker":"Blob",
+		"text": "Oh my lord!"
+	},
+	{
+		"id":10,
+		"talker":"Blob",
+		"text": "I've been bequeathed an idea most ingenious!"
+	}
+]

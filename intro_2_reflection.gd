@@ -35,7 +35,7 @@ func _on_timer_timeout():
 func next_story():
 	count = count + 1
 	if count>=len(json_dict_data):
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/intro_3_fairy.tscn")
 	else:
 		var curr = json_dict_data[count]
 		var text = curr["text"]
