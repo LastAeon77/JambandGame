@@ -10,7 +10,6 @@ var text_template = """
 <Talker>
 
 <Text>
-
 PRESS SUBMIT/ENTER TO GO NEXT
 """
 
@@ -21,6 +20,8 @@ func _ready():
 	$MR_BLOB.play("default")
 	$MR_BLOB_THROW_COIN.play("default")
 	$MR_BLOB_THROW_COIN.visible = false
+	$Fountain.play("default")
+	$NeonSign.visible = false
 	next_story()
 
 
@@ -58,11 +59,12 @@ func next_story():
 			if(curr_id == 4):
 				$MR_BLOB.visible = true
 				$MR_BLOB_THROW_COIN.visible = false;
-				$MR_BLOB.play("default")
+				$MR_BLOB.stop()
 				$Path2DFairy1/PathFollow2D/Fairy1.play("default")
 				$Path2DFairy2/PathFollow2D/Fairy2.play("default")
 				$Timer.start()
 				fairy_flying_in = true
+				$AudioStreamPlayer2D.play()
 			if(curr_id == 8):
 				$AnimationPlayer.play("RESET")
 				transitioning = true
@@ -73,7 +75,10 @@ func next_story():
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "RESET"):
 		$FountainBefore.visible = false
+		$NeonSign.visible = true
 		$FountainAfter.visible = true
+		$NeonSign.play("default")
 		$AnimationPlayer.play("DISSOLVE")
 	if(anim_name == "DISSOLVE"):
+		$MR_BLOB.play("default")
 		transitioning = false
