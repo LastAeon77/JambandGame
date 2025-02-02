@@ -9,6 +9,11 @@
 		"talker":"Blob",
 		"text": "The Blobby Fountain of Wishes!"
 	},
+		{
+		"id":1.5,
+		"talker":"Blob",
+		"text": "TEST"
+	},
 	{
 		"id":2,
 		"talker":"Blob",

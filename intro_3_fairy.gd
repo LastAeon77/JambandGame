@@ -34,7 +34,7 @@ func _process(delta):
 
 func _on_timer_timeout():
 	$Path2DFairy1/PathFollow2D.progress_ratio = min(1,$Path2DFairy1/PathFollow2D.progress_ratio + 0.05)
-	$Path2DFairy2/PathFollow2D.progress_ratio = min(1,$Path2DFairy2/PathFollow2D.progress_ratio + 0.05)
+	$Path2DFairy2/PathFollow2D.progress_ratio = min(1,$Path2DFairy2/PathFollow2D.progress_ratio + 0.02)
 	if ($Path2DFairy1/PathFollow2D.progress_ratio ==1 ):
 		fairy_flying_in = false
 	
