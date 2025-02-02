@@ -8,8 +8,7 @@ var on_ground = true
 @onready var animation : AnimatedSprite2D = $Normal
 var flipped = false
 var flipped_animation
-var has_books = false
-
+var books_on_shelf = null
 func _ready():
 	if !flipped:
 		dimensions = normal_dimensions
@@ -36,15 +35,27 @@ func flip():
 			dimensions = normal_dimensions
 func pick_up():
 	if moveable and on_ground:
-		on_ground = false
-		remove_from_group("obstacles")
-		visible = false
-		SignalBus._obstacle_changed.emit()
-		return true
-	return false
+		if books_on_shelf == null:
+			on_ground = false
+			remove_from_group("obstacles")
+			visible = false
+			SignalBus._obstacle_changed.emit()
+			return self
+		else:
+			flipped_animation.play("default")
+			animation.play("default")
+			return books_on_shelf.pickup()
+		
+	return null
 
-func place():
+func place(placement_data = null):
 	on_ground=true
 	add_to_group("obstacles")
 	visible = true
 	SignalBus._obstacle_changed.emit()
+
+func place_books(books):
+	books_on_shelf = books
+	flipped_animation.play("full")
+	animation.play("full")
+

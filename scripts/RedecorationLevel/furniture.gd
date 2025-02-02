@@ -39,12 +39,16 @@ func pick_up():
 		remove_from_group("obstacles")
 		visible = false
 		SignalBus._obstacle_changed.emit()
-		return true
-	return false
+		return self
+	return null
 
-func place():
-	on_ground = true
-	add_to_group("obstacles")
-	visible = true
+func place(placement_data = null):
+	if placement_data == null:
+		on_ground = true
+		add_to_group("obstacles")
+		visible = true
+	else:
+		var bookshelf = placement_data
+		bookshelf.place_books(self)
 	SignalBus._obstacle_changed.emit()
-
+	

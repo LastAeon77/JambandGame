@@ -23,6 +23,7 @@ signal _flower_victory()
 signal _flower_defeat()
 
 signal _redecoration_defeat()
+signal _redecoration_victory()
 
 signal _turn_changed(turn_number:int)
 signal _obstacle_changed()

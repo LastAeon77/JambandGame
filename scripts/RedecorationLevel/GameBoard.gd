@@ -23,8 +23,8 @@ var item_in_staging_area = null
 var should_flip_object = false
 const MOVEMENT_PER_TURN = 5
 var moves_left = MOVEMENT_PER_TURN
+var books_on_shelf = false
 @export var align_to_tilemap : bool = false
-
 @onready var furniture_queue = [
 		preload("res://scenes/RedecorationLevel/furniture/couch.tscn"),
 		preload("res://scenes/RedecorationLevel/furniture/glass_table.tscn"),
@@ -50,7 +50,7 @@ func _ready():
 	if !Engine.is_editor_hint():
 		update_obstacles()
 		furniture_queue.shuffle()
-		furniture_queue.push_front("res://scenes/RedecorationLevel/furniture/books.tscn")
+		furniture_queue.push_front(load("res://scenes/RedecorationLevel/furniture/books.tscn"))
 		stage_next_item()
 		SignalBus._obstacle_changed.connect(_on_obstacle_changed)
 func _process(delta):
@@ -61,6 +61,9 @@ func _process(delta):
 			align_to_tilemap = false
 	
 	if !Engine.is_editor_hint():
+		if len(furniture_queue) == 0 and player1.held_object == null and player2.held_object == null:
+			if books_on_shelf:
+				SignalBus._redecoration_victory.emit()
 		align_objects_to_tilemap()
 		if turn < 0:
 			start_next_turn()
@@ -188,9 +191,11 @@ func _process(delta):
 				if(player.held_object != null):
 					var potential_collisions = get_obstacle_tiles(player.held_object)
 					var can_place = can_place_object(player.held_object)
-					
+
 					if can_place:
-						player.held_object.place()
+						var shelf = get_bookshelf_or_null(player.held_object.tilemap_position)
+						
+						player.held_object.place(shelf)
 
 						player.held_object = null
 						update_green_highlight(player)
@@ -198,10 +203,9 @@ func _process(delta):
 				elif neighbor_cell in obstacle_positions:
 					var obstacle = obstacle_positions[neighbor_cell]
 					if obstacle.has_method("pick_up"):
-						var success = obstacle.pick_up()
-						if success:
-							player.held_object = obstacle
-							update_green_highlight(player)
+						var item = obstacle.pick_up()
+						player.held_object = item
+						update_green_highlight(player)
 				update_obstacles()
 			
 			if should_move:
@@ -219,15 +223,18 @@ func _process(delta):
 		should_pick_up_or_place = false
 
 func stage_next_item():
-	item_in_staging_area = furniture_queue.pop_back().instantiate()
-	item_in_staging_area.tilemap_position = staging_area_position
-	add_child(item_in_staging_area)
-
+	if len(furniture_queue) > 0:
+		item_in_staging_area = furniture_queue.pop_back().instantiate()
+		item_in_staging_area.tilemap_position = staging_area_position
+		add_child(item_in_staging_area)
+	
 func unstage_item():
 	if item_in_staging_area != null:
 		item_in_staging_area.pick_up()
 var place_tests = []
 func move_item_into_house():
+	if item_in_staging_area == null:
+		return
 	var pos = house_top_left
 	var flipped_pos = house_top_left
 	var x_dim = item_in_staging_area.normal_dimensions.x - 1
@@ -244,25 +251,30 @@ func move_item_into_house():
 		place_tests.append(pos)
 		item_in_staging_area.tilemap_position = pos
 		if can_place_object(item_in_staging_area):
-			item_in_staging_area.place()
+			var shelf = get_bookshelf_or_null(item_in_staging_area.tilemap_position)
+			item_in_staging_area.place(shelf)
+			item_in_staging_area = null
 			return
 		item_in_staging_area.flip()
 		item_in_staging_area.tilemap_position = flipped_pos
 		if can_place_object(item_in_staging_area):
-			item_in_staging_area.place()
+			var shelf = get_bookshelf_or_null(item_in_staging_area.tilemap_position)
+			item_in_staging_area.place(shelf)
+			item_in_staging_area = null
 			return
 		item_in_staging_area.flip()
 		pos = tilemap.get_neighbor_cell(pos,dir)
 		flipped_pos = tilemap.get_neighbor_cell(flipped_pos,dir)
-	print(place_tests)
+	SignalBus._redecoration_defeat.emit()
+	
 func can_place_object(object):
 	var potential_collisions = get_obstacle_tiles(object)
 	var can_place = true
 	var is_books = object.is_in_group("books")
 	for coord in potential_collisions:
 		if is_obstacle(coord):
-			var obstacle = obstacle_positions.get(coord)
 			var coord_is_bookshelf = false
+			var obstacle = obstacle_positions.get(coord)
 			if obstacle != null:
 				coord_is_bookshelf = obstacle.is_in_group("bookshelf")
 			can_place = is_books and coord_is_bookshelf
@@ -392,6 +404,11 @@ func update_tilemap_positions():
 		if "tilemap_position" in node:
 			node.tilemap_position = tilemap.local_to_map(node.position)
 
+func get_bookshelf_or_null(tilemap_position):
+	if obstacle_positions.has(tilemap_position):
+		if obstacle_positions[tilemap_position].is_in_group("bookshelf"):
+			return obstacle_positions[tilemap_position]
+	return null
 func align_objects_to_tilemap():
 	var tilemap_bound_objects = get_tree().get_nodes_in_group("tilemap_bound")
 	for node in tilemap_bound_objects:

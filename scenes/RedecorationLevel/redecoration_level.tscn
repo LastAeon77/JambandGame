@@ -159,8 +159,8 @@ position = Vector2(192, -96)
 tilemap_position = Vector2i(11, -7)
 
 [node name="RedecorationPlayer2" parent="GameBoard" instance=ExtResource("6_txd5c")]
-position = Vector2(176, -88)
-tilemap_position = Vector2i(10, -6)
+position = Vector2(64, -112)
+tilemap_position = Vector2i(3, -8)
 
 [node name="DoorFrame" type="Sprite2D" parent="."]
 z_index = 2
