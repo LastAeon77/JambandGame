@@ -5,6 +5,7 @@ var json_dict_data = null
 var count = 0
 var story_start = false
 var fairy_flying_in = false
+var transitioning = false
 var text_template = """
 <Talker>
 
@@ -39,7 +40,7 @@ func _on_timer_timeout():
 
 
 func next_story():
-	if(fairy_flying_in == false):
+	if(fairy_flying_in == false and transitioning == false):
 		count = count + 1
 		if count>=len(json_dict_data):
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
@@ -63,7 +64,16 @@ func next_story():
 				$Timer.start()
 				fairy_flying_in = true
 			if(curr_id == 8):
-				$FountainBefore.visible = false
-				$FountainAfter.visible = true
+				$AnimationPlayer.play("RESET")
+				transitioning = true
 				
 			$RichTextLabel.text = text_template.replace("<Text>",text).replace("<Talker>",talker)
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if(anim_name == "RESET"):
+		$FountainBefore.visible = false
+		$FountainAfter.visible = true
+		$AnimationPlayer.play("DISSOLVE")
+	if(anim_name == "DISSOLVE"):
+		transitioning = false
