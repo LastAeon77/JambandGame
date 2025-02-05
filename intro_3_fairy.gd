@@ -28,7 +28,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-		if (Input.is_action_just_pressed("submit")):
+		if (Input.is_action_just_pressed("button_1_player_1") or Input.is_action_just_pressed("button_1_player_2")):
 			next_story()
 		
 

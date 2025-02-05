@@ -28,7 +28,7 @@ func _process(delta):
 		if(story_start == false):
 			next_story()
 			story_start = true
-		if (Input.is_action_just_pressed("submit")):
+		if (Input.is_action_just_pressed("button_1_player_1") or Input.is_action_just_pressed("button_1_player_2")):
 			next_story()
 		
 
