@@ -27,12 +27,14 @@ signal _redecoration_victory()
 
 signal _turn_changed(turn_number:int)
 signal _obstacle_changed()
+signal _bookshelf_state_changed(has_books)
 signal _bee_sting(pixie : Node2D)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ensure_save_file_exists()
 	connect("_moon_gem_stage_clear",win_moon)
 	connect("_flower_victory", win_flower)
+	connect("_redecoration_victory", win_redecorate)
 	curr_difficulty = Difficulties.MEDIUM
 	load_game()
 
@@ -117,6 +119,7 @@ func win_flower():
 	
 func win_redecorate():
 	beat_redecorate = true
+	print("Redecoration win!")
 	save_game()
 	
 func change_difficulty(diff):

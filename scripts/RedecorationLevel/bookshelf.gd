@@ -40,10 +40,12 @@ func pick_up():
 			remove_from_group("obstacles")
 			visible = false
 			SignalBus._obstacle_changed.emit()
+			SignalBus._bookshelf_state_changed.emit(true)
 			return self
 		else:
 			flipped_animation.play("default")
 			animation.play("default")
+			SignalBus._bookshelf_state_changed.emit(true)
 			return books_on_shelf.pickup()
 		
 	return null

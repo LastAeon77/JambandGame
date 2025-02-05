@@ -6,6 +6,7 @@ enum Direction {NW,NE, SW, SE}
 @onready var player1 = $RedecorationPlayer1
 @onready var player2 = $RedecorationPlayer2
 @onready var mrBlob = $MrBlob
+@onready var tilemap2 = $TileMap2
 @export var dimensions : Vector2i = Vector2i(9,11)
 const PICKUP_HOLD_TIME = 0.25
 var input_row_length = 6
@@ -17,8 +18,8 @@ var green_highlight_cells = []
 var path_directions = []
 var in_pickup_mode = false
 var obstacle_positions :Dictionary = {}
-var staging_area_position = Vector2i(16,-13)
-var house_top_left = Vector2i(3,-11)
+var staging_area_position = Vector2i(-5,-21)
+var house_top_left = Vector2i(-9,-12)
 var item_in_staging_area = null
 var should_flip_object = false
 const MOVEMENT_PER_TURN = 5
@@ -31,10 +32,10 @@ var books_on_shelf = false
 		preload("res://scenes/RedecorationLevel/furniture/lamp.tscn"),
 		preload("res://scenes/RedecorationLevel/furniture/spider_plant.tscn"),
 		preload("res://scenes/RedecorationLevel/furniture/stereo.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/bookshelf.tscn"),
 		preload("res://scenes/RedecorationLevel/furniture/table_seat.tscn"),
 		preload("res://scenes/RedecorationLevel/furniture/table_seat.tscn"),
 		preload("res://scenes/RedecorationLevel/furniture/world_globe.tscn"),
-		preload("res://scenes/RedecorationLevel/furniture/bookshelf.tscn"),
 ]
 
 var direction_to_cell_neighbor = {
@@ -45,15 +46,43 @@ var direction_to_cell_neighbor = {
 }
 func _on_obstacle_changed():
 	update_obstacles()
-
+func _on_bookshelf_state_changed(has_books):
+	books_on_shelf = has_books
 func _ready():
 	if !Engine.is_editor_hint():
 		update_obstacles()
-		furniture_queue.shuffle()
+		#furniture_queue.shuffle()
 		furniture_queue.push_front(load("res://scenes/RedecorationLevel/furniture/books.tscn"))
 		stage_next_item()
 		SignalBus._obstacle_changed.connect(_on_obstacle_changed)
+		SignalBus._bookshelf_state_changed.connect(_on_obstacle_changed)
+
+func y_sort_x_sort():
+	var children = get_children()
+	children.erase(tilemap)
+	children.erase(tilemap2)
+	for i in range(1,len(children)):
+		var child = children[i]
+		var j = i - 1
+		while j >= 0 and children[j].tilemap_position.x < child.tilemap_position.x:
+			children[j+1] = children[j]
+			j -= 1
+		children[j + 1] = child
+		#
+	for i in range(1,len(children)):
+		var child = children[i]
+		var j = i - 1
+		while j >= 0 and children[j].tilemap_position.y < child.tilemap_position.y:
+			children[j+1] = children[j]
+			j -= 1
+		children[j + 1] = child
+
+	for i in range(len(children)):
+		var child = children[i]
+		child.z_index = 98 - i
+	
 func _process(delta):
+	y_sort_x_sort()
 	if Engine.is_editor_hint():
 		update_tilemap_positions()
 		if align_to_tilemap:

@@ -1,0 +1,85 @@
+[gd_resource type="TileSet" load_steps=17 format=3 uid="uid://cbannkt47np4i"]
+
+[ext_resource type="Texture2D" uid="uid://drl6ujtbribub" path="res://sprites/RedecorationLevel/Tiles/Brown Tile.png" id="1_vqnaf"]
+[ext_resource type="Texture2D" uid="uid://d0lr22iivvluj" path="res://sprites/RedecorationLevel/Tiles/Brown Tile Hilighted.png" id="2_3peu8"]
+[ext_resource type="Texture2D" uid="uid://cbmuew6jkao30" path="res://sprites/RedecorationLevel/Tiles/Brown Tile Green Highlight.png" id="3_q8qff"]
+[ext_resource type="Texture2D" uid="uid://b5h5wad5tf6j7" path="res://sprites/RedecorationLevel/Tiles/Grass 1.png" id="4_t5j1b"]
+[ext_resource type="Texture2D" uid="uid://m5sfp5d36fn0" path="res://sprites/RedecorationLevel/Tiles/Grass 2.png" id="5_3hnr6"]
+[ext_resource type="Texture2D" uid="uid://bwfbsgvii6kf2" path="res://sprites/RedecorationLevel/Tiles/Road.png" id="6_ym7pn"]
+[ext_resource type="Texture2D" uid="uid://bh244b64q54kt" path="res://sprites/RedecorationLevel/Tiles/Grey Tile.png" id="7_pgbd4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wje77"]
+texture = ExtResource("1_vqnaf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r47rp"]
+texture = ExtResource("2_3peu8")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0mxhd"]
+texture = ExtResource("3_q8qff")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aclwv"]
+texture = ExtResource("4_t5j1b")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/1/texture_origin = Vector2i(0, -8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7vir"]
+texture = ExtResource("5_3hnr6")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ep4d"]
+texture = ExtResource("6_ym7pn")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trv0f"]
+texture = ExtResource("7_pgbd4")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2eqq"]
+resource_name = "Transparent brown tile"
+texture = ExtResource("1_vqnaf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+0:0/0/modulate = Color(1, 1, 1, 0.541176)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ir8eb"]
+resource_name = "Fake Floor"
+texture = ExtResource("1_vqnaf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+0:1/0 = 0
+
+[resource]
+tile_shape = 1
+tile_offset_axis = 1
+tile_size = Vector2i(32, 16)
+sources/0 = SubResource("TileSetAtlasSource_wje77")
+sources/1 = SubResource("TileSetAtlasSource_r47rp")
+sources/3 = SubResource("TileSetAtlasSource_aclwv")
+sources/4 = SubResource("TileSetAtlasSource_b7vir")
+sources/5 = SubResource("TileSetAtlasSource_5ep4d")
+sources/6 = SubResource("TileSetAtlasSource_trv0f")
+sources/7 = SubResource("TileSetAtlasSource_h2eqq")
+sources/8 = SubResource("TileSetAtlasSource_ir8eb")
+sources/2 = SubResource("TileSetAtlasSource_0mxhd")

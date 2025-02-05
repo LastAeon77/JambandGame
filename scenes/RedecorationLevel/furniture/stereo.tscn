@@ -106,7 +106,8 @@ offset = Vector2(0, -16)
 
 [node name="Flipped" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(30, -26)
+y_sort_enabled = true
+position = Vector2(30, -8)
 sprite_frames = SubResource("SpriteFrames_waqgp")
 frame_progress = 0.719671
-offset = Vector2(0, -16)
+offset = Vector2(0, -32)
