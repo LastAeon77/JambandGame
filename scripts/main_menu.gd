@@ -36,7 +36,9 @@ func _process(delta):
 		else:
 			curr_highlight = min(len(buttons)-1,curr_highlight+1)
 		highlight_button(curr_highlight)
-	if Input.is_action_just_pressed("submit"):
+	if Input.is_action_just_pressed("button_1_player_1"):
+		press_hightlighted_button(curr_highlight)
+	if Input.is_action_just_pressed("button_1_player_2"):
 		press_hightlighted_button(curr_highlight)
 
 
