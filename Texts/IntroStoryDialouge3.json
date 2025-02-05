@@ -7,27 +7,42 @@
 	{
 		"id":1,
 		"talker":"Blob",
-		"text": "The Blobby Fountain of Wishes!"
+		"text": "I came up with a Honey-Do list last night."
 	},
 		{
 		"id":1.5,
 		"talker":"Blob",
-		"text": "TEST"
+		"text": "For myself..."
 	},
 	{
 		"id":2,
 		"talker":"Blob",
-		"text": "Oh fairy of Bloo, please grant me my wish."
+		"text": "I want to get Mrs. Blob a Moon Gem, Flowers, and New Furniture."
 	},
 	{
 		"id":3,
 		"talker":"Blob",
-		"text": "Grant me strength and wisdom to reforge my life's love for me!"
+		"text": "But how will I ever accomplish such great feats?!"
+	},
+	{
+		"id":3.1,
+		"talker":"Blob",
+		"text": "They say throwing a coin into the ancient Blobby Fountain calls mystical help."
 	},
 	{
 		"id":3.5,
 		"talker":"",
 		"text": "Mr.Blob throws the coin into the fountain."
+	},
+	{
+		"id":3.6,
+		"talker":"Blob",
+		"text": "I'm kinda hopeless. Better throw in a second."
+	},
+	{
+		"id":3.8,
+		"talker":"",
+		"text": "Mr.Blob throws a second coin into the fountain."
 	},
 	{
 		"id":4,
@@ -42,12 +57,12 @@
 	{
 		"id":6,
 		"talker":"Red Fairy",
-		"text": "With our powers we've been granted."
+		"text": "With our pixie song"
 	},
 	{
 		"id":7,
 		"talker":"Blue Fairy",
-		"text": "We shall grant you a honeymoon most perfected!"
+		"text": "Your Honey-Do list shall not prolong!"
 	},
 	{
 		"id":8,
@@ -62,6 +77,6 @@
 	{
 		"id":10,
 		"talker":"Blob",
-		"text": "I've been bequeathed an idea most ingenious!"
+		"text": "I never knew we had a furniture store and a space travel agency."
 	}
 ]
