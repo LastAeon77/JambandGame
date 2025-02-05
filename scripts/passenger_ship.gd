@@ -11,55 +11,55 @@ var magnetic_ship: CharacterBody2D
 
 
 func _ready():
-	magnetic_ship = get_tree().get_first_node_in_group("Magnetic")
-	SignalBus.connect("_game_lost", ship_destroyed) 
-	SignalBus.connect("_moon_gem_stage_restart",restart)
-	if SignalBus.curr_difficulty == SignalBus.Difficulties.EASY:
-		health = 70
-	elif SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM:
-		health = 60
-	elif SignalBus.curr_difficulty == SignalBus.Difficulties.HARD:
-		health = 40
-	$HealthBar.max_value = health
-	$HealthBar.min_value = 0
-	$HealthBar.value = $HealthBar.max_value
+    magnetic_ship = get_tree().get_first_node_in_group("Magnetic")
+    SignalBus.connect("_game_lost", ship_destroyed) 
+    SignalBus.connect("_moon_gem_stage_restart",restart)
+    if SignalBus.curr_difficulty == SignalBus.Difficulties.EASY:
+        health = 70
+    elif SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM:
+        health = 60
+    elif SignalBus.curr_difficulty == SignalBus.Difficulties.HARD:
+        health = 40
+    $HealthBar.max_value = health
+    $HealthBar.min_value = 0
+    $HealthBar.value = $HealthBar.max_value
 
 
 func _physics_process(delta):
-	var direction: Vector2
-	var y_diff = magnetic_ship.global_position.y - global_position.y
-	if abs(y_diff) > follow_tolerance:
-		direction.y = y_diff
-	else:
-		direction.y = 0
-	direction = direction.normalized()
-	
-	velocity = lerp(velocity, direction * speed, delta * acceleration)
-	#for non-slippery movement
-	#velocity = direction * speed 
+    var direction: Vector2
+    var y_diff = magnetic_ship.global_position.y - global_position.y
+    if abs(y_diff) > follow_tolerance:
+        direction.y = y_diff
+    else:
+        direction.y = 0
+    direction = direction.normalized()
+    
+    velocity = lerp(velocity, direction * speed, delta * acceleration)
+    #for non-slippery movement
+    #velocity = direction * speed 
 
-	move_and_slide()
-	
+    move_and_slide()
+    
 func damaged():
-	$HealthBar.value -= 10
-	if $HealthBar.value<=0:
-		$ShipSprite.play("get_hit")
-		SignalBus.emit_signal("_game_lost")
-		SignalBus.emit_signal("_pause")
-	
+    $HealthBar.value -= 10
+    if $HealthBar.value<=0:
+        $ShipSprite.play("get_hit")
+        
+    
 func ship_destroyed():
-	print("You lost!")
+    print("You lost!")
 
 
 func _on_area_2d_area_entered(area:Area2D):
-	if area.is_in_group("asteroid"):
-		damaged()
-		
+    if area.is_in_group("asteroid"):
+        damaged()
+        
 func restart():
-	$ShipSprite.play("default")
-	$HealthBar.value = $HealthBar.max_value
-		
+    $ShipSprite.play("default")
+    $HealthBar.value = $HealthBar.max_value
+        
 
 func _on_ship_sprite_animation_finished():
-	if $ShipSprite.animation == "get_hit":
-		SignalBus.emit_signal("_moon_gem_stage_restart")
+    if $ShipSprite.animation == "get_hit":
+        SignalBus.emit_signal("_game_lost")
+        SignalBus.emit_signal("_pause")
