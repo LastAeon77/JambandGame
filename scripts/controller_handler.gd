@@ -11,7 +11,7 @@ func _ready():
 	print("Player 1 controller:", player_one_controller)
 	print("Player 2 controller:", player_two_controller)
 	
-	
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 func _input(event):
 	if event.device == player_one_controller and player_one_controller != -1:
@@ -52,6 +52,12 @@ func _input(event):
 			Input.action_press("select_player_1")
 		if event.is_action_released("controller_select"):
 			Input.action_release("select_player_1")
+		
+		if event.is_action_pressed("controller_start"):
+			Input.action_press("start_player_1")
+			print("player 1 start")
+		if event.is_action_released("controller_start"):
+			Input.action_release("start_player_1")
 	if event.device == player_two_controller and player_two_controller != -1:
 		var strength = 1.0
 		if event is InputEventJoypadMotion:
@@ -90,3 +96,9 @@ func _input(event):
 			Input.action_press("select_player_2")
 		if event.is_action_released("controller_select"):
 			Input.action_release("select_player_2")
+			
+		if event.is_action_pressed("controller_start"):
+			Input.action_press("start_player_2")
+			print("player 2 start")
+		if event.is_action_released("controller_start"):
+			Input.action_release("start_player_2")

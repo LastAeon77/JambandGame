@@ -11,15 +11,13 @@ func _ready():
 
 
 func _process(_delta):
+	if Input.is_action_just_pressed("start_player_1") or Input.is_action_just_pressed("start_player_2"):
+		get_tree().paused = true
+		$Pause_Continue.visible = true
 	if Input.is_action_just_pressed("submit"):
 		if ($WinScreen.visible==true):
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-	if Input.is_action_just_pressed("pause"):
-		if ($WinScreen.visible==true):
-			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-		else:
-			get_tree().paused = true
-			$Pause_Continue.visible = true
+
 			
 	if Input.is_action_just_pressed("right_player_1") or Input.is_action_just_pressed(("right_player_2")):
 		if($TryAgain.visible == false && $MainMenu.visible == true):
