@@ -9,7 +9,7 @@ var text_template = """
 
 <Text>
 
-PRESS SUBMIT/ENTER TO GO NEXT
+PRESS "A" for next dialogue
 """
 
 # Called when the node enters the scene tree for the first time.

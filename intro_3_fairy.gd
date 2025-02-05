@@ -10,7 +10,8 @@ var text_template = """
 <Talker>
 
 <Text>
-PRESS SUBMIT/ENTER TO GO NEXT
+
+PRESS "A" for next dialogue
 """
 
 # Called when the node enters the scene tree for the first time.
@@ -53,6 +54,13 @@ func next_story():
 			if(talker == "Blob"):
 				$MR_BLOB.visible = true
 			if(curr_id == 3.5):
+				$MR_BLOB.visible = false
+				$MR_BLOB_THROW_COIN.visible = true;
+				$MR_BLOB_THROW_COIN.play("default")
+			if(curr_id == 3.6):
+				$MR_BLOB.visible = true
+				$MR_BLOB_THROW_COIN.visible = false;
+			if(curr_id == 3.8):
 				$MR_BLOB.visible = false
 				$MR_BLOB_THROW_COIN.visible = true;
 				$MR_BLOB_THROW_COIN.play("default")
