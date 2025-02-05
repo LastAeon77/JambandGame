@@ -39,14 +39,14 @@ func _input(event):
 			Input.action_release("right_player_1")
 			
 		if event.is_action_pressed("controller_button_1"):
-			Input.action_press("button_1_player_1")
+			Input.action_press("button_2_player_1")
 		if event.is_action_released("controller_button_1"):	
-			Input.action_release("button_1_player_1")
+			Input.action_release("button_2_player_1")
 		
 		if event.is_action_pressed("controller_button_2"):
-			Input.action_press("button_2_player_1")
+			Input.action_press("button_1_player_1")
 		if event.is_action_released("controller_button_2"):
-			Input.action_release("button_2_player_1")
+			Input.action_release("button_1_player_1")
 			
 		if event.is_action_pressed("controller_select"):
 			Input.action_press("select_player_1")
@@ -77,14 +77,14 @@ func _input(event):
 			Input.action_release("right_player_2")
 				
 		if event.is_action_pressed("controller_button_1"):
-			Input.action_press("button_1_player_2")
+			Input.action_press("button_2_player_2")
 		if event.is_action_released("controller_button_1"):
-			Input.action_release("button_1_player_2")
+			Input.action_release("button_2_player_2")
 			
 		if event.is_action_pressed("controller_button_2"):
-			Input.action_press("button_2_player_2")
+			Input.action_press("button_1_player_2")
 		if event.is_action_released("controller_button_2"):
-			Input.action_release("button_2_player_2")
+			Input.action_release("button_1_player_2")
 		
 		if event.is_action_pressed("controller_select"):
 			Input.action_press("select_player_2")
