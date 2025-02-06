@@ -1,0 +1,99 @@
+[gd_scene load_steps=14 format=3 uid="uid://cq4px7sr8q65y"]
+
+[ext_resource type="Script" path="res://scenes/ending_credits.gd" id="1_s4mnv"]
+[ext_resource type="Texture2D" uid="uid://bcolpegbvfd1x" path="res://sprites/EndingAndCredit/End_Credits-Sheet.png" id="1_v2570"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58gun"]
+atlas = ExtResource("1_v2570")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pi4kk"]
+atlas = ExtResource("1_v2570")
+region = Rect2(2560, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2g5k"]
+atlas = ExtResource("1_v2570")
+region = Rect2(3840, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ruqm"]
+atlas = ExtResource("1_v2570")
+region = Rect2(5120, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryb13"]
+atlas = ExtResource("1_v2570")
+region = Rect2(6400, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oylo8"]
+atlas = ExtResource("1_v2570")
+region = Rect2(7680, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sle2c"]
+atlas = ExtResource("1_v2570")
+region = Rect2(8960, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8ee3"]
+atlas = ExtResource("1_v2570")
+region = Rect2(10240, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnlmj"]
+atlas = ExtResource("1_v2570")
+region = Rect2(11520, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkt8i"]
+atlas = ExtResource("1_v2570")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rl450"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58gun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pi4kk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2g5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ruqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryb13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oylo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sle2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8ee3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnlmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkt8i")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.2
+}]
+
+[node name="EndingCredits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s4mnv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(640, 361)
+sprite_frames = SubResource("SpriteFrames_rl450")
+frame = 9
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

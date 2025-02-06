@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://brib3w1lqtnsk"]
+[gd_scene load_steps=23 format=3 uid="uid://brib3w1lqtnsk"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_46mfs"]
 [ext_resource type="Texture2D" uid="uid://cj0gv61kqy20g" path="res://sprites/MainMenu/Main Menu Background.png" id="2_hekra"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://chcj277v4psxu" path="res://sprites/MainMenu/ReDecorate Red.png" id="6_tqqtp"]
 [ext_resource type="Texture2D" uid="uid://bbx1tjtnyxh7s" path="res://sprites/MainMenu/Settings Red.png" id="7_mgsgi"]
 [ext_resource type="Texture2D" uid="uid://m23x4eexultq" path="res://sprites/MainMenu/checkboxNo.PNG" id="8_r2skf"]
+[ext_resource type="Texture2D" uid="uid://k3g1gp0bfk4d" path="res://sprites/MainMenu/Exit Red.png" id="8_uc1x1"]
+[ext_resource type="Texture2D" uid="uid://dsexs10hvm7yr" path="res://sprites/MainMenu/End Red.png" id="9_5mk2b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bm8kx"]
 
@@ -33,6 +35,10 @@ bg_color = Color(0, 0, 0, 0.486275)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lok5q"]
 bg_color = Color(0, 0, 0, 0.486275)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mdk1q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wcvad"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -106,6 +112,35 @@ offset_bottom = 22.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_vb0g8")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lok5q")
 
+[node name="ExitGame" type="Sprite2D" parent="MainScene"]
+position = Vector2(-1, 264)
+texture = ExtResource("8_uc1x1")
+
+[node name="ExitGameButton" type="Button" parent="MainScene/ExitGame"]
+offset_left = -70.0
+offset_top = -21.0
+offset_right = 71.0
+offset_bottom = 22.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mdk1q")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lok5q")
+
+[node name="Ending" type="Sprite2D" parent="MainScene"]
+position = Vector2(-1, 320)
+texture = ExtResource("9_5mk2b")
+
+[node name="EndingButton" type="Button" parent="MainScene/Ending"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = -22.0
+offset_right = -70.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wcvad")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lok5q")
+
 [node name="MoonGemCheckbox" type="Sprite2D" parent="."]
 position = Vector2(528, 400)
 texture = ExtResource("8_r2skf")
@@ -123,3 +158,4 @@ texture = ExtResource("8_r2skf")
 [connection signal="pressed" from="MainScene/Flowers/FlowerButton" to="." method="_on_flower_button_pressed"]
 [connection signal="pressed" from="MainScene/Redecorate/RedecorateButton" to="." method="_on_redecorate_button_pressed"]
 [connection signal="pressed" from="MainScene/Settings/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainScene/Ending/EndingButton" to="." method="_on_ending_button_pressed"]
