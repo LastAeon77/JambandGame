@@ -78,7 +78,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 0.2
+"speed": 0.1
 }]
 
 [node name="EndingCredits" type="Control"]

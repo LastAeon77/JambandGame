@@ -25,17 +25,18 @@ var should_flip_object = false
 const MOVEMENT_PER_TURN = 5
 var moves_left = MOVEMENT_PER_TURN
 var books_on_shelf = false
+var won = false
 @export var align_to_tilemap : bool = false
 @onready var furniture_queue = [
-		preload("res://scenes/RedecorationLevel/furniture/couch.tscn"),
-		preload("res://scenes/RedecorationLevel/furniture/glass_table.tscn"),
-		preload("res://scenes/RedecorationLevel/furniture/lamp.tscn"),
-		preload("res://scenes/RedecorationLevel/furniture/spider_plant.tscn"),
-		preload("res://scenes/RedecorationLevel/furniture/stereo.tscn"),
+		#preload("res://scenes/RedecorationLevel/furniture/couch.tscn"),
+		#preload("res://scenes/RedecorationLevel/furniture/glass_table.tscn"),
+		#preload("res://scenes/RedecorationLevel/furniture/lamp.tscn"),
+		#preload("res://scenes/RedecorationLevel/furniture/spider_plant.tscn"),
+		#preload("res://scenes/RedecorationLevel/furniture/stereo.tscn"),
+		#preload("res://scenes/RedecorationLevel/furniture/table_seat.tscn"),
+		#preload("res://scenes/RedecorationLevel/furniture/table_seat.tscn"),
+		#preload("res://scenes/RedecorationLevel/furniture/world_globe.tscn"),
 		preload("res://scenes/RedecorationLevel/furniture/bookshelf.tscn"),
-		preload("res://scenes/RedecorationLevel/furniture/table_seat.tscn"),
-		preload("res://scenes/RedecorationLevel/furniture/table_seat.tscn"),
-		preload("res://scenes/RedecorationLevel/furniture/world_globe.tscn"),
 ]
 
 var direction_to_cell_neighbor = {
@@ -55,7 +56,7 @@ func _ready():
 		furniture_queue.push_front(load("res://scenes/RedecorationLevel/furniture/books.tscn"))
 		stage_next_item()
 		SignalBus._obstacle_changed.connect(_on_obstacle_changed)
-		SignalBus._bookshelf_state_changed.connect(_on_obstacle_changed)
+		SignalBus._bookshelf_state_changed.connect(_on_bookshelf_state_changed)
 
 func y_sort_x_sort():
 	var children = get_children()
@@ -91,8 +92,9 @@ func _process(delta):
 	
 	if !Engine.is_editor_hint():
 		if len(furniture_queue) == 0 and player1.held_object == null and player2.held_object == null:
-			if books_on_shelf:
+			if books_on_shelf and !won:
 				SignalBus._redecoration_victory.emit()
+				won = true
 		align_objects_to_tilemap()
 		if turn < 0:
 			start_next_turn()
@@ -413,7 +415,6 @@ func is_obstacle(tilemap_position : Vector2i) -> bool:
 		return true
 	if get_current_player() != player2 and player2.tilemap_position == tilemap_position:
 		return true
-	
 	
 	if tilemap_position in obstacle_positions:
 		return true

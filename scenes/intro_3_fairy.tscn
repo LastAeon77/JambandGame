@@ -546,9 +546,9 @@ texture = ExtResource("3_nmuwf")
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 160.0
-offset_top = 592.0
+offset_top = 570.0
 offset_right = 1120.0
-offset_bottom = 729.0
+offset_bottom = 707.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
