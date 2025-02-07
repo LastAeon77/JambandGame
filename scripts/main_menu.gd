@@ -12,6 +12,10 @@ var curr_highlight = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# for Debug:
+	#SignalBus.beat_moon = true
+	#SignalBus.beat_flower = true
+	#SignalBus.beat_redecorate = true
 	$MainScene/Ending.visible = false
 	for x in $MainScene.get_children():
 		if(x.get_child(0) is Button):
@@ -26,7 +30,7 @@ func _ready():
 	if SignalBus.beat_flower:
 		$FlowerCheckbox.texture = checkbox_yes
 	if SignalBus.beat_redecorate:
-		$FlowerCheckbox.texture = checkbox_yes
+		$RedecorateCheckbox.texture = checkbox_yes
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -85,3 +89,7 @@ func press_hightlighted_button(index):
 
 func _on_ending_button_pressed():
 	get_tree().change_scene_to_packed(ending_scene)
+
+
+func _on_exit_game_button_pressed():
+	get_tree().quit()

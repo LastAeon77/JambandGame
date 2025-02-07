@@ -158,4 +158,5 @@ texture = ExtResource("8_r2skf")
 [connection signal="pressed" from="MainScene/Flowers/FlowerButton" to="." method="_on_flower_button_pressed"]
 [connection signal="pressed" from="MainScene/Redecorate/RedecorateButton" to="." method="_on_redecorate_button_pressed"]
 [connection signal="pressed" from="MainScene/Settings/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainScene/ExitGame/ExitGameButton" to="." method="_on_exit_game_button_pressed"]
 [connection signal="pressed" from="MainScene/Ending/EndingButton" to="." method="_on_ending_button_pressed"]
