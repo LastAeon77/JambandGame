@@ -24,6 +24,10 @@ signal _flower_defeat()
 
 signal _redecoration_defeat()
 signal _redecoration_victory()
+signal _blob_pickup()
+signal _blob_place()
+signal _blob_stage()
+signal _blob_end_turn()
 
 signal _turn_changed(turn_number:int)
 signal _obstacle_changed()

@@ -6,7 +6,6 @@ enum Direction {NW,NE, SW, SE}
 @onready var player1 = $RedecorationPlayer1
 @onready var player2 = $RedecorationPlayer2
 @onready var mrBlob = $MrBlob
-@onready var tilemap2 = $TileMap2
 @export var dimensions : Vector2i = Vector2i(9,11)
 const PICKUP_HOLD_TIME = 0.25
 var input_row_length = 6
@@ -22,6 +21,7 @@ var staging_area_position = Vector2i(-5,-21)
 var house_top_left = Vector2i(-9,-12)
 var item_in_staging_area = null
 var should_flip_object = false
+var blob_movement_stage = 0
 const MOVEMENT_PER_TURN = 5
 var moves_left = MOVEMENT_PER_TURN
 @onready var books_on_shelf = false
@@ -54,14 +54,18 @@ func _ready():
 		update_obstacles()
 		#furniture_queue.shuffle()
 		furniture_queue.push_front(load("res://scenes/RedecorationLevel/furniture/books.tscn"))
-		stage_next_item()
 		SignalBus._obstacle_changed.connect(_on_obstacle_changed)
 		SignalBus._bookshelf_state_changed.connect(_on_bookshelf_state_changed)
-
+		SignalBus._blob_pickup.connect(unstage_item)
+		SignalBus._blob_place.connect(move_item_into_house)
+		SignalBus._blob_stage.connect(stage_next_item)
+		SignalBus._blob_end_turn.connect(end_turn)
+		stage_next_item()
+	
 func y_sort_x_sort():
 	var children = get_children()
 	children.erase(tilemap)
-	children.erase(tilemap2)
+	children.erase(mrBlob)
 	for i in range(1,len(children)):
 		var child = children[i]
 		var j = i - 1
@@ -99,6 +103,7 @@ func _process(delta):
 		if turn < 0:
 			start_next_turn()
 		
+		mrBlob.item_in_staging = item_in_staging_area != null
 		var movement_direction = null
 		var should_move = false
 		var should_end_turn = false
@@ -175,12 +180,8 @@ func _process(delta):
 			if Input.is_action_just_pressed("select_player_2"):
 				should_end_turn = true
 		else:
-			#MR.blob's turn
-			unstage_item()
-			move_item_into_house()
-			stage_next_item()
+			pass
 			
-			should_end_turn = true
 		
 		if(player != null and not player.moving):
 			if !in_pickup_mode && movement_direction != null:
@@ -245,13 +246,16 @@ func _process(delta):
 				clear_path(player.final_position)
 			
 			if should_end_turn:
-				if player != null:
-					clear_path(path[0])
-				start_next_turn()
+				end_turn()
 		should_flip_object = false
 		should_move = false
 		should_end_turn = false
 		should_pick_up_or_place = false
+
+func end_turn():
+	if get_current_player() != mrBlob:
+		clear_path(path[0])
+	start_next_turn()
 
 func stage_next_item():
 	if len(furniture_queue) > 0:
@@ -311,13 +315,6 @@ func can_place_object(object):
 			can_place = is_books and coord_is_bookshelf
 			break
 	return can_place
-func get_blob_path1():
-	return [
-		Vector2i(),
-		Vector2i(),
-		Vector2i(),
-		Vector2i(),
-	]
 
 func clear_green_highlight():
 	for cell_coord in green_highlight_cells:
@@ -348,7 +345,7 @@ func update_green_highlight(player : RedecorationPlayer):
 			green_highlight_cells.erase(cell_coord)
 		for cell_coord in green_highlight_cells:
 			tilemap.set_cell(0,cell_coord, 2, Vector2i.ZERO)
-
+		
 func get_obstacle_tiles(obstacle):
 	var output = []
 	var position = obstacle.tilemap_position
@@ -400,6 +397,8 @@ func start_next_turn():
 	path.clear()
 	path.append(selected_tile)
 	SignalBus.emit_signal("_turn_changed",turn)
+	if get_current_player() == mrBlob:
+		mrBlob.is_my_turn = true
 	
 func is_obstacle(tilemap_position : Vector2i) -> bool:
 	if tilemap.get_cell_source_id(0,tilemap_position) == -1:

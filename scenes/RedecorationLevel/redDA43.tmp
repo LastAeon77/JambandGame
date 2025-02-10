@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsc6yg45446x7"]
+[gd_scene load_steps=11 format=3 uid="uid://dsc6yg45446x7"]
 
 [ext_resource type="Script" path="res://scripts/RedecorationLevel/TurnLabel.gd" id="1_s5xym"]
 [ext_resource type="Script" path="res://scripts/RedecorationLevel/GameBoard.gd" id="2_aijxb"]
@@ -8,8 +8,7 @@
 [ext_resource type="TileSet" uid="uid://hbsxr8nos3sv" path="res://scenes/RedecorationLevel/tileset2.tres" id="5_6bu8v"]
 [ext_resource type="PackedScene" uid="uid://bcp4r4686wjpc" path="res://scenes/RedecorationLevel/player_1_redecoration.tscn" id="5_puxre"]
 [ext_resource type="PackedScene" uid="uid://ca4owim0jx2l7" path="res://scenes/RedecorationLevel/player_2_redecoration.tscn" id="6_txd5c"]
-[ext_resource type="Texture2D" uid="uid://b1himfxh7e8bt" path="res://sprites/RedecorationLevel/Furniture/Door Frame Left.png" id="9_5voqs"]
-[ext_resource type="Texture2D" uid="uid://bvpv2s8cbiqeu" path="res://sprites/RedecorationLevel/Furniture/Door Frame Right.png" id="10_wdj65"]
+[ext_resource type="Texture2D" uid="uid://bs3sg8bdhefmm" path="res://sprites/RedecorationLevel/Furniture/Door Frame.png" id="8_3pehu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_knwib"]
 font_size = 30
@@ -63,31 +62,23 @@ layer_0/tile_data = PackedInt32Array(65536, 8, 0, 0, 8, 0, -65536, 8, 0, -131072
 layer_1/name = "back_wall1"
 layer_1/y_sort_enabled = true
 layer_1/z_index = 1
-layer_1/tile_data = PackedInt32Array(65525, 0, 0, -11, 0, 0, -65547, 0, 0, -131083, 0, 0, -196619, 0, 0, -262155, 0, 0, -327691, 0, 0, -393227, 0, 0, -458763, 0, 0, -524299, 0, 0, -589835, 0, 0, -655371, 0, 0, -720907, 0, 0, -786443, 0, 0, -851979, 0, 0, -851978, 0, 0, -851977, 0, 0, -851976, 0, 0, -851975, 0, 0, -851974, 0, 0)
+layer_1/tile_data = PackedInt32Array(65525, 0, 0, -11, 0, 0, -65547, 0, 0, -131083, 0, 0, -196619, 0, 0, -262155, 0, 0, -327691, 0, 0, -393227, 0, 0, -458763, 0, 0, -524299, 0, 0, -589835, 0, 0, -655371, 0, 0, -720907, 0, 0, -786443, 0, 0, -851979, 0, 0, -851978, 0, 0, -851977, 0, 0, -851976, 0, 0, -851975, 0, 0, -851974, 0, 0, -851972, 0, 0, -851971, 0, 0, -851970, 0, 0, -851969, 0, 0)
 layer_2/name = "back_wall2"
 layer_2/y_sort_enabled = true
 layer_2/z_index = 2
-layer_2/tile_data = PackedInt32Array(-917515, 0, 0, -917514, 0, 0, -917513, 0, 0, -917512, 0, 0, -917511, 0, 0, -917516, 0, 0, -851980, 0, 0, -786444, 0, 0, -720908, 0, 0, -655372, 0, 0, -589836, 0, 0, -524300, 0, 0, -458764, 0, 0, -393228, 0, 0, -327692, 0, 0, -262156, 0, 0, -196620, 0, 0, -131084, 0, 0, -65548, 0, 0, -12, 0, 0)
-layer_3/name = "back_wall3"
+layer_2/tile_data = PackedInt32Array(-917515, 0, 0, -917514, 0, 0, -917513, 0, 0, -917512, 0, 0, -917511, 0, 0, -917509, 0, 0, -917508, 0, 0, -917507, 0, 0, -917506, 0, 0, -917516, 0, 0, -851980, 0, 0, -786444, 0, 0, -720908, 0, 0, -655372, 0, 0, -589836, 0, 0, -524300, 0, 0, -458764, 0, 0, -393228, 0, 0, -327692, 0, 0, -262156, 0, 0, -196620, 0, 0, -131084, 0, 0, -65548, 0, 0, -12, 0, 0)
+layer_3/name = "furniture"
 layer_3/y_sort_enabled = true
-layer_3/z_index = 4
-layer_3/tile_data = PackedInt32Array(-851972, 0, 0, -851971, 0, 0, -851969, 0, 0, -851970, 0, 0)
-layer_4/name = "back_wall4"
+layer_3/z_index = 99
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "front_wall1"
 layer_4/y_sort_enabled = true
-layer_4/z_index = 5
-layer_4/tile_data = PackedInt32Array(-917509, 0, 0, -917507, 0, 0, -917508, 0, 0, -917506, 0, 0)
-layer_5/name = "furniture"
+layer_4/z_index = 100
+layer_4/tile_data = PackedInt32Array(65526, 7, 0, 65528, 7, 0, 65529, 7, 0, 65530, 7, 0, 65531, 7, 0, 65527, 7, 0, 65532, 7, 0, 65533, 7, 0, 65534, 7, 0, 65535, 7, 0, -1, 7, 0, -65537, 7, 0, -327681, 7, 0, -393217, 7, 0, -131073, 7, 0, -196609, 7, 0, -262145, 7, 0, -458753, 7, 0, -589825, 7, 0, -655361, 7, 0, -720897, 7, 0, -786433, 7, 0, -524289, 7, 0)
+layer_5/name = "front_wall2"
 layer_5/y_sort_enabled = true
-layer_5/z_index = 99
+layer_5/z_index = 6
 layer_5/tile_data = PackedInt32Array()
-layer_6/name = "front_wall1"
-layer_6/y_sort_enabled = true
-layer_6/z_index = 100
-layer_6/tile_data = PackedInt32Array(65526, 7, 0, 65528, 7, 0, 65529, 7, 0, 65530, 7, 0, 65531, 7, 0, 65527, 7, 0, 65532, 7, 0, 65533, 7, 0, 65534, 7, 0, 65535, 7, 0, -1, 7, 0, -65537, 7, 0, -327681, 7, 0, -393217, 7, 0, -131073, 7, 0, -196609, 7, 0, -262145, 7, 0, -458753, 7, 0, -589825, 7, 0, -655361, 7, 0, -720897, 7, 0, -786433, 7, 0, -524289, 7, 0)
-layer_7/name = "front_wall2"
-layer_7/y_sort_enabled = true
-layer_7/z_index = 101
-layer_7/tile_data = PackedInt32Array()
 
 [node name="RedecorationPlayer1" parent="GameBoard" instance=ExtResource("5_puxre")]
 z_index = 97
@@ -96,17 +87,11 @@ tilemap_position = Vector2i(-1, -12)
 
 [node name="RedecorationPlayer2" parent="GameBoard" instance=ExtResource("6_txd5c")]
 z_index = 98
-tilemap_position = Vector2i(-1, 0)
+position = Vector2(176, -88)
+tilemap_position = Vector2i(-1, -11)
 
-[node name="DoorFrame left" type="Sprite2D" parent="."]
+[node name="DoorFrame" type="Sprite2D" parent="."]
 z_index = 2
 y_sort_enabled = true
-position = Vector2(154, -140)
-texture = ExtResource("9_5voqs")
-offset = Vector2(0, -1)
-
-[node name="DoorFrame right" type="Sprite2D" parent="."]
-z_index = 5
-y_sort_enabled = true
-position = Vector2(154, -141)
-texture = ExtResource("10_wdj65")
+position = Vector2(144, -130)
+texture = ExtResource("8_3pehu")
