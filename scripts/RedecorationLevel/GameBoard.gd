@@ -28,14 +28,14 @@ var moves_left = MOVEMENT_PER_TURN
 var won = false
 @export var align_to_tilemap : bool = false
 @onready var furniture_queue = [
-		#preload("res://scenes/RedecorationLevel/furniture/couch.tscn"),
-		#preload("res://scenes/RedecorationLevel/furniture/glass_table.tscn"),
-		#preload("res://scenes/RedecorationLevel/furniture/lamp.tscn"),
-		#preload("res://scenes/RedecorationLevel/furniture/spider_plant.tscn"),
-		#preload("res://scenes/RedecorationLevel/furniture/stereo.tscn"),
-		#preload("res://scenes/RedecorationLevel/furniture/table_seat.tscn"),
-		#preload("res://scenes/RedecorationLevel/furniture/table_seat.tscn"),
-		#preload("res://scenes/RedecorationLevel/furniture/world_globe.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/couch.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/glass_table.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/lamp.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/spider_plant.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/stereo.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/table_seat.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/table_seat.tscn"),
+		preload("res://scenes/RedecorationLevel/furniture/world_globe.tscn"),
 		preload("res://scenes/RedecorationLevel/furniture/bookshelf.tscn"),
 ]
 
