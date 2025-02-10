@@ -96,8 +96,8 @@ func _process(delta):
 				SignalBus._blob_stage.emit()
 			current_step += 1
 		elif current_step == 14:
-			if items_left_in_queue:
-				SignalBus._blob_stage.emit()
+			# if items_left_in_queue:
+				# SignalBus._blob_stage.emit()
 			current_step += 1
 		elif current_step == 15:
 			var path = [tilemap_position] 
