@@ -24,7 +24,7 @@ var item_in_staging_area = null
 var should_flip_object = false
 const MOVEMENT_PER_TURN = 5
 var moves_left = MOVEMENT_PER_TURN
-var books_on_shelf = false
+@onready var books_on_shelf = false
 var won = false
 @export var align_to_tilemap : bool = false
 @onready var furniture_queue = [
@@ -65,18 +65,18 @@ func y_sort_x_sort():
 	for i in range(1,len(children)):
 		var child = children[i]
 		var j = i - 1
+		while j >= 0 and children[j].tilemap_position.y < child.tilemap_position.y:
+			children[j+1] = children[j]
+			j -= 1
+		children[j + 1] = child
+	for i in range(1,len(children)):
+		var child = children[i]
+		var j = i - 1
 		while j >= 0 and children[j].tilemap_position.x < child.tilemap_position.x:
 			children[j+1] = children[j]
 			j -= 1
 		children[j + 1] = child
 		#
-	for i in range(1,len(children)):
-		var child = children[i]
-		var j = i - 1
-		while j >= 0 and children[j].tilemap_position.y < child.tilemap_position.y:
-			children[j+1] = children[j]
-			j -= 1
-		children[j + 1] = child
 
 	for i in range(len(children)):
 		var child = children[i]
@@ -400,6 +400,7 @@ func start_next_turn():
 	path.clear()
 	path.append(selected_tile)
 	SignalBus.emit_signal("_turn_changed",turn)
+	
 func is_obstacle(tilemap_position : Vector2i) -> bool:
 	if tilemap.get_cell_source_id(0,tilemap_position) == -1:
 		return true
@@ -439,6 +440,7 @@ func get_bookshelf_or_null(tilemap_position):
 		if obstacle_positions[tilemap_position].is_in_group("bookshelf"):
 			return obstacle_positions[tilemap_position]
 	return null
+	
 func align_objects_to_tilemap():
 	var tilemap_bound_objects = get_tree().get_nodes_in_group("tilemap_bound")
 	for node in tilemap_bound_objects:

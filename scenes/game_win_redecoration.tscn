@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdo1a8a6684de"]
+
+[ext_resource type="Script" path="res://scripts/game_win_redecoration.gd" id="1_puacq"]
+[ext_resource type="Texture2D" uid="uid://b7yalu0mstjv6" path="res://sprites/MainMenu/Redecoration Succeed.png" id="2_xyj1a"]
+[ext_resource type="Texture2D" uid="uid://gd8iyy554rtf" path="res://sprites/MainMenu/Start Menu Redecoration C.PNG" id="3_vwulq"]
+[ext_resource type="Texture2D" uid="uid://b8x8oqjkxor14" path="res://sprites/MainMenu/Start Menu Redecoration MM.PNG" id="4_fqclv"]
+[ext_resource type="Texture2D" uid="uid://brpymavxahkri" path="res://sprites/MainMenu/Redecoration Fail Main Menu.png" id="5_2b7c0"]
+[ext_resource type="Texture2D" uid="uid://cxt2buc4g307r" path="res://sprites/MainMenu/Redecoration Fail Try Again.png" id="6_4hhn4"]
+
+[node name="game_win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_puacq")
+
+[node name="WinScreen" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xyj1a")
+
+[node name="Pause_Continue" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vwulq")
+
+[node name="Pause_MainMenu" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fqclv")
+
+[node name="MainMenu" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_2b7c0")
+
+[node name="TryAgain" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_4hhn4")

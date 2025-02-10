@@ -119,7 +119,6 @@ func win_flower():
 	
 func win_redecorate():
 	beat_redecorate = true
-	print("Redecoration win!")
 	save_game()
 	
 func change_difficulty(diff):

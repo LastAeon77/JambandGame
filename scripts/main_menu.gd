@@ -2,8 +2,8 @@ extends Control
 var intro_scene = preload("res://scenes/intro.tscn")
 var moon_scene = preload("res://scenes/space_level.tscn")
 var flower_scene = preload("res://scenes/flower_level.tscn")
+var redecoration_scene = preload("res://scenes/RedecorationLevel/redecoration_level.tscn")
 var ending_scene = preload("res://scenes/ending_credits.tscn")
-
 var settings_scene = preload("res://scenes/settings.tscn")
 var checkbox_yes = preload("res://sprites/MainMenu/checkboxYes.PNG")
 
@@ -67,7 +67,7 @@ func _on_flower_button_pressed():
 
 
 func _on_redecorate_button_pressed():
-	pass
+	get_tree().change_scene_to_packed(redecoration_scene)
 
 
 func _on_settings_button_pressed():
