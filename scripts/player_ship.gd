@@ -13,6 +13,7 @@ func _ready():
 func _physics_process(delta):
 	
 	var direction = Input.get_vector("left_player_1","right_player_1","up_player_1","down_player_1")
+	direction.x = 0
 	velocity = max_speed*direction+(velocity - max_speed*direction)*exp(-delta*decay)
 	
 	

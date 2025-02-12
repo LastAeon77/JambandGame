@@ -38,7 +38,5 @@ func _on_timer_timeout():
 func restart():
 	if $Timer.is_stopped():
 		$Timer.start()
-	else:
-		$Timer.stop()
 	
 

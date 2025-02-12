@@ -47,13 +47,9 @@ func _on_timer_timeout():
 func pause():
 	if $Timer.is_stopped():
 		$Timer.start()
-	else:
-		$Timer.stop()
 		
 func restart():
 	if $Timer.is_stopped():
 		$Timer.start()
-	else:
-		$Timer.stop()
 	
 
