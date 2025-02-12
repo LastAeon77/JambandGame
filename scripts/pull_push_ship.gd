@@ -10,7 +10,7 @@ var past_delta = 10
 func _ready():
 	decay = log(2)/half_life
 	floor_stop_on_slope =false
-
+	$AnimatedSprite2D.play("default")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass

@@ -25,19 +25,19 @@ func _physics_process(delta):
 					$AnimatedSprite2D.play("default")
 				else:
 					$AnimatedSprite2D.play("default_flower")
-			# Handle jump.
-			if Input.is_action_just_pressed("up_player_2") and is_on_floor():
-				velocity.y = JUMP_VELOCITY/(carrying_flower/3+1)
+		# Handle jump.
+		if Input.is_action_just_pressed("up_player_2") and is_on_floor():
+			velocity.y = JUMP_VELOCITY/(carrying_flower/3+1)
 
-			# Get the input direction and handle the movement/deceleration.
-			# As good practice, you should replace UI actions with custom gameplay actions.
-			var direction = Input.get_axis("left_player_2", "right_player_2")
-			if direction:
-				velocity.x = direction * (SPEED/(carrying_flower/3+1))
-			else:
-				velocity.x = move_toward(velocity.x, 0, SPEED/(carrying_flower/3+1))
-			if velocity.x != 0:
-				$AnimatedSprite2D.flip_h = velocity.x < 0
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var direction = Input.get_axis("left_player_2", "right_player_2")
+		if direction:
+			velocity.x = direction * (SPEED/(carrying_flower/3+1))
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED/(carrying_flower/3+1))
+		if velocity.x != 0:
+			$AnimatedSprite2D.flip_h = velocity.x < 0
 	else:
 		velocity = Vector2.ZERO
 		if not $AnimatedSprite2D.is_playing() || $AnimatedSprite2D.animation != "stung":

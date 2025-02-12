@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/pull_push_ship.gd" id="1_j6mqp"]
 [ext_resource type="Texture2D" uid="uid://ve7q71sngmtp" path="res://sprites/Pixie_ship_full_player 2 Pull.png" id="2_kwti4"]
-[ext_resource type="Texture2D" uid="uid://bkled4snqdpw2" path="res://sprites/Pixie_ship_full_player 2 Idle.png" id="2_l0y2c"]
+[ext_resource type="Texture2D" uid="uid://rfpvi06cavrs" path="res://sprites/MoonGem/Pixie_ship_full_player 2 fINAL.png" id="3_b88j3"]
 [ext_resource type="AudioStream" uid="uid://dxw0f141gt0dk" path="res://Sound/Moon/Attractor Ship Crop.wav" id="4_lypq4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6yk6m"]
@@ -56,12 +56,12 @@ region = Rect2(256, 0, 256, 128)
 atlas = ExtResource("2_kwti4")
 region = Rect2(0, 0, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_amq5f"]
-atlas = ExtResource("2_l0y2c")
+[sub_resource type="AtlasTexture" id="AtlasTexture_62008"]
+atlas = ExtResource("3_b88j3")
 region = Rect2(0, 0, 256, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o1w34"]
-atlas = ExtResource("2_l0y2c")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t2vh"]
+atlas = ExtResource("3_b88j3")
 region = Rect2(256, 0, 256, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ks7c"]
@@ -117,10 +117,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_amq5f")
+"texture": SubResource("AtlasTexture_62008")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o1w34")
+"texture": SubResource("AtlasTexture_2t2vh")
 }],
 "loop": true,
 "name": &"default",
@@ -139,7 +139,7 @@ shape = SubResource("CircleShape2D_6yk6m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1ks7c")
-animation = &"deccel"
+animation = &"accel"
 
 [node name="forcefield" type="Area2D" parent="."]
 collision_layer = 3
