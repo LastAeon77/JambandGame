@@ -17,10 +17,15 @@ func _ready():
 	$TryAgain.visible = false
 	$Pause_Continue.visible = false
 	$Pause_MainMenu.visible = false
+	if SignalBus.get_flower_first():
+		get_tree().paused = true
+		$Pause_Continue.visible = true
+		SignalBus.set_flower_first(false)
 
 
 func _process(_delta):
 	if Input.is_action_just_pressed("restart"):
+		get_tree().paused = false
 		get_tree().reload_current_scene()
 	if Input.is_action_just_pressed("right_player_1") or Input.is_action_just_pressed(("right_player_2")):
 		if($TryAgain.visible == false && $MainMenu.visible == true):

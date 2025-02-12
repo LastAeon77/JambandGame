@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://xksxlwxvfqxw" path="res://sprites/End Level.png" id="2_ilr3x"]
 [ext_resource type="Texture2D" uid="uid://be405xuljq8os" path="res://sprites/MainMenu/Start Menu Moon C.PNG" id="3_ny6de"]
 [ext_resource type="Texture2D" uid="uid://d1pl3dwsyrl6r" path="res://sprites/MainMenu/Start Menu Moon MM.PNG" id="4_nl6ym"]
-[ext_resource type="Texture2D" uid="uid://dftd62hg3qn0t" path="res://sprites/MainMenu/Flower Fail Main Menu.png" id="5_5yl67"]
-[ext_resource type="Texture2D" uid="uid://4gmxel1emry" path="res://sprites/MainMenu/Flower Fail Try Again.png" id="6_eeakd"]
+[ext_resource type="Texture2D" uid="uid://dcxhejnj3qva5" path="res://sprites/MoonGem/Moon Gem Fail Menu.png" id="5_jgijx"]
+[ext_resource type="Texture2D" uid="uid://eyjm6pt3vwp" path="res://sprites/MoonGem/Moon Gem Fail Try.png" id="6_f0jpp"]
 
 [node name="game_win" type="Control"]
 layout_mode = 3
@@ -36,6 +36,26 @@ offset_bottom = 338.0
 scale = Vector2(8.203, 7.92)
 texture = ExtResource("3_ny6de")
 
+[node name="TryAgain" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -2.0
+offset_top = -160.0
+offset_right = 598.0
+offset_bottom = 240.0
+scale = Vector2(5.54, 5.54)
+texture = ExtResource("6_f0jpp")
+
+[node name="MainMenu" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -2.0
+offset_top = -160.0
+offset_right = 598.0
+offset_bottom = 240.0
+scale = Vector2(5.54, 5.54)
+texture = ExtResource("5_jgijx")
+
 [node name="Pause_MainMenu" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
@@ -45,19 +65,3 @@ offset_right = 840.0
 offset_bottom = 338.0
 scale = Vector2(8.203, 7.92)
 texture = ExtResource("4_nl6ym")
-
-[node name="MainMenu" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 600.0
-offset_bottom = 400.0
-scale = Vector2(4.165, 4.165)
-texture = ExtResource("5_5yl67")
-
-[node name="TryAgain" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 600.0
-offset_bottom = 400.0
-scale = Vector2(4.165, 4.165)
-texture = ExtResource("6_eeakd")

@@ -6,6 +6,10 @@ var beat_moon
 var beat_flower
 var beat_redecorate
 
+var moon_gem_first_time : bool = true
+
+var flower_first_time : bool = true
+
 signal _game_lost()
 
 signal _game_won()
@@ -127,4 +131,16 @@ func win_redecorate():
 	
 func change_difficulty(diff):
 	curr_difficulty = diff
+	
+func get_moon_first():
+	return moon_gem_first_time
+
+func set_moon_first(boolean:bool):
+	moon_gem_first_time = boolean
+		
+func get_flower_first():
+	return flower_first_time
+
+func set_flower_first(boolean:bool):
+	flower_first_time = boolean
 		

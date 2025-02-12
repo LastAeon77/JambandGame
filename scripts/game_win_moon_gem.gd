@@ -1,6 +1,5 @@
 extends Control
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -8,6 +7,10 @@ func _ready():
 	SignalBus.connect("_game_lost",game_lost)
 	SignalBus.connect("_moon_gem_stage_clear",game_win)
 	SignalBus.connect("_moon_gem_stage_restart",restart)
+	if SignalBus.get_moon_first():
+		get_tree().paused = true
+		$Pause_Continue.visible = true
+		SignalBus.set_moon_first(false)
 
 
 func _process(_delta):
@@ -53,9 +56,10 @@ func game_win():
 
 
 func game_lost():
-	pass
+	$TryAgain.visible = true
 
 func restart():
 	$WinScreen.visible = false
 	
+
 
