@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cd0g5j6aebt4g"]
+
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/player_action_map.gd" id="1_my705"]
+
+[resource]
+script = ExtResource("1_my705")
+up_action = "up_player_1"
+down_action = "down_player_1"
+left_action = "left_player_1"
+right_action = "right_player_1"
+button_1_action = "button_1_player_1"
+button_2_action = "button_2_player_1"
+select_action = "select_player_1"
+start_action = "start_player_1"

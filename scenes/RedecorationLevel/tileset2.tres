@@ -1,12 +1,14 @@
-[gd_resource type="TileSet" load_steps=17 format=3 uid="uid://hbsxr8nos3sv"]
+[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://hbsxr8nos3sv"]
 
 [ext_resource type="Texture2D" uid="uid://drl6ujtbribub" path="res://sprites/RedecorationLevel/Tiles/Brown Tile.png" id="1_dmio5"]
-[ext_resource type="Texture2D" uid="uid://d0lr22iivvluj" path="res://sprites/RedecorationLevel/Tiles/Brown Tile Hilighted.png" id="2_8c6wc"]
+[ext_resource type="Texture2D" uid="uid://dibdfamgqbuej" path="res://sprites/RedecorationLevel/Tiles/Red Highlight.png" id="2_p8o2t"]
 [ext_resource type="Texture2D" uid="uid://cbmuew6jkao30" path="res://sprites/RedecorationLevel/Tiles/Brown Tile Green Highlight.png" id="3_gmsmt"]
+[ext_resource type="Texture2D" uid="uid://dk4teec0sfo6u" path="res://sprites/RedecorationLevel/Tiles/Blue Highlight.png" id="4_hytjf"]
 [ext_resource type="Texture2D" uid="uid://b5h5wad5tf6j7" path="res://sprites/RedecorationLevel/Tiles/Grass 1.png" id="4_ssoqb"]
 [ext_resource type="Texture2D" uid="uid://m5sfp5d36fn0" path="res://sprites/RedecorationLevel/Tiles/Grass 2.png" id="5_swflj"]
 [ext_resource type="Texture2D" uid="uid://bwfbsgvii6kf2" path="res://sprites/RedecorationLevel/Tiles/Road.png" id="6_7dba1"]
 [ext_resource type="Texture2D" uid="uid://bh244b64q54kt" path="res://sprites/RedecorationLevel/Tiles/Grey Tile.png" id="7_n01bg"]
+[ext_resource type="Texture2D" uid="uid://cqimyvk1bsar" path="res://sprites/RedecorationLevel/Tiles/Green Highlight.png" id="8_ubejv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wje77"]
 texture = ExtResource("1_dmio5")
@@ -14,11 +16,23 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r47rp"]
-texture = ExtResource("2_8c6wc")
-texture_region_size = Vector2i(32, 32)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ynosu"]
+resource_name = "Red Highlight"
+texture = ExtResource("2_p8o2t")
+texture_region_size = Vector2i(32, 16)
 0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, -8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_chdok"]
+resource_name = "Blue Highlight"
+texture = ExtResource("8_ubejv")
+texture_region_size = Vector2i(32, 16)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nvymp"]
+resource_name = "Blue Highlight"
+texture = ExtResource("4_hytjf")
+texture_region_size = Vector2i(32, 16)
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0mxhd"]
 texture = ExtResource("3_gmsmt")
@@ -76,7 +90,6 @@ tile_layout = 5
 tile_offset_axis = 1
 tile_size = Vector2i(32, 16)
 sources/0 = SubResource("TileSetAtlasSource_wje77")
-sources/1 = SubResource("TileSetAtlasSource_r47rp")
 sources/3 = SubResource("TileSetAtlasSource_aclwv")
 sources/4 = SubResource("TileSetAtlasSource_b7vir")
 sources/5 = SubResource("TileSetAtlasSource_5ep4d")
@@ -84,3 +97,6 @@ sources/6 = SubResource("TileSetAtlasSource_trv0f")
 sources/7 = SubResource("TileSetAtlasSource_h2eqq")
 sources/8 = SubResource("TileSetAtlasSource_ir8eb")
 sources/2 = SubResource("TileSetAtlasSource_0mxhd")
+sources/10 = SubResource("TileSetAtlasSource_ynosu")
+sources/12 = SubResource("TileSetAtlasSource_nvymp")
+sources/11 = SubResource("TileSetAtlasSource_chdok")

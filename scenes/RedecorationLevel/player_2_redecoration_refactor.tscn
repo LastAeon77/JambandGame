@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://ci7cd1eqtlunf"]
+
+[ext_resource type="Texture2D" uid="uid://ca63p33wkmkku" path="res://sprites/RedecorationLevel/Mover2/Mover 2 NE.png" id="1_aa4e8"]
+[ext_resource type="Texture2D" uid="uid://bvt8gp0gllrmv" path="res://sprites/RedecorationLevel/Mover2/Mover 2 NW.png" id="2_lko3c"]
+[ext_resource type="Texture2D" uid="uid://dbtn510ko3pdp" path="res://sprites/RedecorationLevel/Mover2/Mover 2 SE.png" id="3_06jei"]
+[ext_resource type="Texture2D" uid="uid://dcpwjgbanmqg6" path="res://sprites/RedecorationLevel/Mover2/Mover 2 SW.png" id="4_cby40"]
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/player_redecoration_refactor.gd" id="5_815dt"]
+[ext_resource type="Resource" uid="uid://cjv8qkkmin2ar" path="res://resources/RedecorationLevel/player_2_action_map.tres" id="6_acndx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vsdmt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aa4e8")
+}],
+"loop": false,
+"name": &"move_ne",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lko3c")
+}],
+"loop": false,
+"name": &"move_nw",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_06jei")
+}],
+"loop": false,
+"name": &"move_se",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cby40")
+}],
+"loop": false,
+"name": &"move_sw",
+"speed": 4.0
+}]
+
+[node name="RedecorationPlayer2" type="AnimatedSprite2D" groups=["tilemap_bound"]]
+z_index = 3
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_vsdmt")
+animation = &"move_nw"
+offset = Vector2(32, -64)
+script = ExtResource("5_815dt")
+action_map = ExtResource("6_acndx")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

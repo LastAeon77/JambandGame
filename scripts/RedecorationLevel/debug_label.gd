@@ -1,6 +1,6 @@
 extends Label
 
-@onready var tilemap : TileMap = $"../../../GameBoard/TileMap"
+@onready var tilemap : TileMap = $"../../../GameBoard"
 func _process(delta):
 	
 	if !tilemap == null:

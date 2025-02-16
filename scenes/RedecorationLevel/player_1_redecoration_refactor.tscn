@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://26aoudbvlv7m"]
+
+[ext_resource type="Texture2D" uid="uid://bswshc6t7kqm8" path="res://sprites/RedecorationLevel/Mover1/Mover 1 NE.png" id="1_lcbk0"]
+[ext_resource type="Texture2D" uid="uid://dfbri8vs7n60c" path="res://sprites/RedecorationLevel/Mover1/Mover 1 NW.png" id="2_wa0h0"]
+[ext_resource type="Texture2D" uid="uid://b2cpajxwjxlxp" path="res://sprites/RedecorationLevel/Mover1/Mover 1 SE.png" id="3_ag8bw"]
+[ext_resource type="Texture2D" uid="uid://bwv2jwosa2yhb" path="res://sprites/RedecorationLevel/Mover1/Mover 1 SW.png" id="4_nf7ku"]
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/player_redecoration_refactor.gd" id="5_l10vi"]
+[ext_resource type="Texture2D" uid="uid://djvwiknrujs4b" path="res://sprites/RedecorationLevel/Furniture/Spider Plant.png" id="6_j30ey"]
+[ext_resource type="Resource" uid="uid://cd0g5j6aebt4g" path="res://resources/RedecorationLevel/player_1_action_map.tres" id="6_un882"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vsdmt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lcbk0")
+}],
+"loop": false,
+"name": &"move_ne",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wa0h0")
+}],
+"loop": false,
+"name": &"move_nw",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ag8bw")
+}],
+"loop": false,
+"name": &"move_se",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nf7ku")
+}],
+"loop": false,
+"name": &"move_sw",
+"speed": 4.0
+}]
+
+[node name="RedecorationPlayer1" type="AnimatedSprite2D" groups=["tilemap_bound"]]
+z_index = 3
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_vsdmt")
+animation = &"move_sw"
+offset = Vector2(35, -66)
+script = ExtResource("5_l10vi")
+action_map = ExtResource("6_un882")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="icons" type="Node2D" parent="."]
+visible = false
+
+[node name="SpiderPlant" type="Sprite2D" parent="icons"]
+visible = false
+modulate = Color(1, 1, 1, 0.545098)
+z_index = 3
+position = Vector2(5.68434e-14, -76)
+scale = Vector2(0.63, 0.63)
+texture = ExtResource("6_j30ey")
