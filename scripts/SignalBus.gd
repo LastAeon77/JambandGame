@@ -32,8 +32,10 @@ signal _blob_pickup()
 signal _blob_place()
 signal _blob_stage()
 signal _blob_end_turn()
-signal _update_highlight(points : Array, color : Gameboard2.Highlight_Color)
+signal _update_highlight(points : Array, color : Gameboard2.Highlight_Color, clear : bool)
 signal _turn_changed(turn_number:int)
+signal _pickup(character, coord : Vector2i)
+signal _place(character,item)
 
 signal _end_turn
 signal _obstacle_changed()

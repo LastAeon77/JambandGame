@@ -1,7 +1,14 @@
 extends AnimatedSprite2D
 
-var held_object = null
-var movement_path
+var held_object:
+	set(value):
+		_held = value
+		update_held_object_position()
+		update_highlight()
+	get:
+		return _held
+var _held = null
+var movement_path = []
 var move_timer : Timer
 var pending_action = false
 
@@ -12,7 +19,7 @@ var pending_action = false
 
 @onready var movement_left : int = 0
 @onready var turn_in_progress : bool = false
-@onready var initiatives = [100]
+@export var initiatives = [50]
 @onready var direction : Vector2i = Vector2i(0,-1)
 
 func _ready():
@@ -23,6 +30,7 @@ func _process(delta):
 	var select_pressed = action_map.get_select()
 	if select_pressed:
 		pause_game()
+	
 	elif turn_in_progress and !pending_action:
 		var movement_vector = action_map.get_vector()
 		var button1_pressed = action_map.get_button_1()
@@ -36,6 +44,8 @@ func _process(delta):
 				move(movement_path)
 			elif held_object != null:
 				place_held_object()
+			else:
+				SignalBus._pickup.emit(self, direction + tilemap_position)
 		elif button2_pressed and held_object != null:
 			flip_held_object()
 		elif movement_vector != Vector2i.ZERO:
@@ -48,9 +58,8 @@ func _process(delta):
 			if len(movement_path) == 0 and direction != movement_vector:
 				set_direction(movement_vector)
 			elif len(movement_path) == 0:
-				if movement_left > 0:
+				if movement_left > 0 and !get_parent().is_obstacle(point):
 					movement_path.append(point)
-					update_movement_highlight()
 			else:
 				var previous
 				if len(movement_path) == 1:
@@ -59,42 +68,62 @@ func _process(delta):
 					previous = movement_path[-2]
 				if previous == point:
 					movement_path.pop_back()
-					update_movement_highlight()
 				elif !movement_path.has(point) and len(movement_path) < movement_left:
-					movement_path.append(point)
-				update_movement_highlight()
-			
+					if !get_parent().is_obstacle(point):
+						movement_path.append(point)
+			update_held_object_position()
+			update_highlight()
 			
 func query_obstacle(point):
 	return false
-func update_movement_highlight():
-	SignalBus._update_highlight.emit(movement_path, Gameboard2.Highlight_Color.RED)
+
+func update_held_object_position():
+	if _held != null:
+		var add
+		if direction == Vector2i(1,0) or direction == Vector2i(0,1):
+			var swizzled = Vector2i(_held.dimensions.y,_held.dimensions.x)
+			add = direction * swizzled
+		else:
+			add = direction
+		_held.tilemap_position = tilemap_position + add
+
+func update_highlight():
+	if pending_action:
+		return
+	if len(movement_path) != 0:
+		SignalBus._update_highlight.emit(movement_path, Gameboard2.Highlight_Color.RED, true)
+	elif held_object != null:
+		held_object.draw_placement_highlight()
+	else:
+		SignalBus._update_highlight.emit([],Gameboard2.Highlight_Color.RED, true)
 
 func place_held_object():
-	pass
+	SignalBus._place.emit(self,held_object)
+
 func flip_held_object():
-	pass
+	held_object.flip()
+	update_held_object_position()
+	update_highlight()
 func pause_game():
 	pass
 	
 func move(path):
 	movement_path = []
 	movement_left = movement_left - len(path)
-	update_movement_highlight()
+	update_highlight()
 	pending_action = true
 	for point in path:
-		print(tilemap_position)
 		move_timer.start()
 		set_direction(point - tilemap_position)
 		await move_timer.timeout
 		tilemap_position = point
 	pending_action = false
+	update_held_object_position()
+	update_highlight()
 	
 func start_turn():
 	movement_left = max_movement
-	print(tilemap_position)
 	movement_path = []
-	print(movement_path)
 	turn_in_progress = true
 	
 func end_turn():

@@ -45,10 +45,13 @@ var direction_to_cell_neighbor = {
 	Direction.SW: TileSet.CELL_NEIGHBOR_BOTTOM_LEFT_SIDE,
 	Direction.SE: TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_SIDE,
 }
+
 func _on_obstacle_changed():
 	update_obstacles()
+	
 func _on_bookshelf_state_changed(has_books):
 	books_on_shelf = has_books
+	
 func _ready():
 	if !Engine.is_editor_hint():
 		update_obstacles()
@@ -80,8 +83,7 @@ func y_sort_x_sort():
 			children[j+1] = children[j]
 			j -= 1
 		children[j + 1] = child
-		#
-
+		
 	for i in range(len(children)):
 		var child = children[i]
 		child.z_index = 98 - i

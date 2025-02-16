@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://b1l6laa5c6rre"]
 
 [ext_resource type="Script" path="res://scripts/RedecorationLevel/TurnLabel.gd" id="1_sf3v8"]
-[ext_resource type="Script" path="res://scripts/RedecorationLevel/debug_label.gd" id="2_72jlf"]
 [ext_resource type="PackedScene" uid="uid://bdo1a8a6684de" path="res://scenes/game_win_redecoration.tscn" id="3_fx0ht"]
 [ext_resource type="PackedScene" uid="uid://d0j7maoh01nji" path="res://scenes/RedecorationLevel/MrBlob.tscn" id="5_awr3a"]
 [ext_resource type="Script" path="res://scripts/RedecorationLevel/GameBoard2.gd" id="5_mh7kn"]
 [ext_resource type="TileSet" uid="uid://hbsxr8nos3sv" path="res://scenes/RedecorationLevel/tileset2.tres" id="6_cxe48"]
 [ext_resource type="PackedScene" uid="uid://26aoudbvlv7m" path="res://scenes/RedecorationLevel/player_1_redecoration_refactor.tscn" id="7_o1m32"]
+[ext_resource type="Script" path="res://scripts/MrBlob_refactor.gd" id="7_q24xa"]
 [ext_resource type="PackedScene" uid="uid://ci7cd1eqtlunf" path="res://scenes/RedecorationLevel/player_2_redecoration_refactor.tscn" id="8_qa1jd"]
 [ext_resource type="Texture2D" uid="uid://b1himfxh7e8bt" path="res://sprites/RedecorationLevel/Furniture/Door Frame Left.png" id="9_441ld"]
 [ext_resource type="Texture2D" uid="uid://bvpv2s8cbiqeu" path="res://sprites/RedecorationLevel/Furniture/Door Frame Right.png" id="10_3tsbf"]
@@ -16,6 +16,8 @@ font_size = 30
 
 [node name="RedecorationLevel" type="Node"]
 process_mode = 3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(55, -90)
@@ -32,19 +34,10 @@ text = "Mr. Blob's turn!"
 label_settings = SubResource("LabelSettings_knwib")
 script = ExtResource("1_sf3v8")
 
-[node name="debug" type="Label" parent="Camera2D/CanvasLayer"]
-visible = false
-offset_left = 127.0
-offset_top = 74.0
-offset_right = 167.0
-offset_bottom = 97.0
-script = ExtResource("2_72jlf")
-
 [node name="game_win" parent="Camera2D/CanvasLayer" instance=ExtResource("3_fx0ht")]
 process_mode = 3
 
 [node name="GameBoard" type="TileMap" parent="."]
-unique_name_in_owner = true
 y_sort_enabled = true
 tile_set = ExtResource("6_cxe48")
 format = 2
@@ -66,11 +59,11 @@ layer_3/tile_data = PackedInt32Array(-917515, 0, 0, -917514, 0, 0, -917513, 0, 0
 layer_4/name = "back_wall3"
 layer_4/y_sort_enabled = true
 layer_4/z_index = 5
-layer_4/tile_data = PackedInt32Array(-851972, 0, 0, -851971, 0, 0, -851969, 0, 0, -851970, 0, 0)
+layer_4/tile_data = PackedInt32Array(-851972, 0, 0, -851971, 0, 0, -851970, 0, 0, -851969, 0, 0)
 layer_5/name = "back_wall4"
 layer_5/y_sort_enabled = true
 layer_5/z_index = 6
-layer_5/tile_data = PackedInt32Array(-917509, 0, 0, -917507, 0, 0, -917508, 0, 0, -917506, 0, 0)
+layer_5/tile_data = PackedInt32Array(-917506, 0, 0, -917507, 0, 0, -917508, 0, 0, -917509, 0, 0)
 layer_6/name = "furniture"
 layer_6/y_sort_enabled = true
 layer_6/z_index = 99
@@ -86,29 +79,36 @@ layer_8/tile_data = PackedInt32Array()
 script = ExtResource("5_mh7kn")
 
 [node name="MrBlob" parent="GameBoard" instance=ExtResource("5_awr3a")]
-z_index = 96
+z_index = 4
 position = Vector2(352, -224)
 scale = Vector2(0.62, 0.62)
-script = null
+script = ExtResource("7_q24xa")
+tilemap_position = Vector2i(-4, -25)
+initiatives = [100]
 
 [node name="RedecorationPlayer1" parent="GameBoard" instance=ExtResource("7_o1m32")]
-position = Vector2(-32, -32)
+z_index = 95
+y_sort_enabled = true
+position = Vector2(176, -88)
 animation = &"move_nw"
-tilemap_position = Vector2i(-4, -1)
+tilemap_position = Vector2i(-1, -11)
 
 [node name="RedecorationPlayer2" parent="GameBoard" instance=ExtResource("8_qa1jd")]
-position = Vector2(64, -64)
-tilemap_position = Vector2i(-3, -6)
-
-[node name="DoorFrame left" type="Sprite2D" parent="."]
-z_index = 3
+z_index = 95
 y_sort_enabled = true
-position = Vector2(153, -141)
-texture = ExtResource("9_441ld")
-offset = Vector2(0, -1)
+position = Vector2(192, -96)
+tilemap_position = Vector2i(-1, -12)
+initiatives = [0]
 
-[node name="DoorFrame right" type="Sprite2D" parent="."]
+[node name="DoorFrame right" type="Sprite2D" parent="GameBoard"]
 z_index = 6
 y_sort_enabled = true
-position = Vector2(154, -141)
+position = Vector2(152, -143)
 texture = ExtResource("10_3tsbf")
+
+[node name="DoorFrame left" type="Sprite2D" parent="GameBoard"]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(152, -142)
+texture = ExtResource("9_441ld")
+offset = Vector2(0, -1)
