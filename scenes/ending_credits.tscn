@@ -1,80 +1,94 @@
-[gd_scene load_steps=14 format=3 uid="uid://cq4px7sr8q65y"]
+[gd_scene load_steps=16 format=3 uid="uid://cq4px7sr8q65y"]
 
 [ext_resource type="Script" path="res://scenes/ending_credits.gd" id="1_s4mnv"]
 [ext_resource type="Texture2D" uid="uid://bcolpegbvfd1x" path="res://sprites/EndingAndCredit/End_Credits-Sheet.png" id="1_v2570"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_58gun"]
-atlas = ExtResource("1_v2570")
-region = Rect2(0, 0, 1280, 720)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pi4kk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tda0b"]
 atlas = ExtResource("1_v2570")
 region = Rect2(2560, 0, 1280, 720)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i2g5k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu8a0"]
+atlas = ExtResource("1_v2570")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_num3u"]
+atlas = ExtResource("1_v2570")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igerq"]
 atlas = ExtResource("1_v2570")
 region = Rect2(3840, 0, 1280, 720)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ruqm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7s5q"]
 atlas = ExtResource("1_v2570")
 region = Rect2(5120, 0, 1280, 720)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ryb13"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_28lrx"]
 atlas = ExtResource("1_v2570")
 region = Rect2(6400, 0, 1280, 720)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oylo8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qnfd"]
 atlas = ExtResource("1_v2570")
 region = Rect2(7680, 0, 1280, 720)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sle2c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_12qv0"]
 atlas = ExtResource("1_v2570")
 region = Rect2(8960, 0, 1280, 720)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o8ee3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gftj3"]
 atlas = ExtResource("1_v2570")
 region = Rect2(10240, 0, 1280, 720)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xnlmj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg8ih"]
 atlas = ExtResource("1_v2570")
 region = Rect2(11520, 0, 1280, 720)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rkt8i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tpov"]
 atlas = ExtResource("1_v2570")
-region = Rect2(1280, 0, 1280, 720)
+region = Rect2(12800, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ovwy"]
+atlas = ExtResource("1_v2570")
+region = Rect2(14080, 0, 1280, 720)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rl450"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_58gun")
+"texture": SubResource("AtlasTexture_tda0b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pi4kk")
+"texture": SubResource("AtlasTexture_hu8a0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i2g5k")
+"texture": SubResource("AtlasTexture_num3u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ruqm")
+"texture": SubResource("AtlasTexture_igerq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ryb13")
+"texture": SubResource("AtlasTexture_r7s5q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oylo8")
+"texture": SubResource("AtlasTexture_28lrx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sle2c")
+"texture": SubResource("AtlasTexture_5qnfd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o8ee3")
+"texture": SubResource("AtlasTexture_12qv0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xnlmj")
+"texture": SubResource("AtlasTexture_gftj3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rkt8i")
+"texture": SubResource("AtlasTexture_dg8ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tpov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ovwy")
 }],
 "loop": false,
 "name": &"default",
@@ -93,7 +107,5 @@ script = ExtResource("1_s4mnv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(640, 361)
 sprite_frames = SubResource("SpriteFrames_rl450")
-frame = 9
-frame_progress = 1.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
