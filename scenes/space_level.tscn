@@ -113,7 +113,7 @@ shape = SubResource("WorldBoundaryShape2D_4p44d")
 zoom = Vector2(0.5, 0.5)
 
 [node name="PlayerShip" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("1_mn0o8")]
-position = Vector2(-543, -144)
+position = Vector2(-491, -141)
 collision_layer = 256
 collision_mask = 256
 
