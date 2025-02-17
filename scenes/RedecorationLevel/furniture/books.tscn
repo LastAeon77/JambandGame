@@ -17,6 +17,8 @@ animations = [{
 [node name="Books" type="Node2D" groups=["books", "obstacles", "tilemap_bound"]]
 z_index = 3
 script = ExtResource("1_ulwgc")
+desired_locations = null
+desired_location_flipped = null
 
 [node name="Normal" type="AnimatedSprite2D" parent="."]
 position = Vector2(-5, -25)

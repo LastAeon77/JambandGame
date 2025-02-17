@@ -8,7 +8,6 @@ func _ready():
 	SignalBus.connect("_redecoration_defeat",game_lost)
 	SignalBus.connect("_redecoration_victory",game_win)
 
-
 func _process(_delta):
 	if Input.is_action_just_pressed("start_player_1") or Input.is_action_just_pressed("start_player_2"):
 		get_tree().paused = true
@@ -33,6 +32,7 @@ func _process(_delta):
 		if($TryAgain.visible==true):
 			get_tree().reload_current_scene()
 		elif($MainMenu.visible==true):
+			get_tree().paused = false
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif($WinScreen.visible==true):
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
@@ -47,9 +47,9 @@ func _process(_delta):
 func game_win():
 	$WinScreen.visible = true
 
-
 func game_lost():
-	pass
+	get_tree().paused = true
+	$TryAgain.visible=true
 
 func restart():
 	$WinScreen.visible = false

@@ -28,18 +28,12 @@ signal _flower_defeat()
 
 signal _redecoration_defeat()
 signal _redecoration_victory()
-signal _blob_pickup()
-signal _blob_place()
-signal _blob_stage()
-signal _blob_end_turn()
-signal _update_highlight(points : Array, color : Gameboard2.Highlight_Color, clear : bool)
+signal _update_highlight(points : Array, color : GameBoard.Highlight_Color, clear : bool)
 signal _turn_changed(turn_number:int)
 signal _pickup(character, coord : Vector2i)
 signal _place(character,item)
-
 signal _end_turn
-signal _obstacle_changed()
-signal _bookshelf_state_changed(has_books)
+signal _transparency_altered(transparent : bool)
 signal _bee_sting(pixie : Node2D)
 # Called when the node enters the scene tree for the first time.
 func _ready():

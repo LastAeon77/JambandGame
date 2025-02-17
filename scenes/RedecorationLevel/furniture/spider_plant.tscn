@@ -18,6 +18,8 @@ animations = [{
 z_index = 3
 y_sort_enabled = true
 script = ExtResource("1_7ewlx")
+desired_locations = Array[Vector2i]([Vector2i(-9, -12), Vector2i(-5, -12)])
+desired_location_flipped = Array[bool]([false, false])
 
 [node name="Normal" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
