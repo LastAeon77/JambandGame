@@ -124,8 +124,16 @@ func place_object_in_house():
 				SignalBus._place.emit(self,held_object)
 			if held_object == null:
 				pending_action = false
-				
 				return
+			held_object.flip()
+			dimensions = Vector2i(held_object.dimensions.y,held_object.dimensions.x)
+			if (point - TOP_LEFT_LOCATION).x >= dimensions.x-1:
+				held_object.tilemap_position = point + Vector2i(0,dimensions.y -1)
+				SignalBus._place.emit(self,held_object)
+			if held_object == null:
+				pending_action = false
+				return
+			held_object.flip()
 		SignalBus._redecoration_defeat.emit()
 		pending_action = false
 
