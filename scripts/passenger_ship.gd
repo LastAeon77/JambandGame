@@ -13,7 +13,7 @@ var magnetic_ship: CharacterBody2D
 func _ready():
 	magnetic_ship = get_tree().get_first_node_in_group("Magnetic")
 	SignalBus.connect("_game_lost", ship_destroyed) 
-	SignalBus.connect("_moon_gem_stage_restart",restart)
+	#SignalBus.connect("_moon_gem_stage_restart",restart)
 	if SignalBus.curr_difficulty == SignalBus.Difficulties.EASY:
 		health = 70
 	elif SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM:
@@ -54,10 +54,10 @@ func _on_area_2d_area_entered(area:Area2D):
 	if area.is_in_group("asteroid"):
 		damaged()
 		
-func restart():
-	$ShipSprite.play("default")
-	$HealthBar.value = $HealthBar.max_value
-		
+#func restart():
+	#$ShipSprite.play("default")
+	#$HealthBar.value = $HealthBar.max_value
+		#
 
 func _on_ship_sprite_animation_finished():
 	if $ShipSprite.animation == "get_hit":

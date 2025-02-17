@@ -7,8 +7,6 @@ var prev_speed = 0
 func _ready():
 	#rotation = randf_range(0,2*PI)
 	rotation = 0
-	SignalBus.connect("_moon_gem_stage_restart", restart)
-	SignalBus.connect("_moon_gem_stage_clear",restart)
 	pass # Replace with function body.
 
 
@@ -38,6 +36,3 @@ func speed_up():
 func slow_down():
 	speed*=0.2
 	speed = max(1,speed)
-
-func restart():
-	queue_free()

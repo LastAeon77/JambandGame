@@ -21,11 +21,6 @@ func _process(delta):
 		curr_vector = up_vector
 	if scroll_base_offset.y < -100:
 		curr_vector = down_vector
-	
-	if scroll_base_offset.x < -1735 and not moon_gem_clear:
-		moon_gem_clear = true
-		SignalBus.emit_signal("_moon_gem_stage_clear")
-		velocity = 0
 
 
 

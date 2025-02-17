@@ -19,6 +19,7 @@ func _process(_delta):
 		$Pause_Continue.visible = true
 	if Input.is_action_just_pressed("submit"):
 		if ($WinScreen.visible==true):
+			get_tree().paused = false
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 			
 	if Input.is_action_just_pressed("right_player_1") or Input.is_action_just_pressed(("right_player_2")):
@@ -42,8 +43,6 @@ func _process(_delta):
 			get_tree().reload_current_scene()
 		elif($MainMenu.visible==true):
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-		elif($WinScreen.visible==true):
-			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif($Pause_Continue.visible == true):
 			$Pause_MainMenu.visible = false
 			$Pause_Continue.visible = false
@@ -53,6 +52,7 @@ func _process(_delta):
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func game_win():
+	get_tree().paused = true
 	$WinScreen.visible = true
 
 
