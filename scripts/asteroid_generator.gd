@@ -5,6 +5,12 @@ var asteroid_block = load("res://scenes/asteroid.tscn")
 func _ready():
 	SignalBus.connect("_pause",pause)
 	SignalBus.connect("_moon_gem_stage_restart", restart)
+	if SignalBus.curr_difficulty == SignalBus.Difficulties.EASY:
+		$Timer.wait_time = 1.2
+	elif SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM:
+		$Timer.wait_time = 0.8
+	elif SignalBus.curr_difficulty == SignalBus.Difficulties.HARD:
+		$Timer.wait_time = 0.4
 	pass # Replace with function body.
 
 
