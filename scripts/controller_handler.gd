@@ -55,7 +55,6 @@ func _input(event):
 		
 		if event.is_action_pressed("controller_start"):
 			Input.action_press("start_player_1")
-			print("player 1 start")
 		if event.is_action_released("controller_start"):
 			Input.action_release("start_player_1")
 	if event.device == player_two_controller and player_two_controller != -1:

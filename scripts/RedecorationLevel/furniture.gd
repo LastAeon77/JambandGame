@@ -10,7 +10,7 @@ class_name Furniture
 var dimensions : Vector2i = Vector2i(1,1)
 var on_ground = true
 var flipped = false
-var flipped_animation
+var flipped_animation = null
 
 @export var desired_locations : Array[Vector2i] = []
 @export var desired_location_flipped : Array[bool] = []
@@ -75,14 +75,14 @@ func set_tranparent(transparent):
 
 func draw_placement_highlight():
 	draw_desired_highlight()
-	SignalBus._update_highlight.emit(get_tiles(),GameBoard.Highlight_Color.GREEN,false)
+	SignalBus._update_highlight.emit(get_tiles(),GameBoard.Highlight_Color.BLUE,false)
 
 func draw_desired_highlight():
-	SignalBus._update_highlight.emit([],GameBoard.Highlight_Color.BLUE,true)
+	SignalBus._update_highlight.emit([],GameBoard.Highlight_Color.GREEN,true)
 	var desired_tiles = []
 	for i in range(len(desired_locations)):
 		desired_tiles.append_array(get_tiles(desired_locations[i],desired_location_flipped[i]))
-	SignalBus._update_highlight.emit(desired_tiles,GameBoard.Highlight_Color.BLUE,false)
+	SignalBus._update_highlight.emit(desired_tiles,GameBoard.Highlight_Color.GREEN,false)
 	
 func is_in_correct_spot():
 	if !on_ground:
@@ -91,7 +91,7 @@ func is_in_correct_spot():
 	if len(desired_locations) == 0:
 		return true
 	var index = desired_locations.find(tilemap_position)
-	if index != -1 and desired_location_flipped[index] == flipped:
+	if index != -1 and (desired_location_flipped[index] == flipped or flipped_animation == null):
 		return true
 	return false
 

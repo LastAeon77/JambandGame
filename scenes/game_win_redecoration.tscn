@@ -28,20 +28,34 @@ texture = ExtResource("2_xyj1a")
 
 [node name="Pause_Continue" type="TextureRect" parent="."]
 visible = false
+custom_minimum_size = Vector2(768, 630)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -105.0
+offset_right = 128.0
+offset_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_vwulq")
 
 [node name="Pause_MainMenu" type="TextureRect" parent="."]
 visible = false
+custom_minimum_size = Vector2(768, 630)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -315.0
+offset_right = 384.0
+offset_bottom = 315.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_fqclv")

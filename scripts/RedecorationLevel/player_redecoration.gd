@@ -11,7 +11,11 @@ var _held = null
 var movement_path = []
 var move_timer : Timer
 var pending_action = false
-@export var max_movement = 10
+const hard_max_movement = 5
+const med_max_movement = 8
+const easy_max_movement = 10
+
+var max_movement = 10
 @export var tilemap_position : Vector2i
 @export var move_time : float = 0.1
 @export var action_map : Resource
@@ -24,17 +28,26 @@ var pending_action = false
 func _ready():
 	move_timer = $Timer
 	move_timer.wait_time = move_time
-
+	match SignalBus.curr_difficulty:
+		SignalBus.Difficulties.HARD:
+			max_movement = hard_max_movement
+		SignalBus.Difficulties.MEDIUM:
+			max_movement = med_max_movement
+		SignalBus.Difficulties.EASY:
+			max_movement = easy_max_movement
+	
 func _process(delta):
 	var start_pressed = action_map.get_start()
-	if start_pressed:
-		pause_game()
-	
-	elif turn_in_progress and !pending_action:
+	if turn_in_progress and !pending_action:
 		var movement_vector = action_map.get_vector()
 		var button1_pressed = action_map.get_button_1()
 		var button2_pressed = action_map.get_button_2()
 		var select_pressed = action_map.get_select()
+		
+		
+		if movement_vector != Vector2i.ZERO or button1_pressed or button2_pressed or select_pressed:
+			SignalBus._action_taken.emit()
+		
 		
 		if select_pressed:
 			end_turn()
@@ -92,13 +105,12 @@ func update_highlight(draw_held = true):
 		return
 	if len(movement_path) != 0:
 		SignalBus._update_highlight.emit(movement_path, GameBoard.Highlight_Color.RED, true)
-		SignalBus._transparency_altered.emit(false)
+		
 	elif held_object != null and draw_held:
 		held_object.draw_placement_highlight()
-		SignalBus._transparency_altered.emit(true)
+		
 	else:
 		SignalBus._update_highlight.emit([],GameBoard.Highlight_Color.RED, true)
-		SignalBus._transparency_altered.emit(false)
 
 func place_held_object():
 	SignalBus._place.emit(self,held_object)
@@ -107,8 +119,6 @@ func flip_held_object():
 	held_object.flip()
 	update_held_object_position()
 	update_highlight()
-func pause_game():
-	pass
 	
 func move(path):
 	movement_path = []
@@ -125,15 +135,16 @@ func move(path):
 	update_highlight()
 	
 func start_turn():
+	SignalBus._transparency_altered.emit(true)
 	movement_left = max_movement
 	movement_path = []
 	turn_in_progress = true
 	update_highlight()
 	
 func end_turn():
+	SignalBus._transparency_altered.emit(false)
 	SignalBus._end_turn.emit()
 	turn_in_progress = false
-
 func set_direction(vector):
 	direction = vector
 	match direction:

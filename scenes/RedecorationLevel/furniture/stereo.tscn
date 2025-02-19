@@ -96,8 +96,8 @@ y_sort_enabled = true
 script = ExtResource("1_0pp6g")
 normal_dimensions = Vector2i(1, 3)
 flipped_dimensions = Vector2i(3, 1)
-desired_locations = Array[Vector2i]([Vector2i(-1, -12)])
-desired_location_flipped = Array[bool]([false])
+desired_locations = Array[Vector2i]([Vector2i(-1, -12), Vector2i(-9, -5)])
+desired_location_flipped = Array[bool]([false, true])
 
 [node name="Normal" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true

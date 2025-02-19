@@ -10,7 +10,14 @@ enum Highlight_Color {RED, GREEN, BLUE}
 @onready var player1 = $RedecorationPlayer1 
 @onready var player2 = $RedecorationPlayer2
 @onready var turn_label = $"%TurnLabel"
+@onready var start_turn_popup = $"%StartTurnPanel"
+@onready var moves_left_label = $"%MovesLeftLabel"
 
+@onready var easy_num_rounds_after = 10
+@onready var med_num_rounds_after = 5
+@onready var hard_num_rounds_after = 2
+
+var rounds_left = 1
 var turn_order
 var turn_index = 0
 var border
@@ -24,7 +31,7 @@ func get_color_source_id(color : Highlight_Color):
 			return 11
 		Highlight_Color.BLUE:
 			return 12
-	
+
 func get_border_tiles():
 	var border = []
 	border.append_array(get_used_cells(2))
@@ -69,19 +76,14 @@ func sort_children():
 		var a_top_left = a.get_top_left() if a.has_method("get_top_left") else a.tilemap_position
 		var b_top_left =  b.get_top_left() if b.has_method("get_top_left") else b.tilemap_position
 		
-		if a.name == "Couch" and b == player1 or b.name=="Couch" and a == player1:
-			pass
-		
-		if a_top_left.y > bpos.y:
-			return true
-		if b_top_left.y > apos.y:
+		if apos.x < b_top_left.x:
 			return false
-		
-		if apos.x <= bpos.x and apos.y <= bpos.y :
-			return false
-		if bpos.x <= apos.x and bpos.y <= apos.y :
+		if bpos.x < a_top_left.x:
 			return true
-		
+		if apos.y < bpos.y:
+			return false
+		if bpos.y < apos.y:
+			return true
 		return false
 	
 	for i in range(1,len(children)):
@@ -157,7 +159,6 @@ func draw_highlight(positions, color, clear):
 	for pos in positions:
 		set_cell(1,pos,get_color_source_id(color),Vector2i.ZERO)
 
-
 func clear_highlight():
 	clear_layer(1)
 	SignalBus._highlight_changed.emit(false)
@@ -199,6 +200,14 @@ func _ready():
 		SignalBus._place.connect(try_place)
 		border = get_border_tiles()
 		start_next_turn()
+		match SignalBus.curr_difficulty:
+			SignalBus.Difficulties.HARD:
+				rounds_left = len(mr_blob.furniture_queue) + hard_num_rounds_after
+			SignalBus.Difficulties.MEDIUM:
+				rounds_left = len(mr_blob.furniture_queue) + med_num_rounds_after
+			SignalBus.Difficulties.EASY:
+				rounds_left = len(mr_blob.furniture_queue) + easy_num_rounds_after
+		
 		
 func _process(_delta):
 	if !Engine.is_editor_hint():
@@ -217,16 +226,25 @@ func start_next_turn():
 	elif turn_index >= len(turn_order) - 1:
 		turn_index = 0
 		turn_order = get_turn_order()
+		rounds_left = rounds_left - 1
+		if rounds_left == 0:
+			SignalBus._redecoration_defeat.emit()
 	else:
 		turn_index += 1
 	turn_order[turn_index].start_turn()
-	update_turn_label(turn_order[turn_index])
+	update_turn_labels(turn_order[turn_index])
 
-func update_turn_label(character):
+func update_turn_labels(character):
 	match character:
 		mr_blob:
 			turn_label.set_turn(0)
+			start_turn_popup.set_turn(0)
+			moves_left_label.current_player = null
 		player1:
 				turn_label.set_turn(1)
+				start_turn_popup.set_turn(1)
+				moves_left_label.current_player = player1
 		player2:
 				turn_label.set_turn(2)
+				start_turn_popup.set_turn(2)
+				moves_left_label.current_player = player2

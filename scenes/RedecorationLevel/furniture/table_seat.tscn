@@ -19,6 +19,8 @@ z_index = 3
 y_sort_enabled = true
 position = Vector2(-1, 0)
 script = ExtResource("1_470k2")
+desired_locations = Array[Vector2i]([Vector2i(-5, -6), Vector2i(-5, -9), Vector2i(-6, -3), Vector2i(-3, -3)])
+desired_location_flipped = Array[bool]([false, false, false, false])
 
 [node name="Normal" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true

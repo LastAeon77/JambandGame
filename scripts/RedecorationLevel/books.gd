@@ -14,6 +14,7 @@ func place(placement_data = null):
 
 func pick_up():
 	on_ground = false
+	on_shelf = false
 	remove_from_group("obstacles")
 	visible = false
 	return self

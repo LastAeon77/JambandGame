@@ -35,6 +35,8 @@ signal _place(character,item)
 signal _end_turn
 signal _transparency_altered(transparent : bool)
 signal _bee_sting(pixie : Node2D)
+signal _action_taken
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ensure_save_file_exists()

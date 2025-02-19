@@ -1,24 +1,55 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1l6laa5c6rre"]
+[gd_scene load_steps=22 format=3 uid="uid://b1l6laa5c6rre"]
 
 [ext_resource type="AudioStream" uid="uid://d2bcwodqp261f" path="res://Sound/RedecorationLevel/Redecoration LoFi Song.mp3" id="1_lun3h"]
-[ext_resource type="SystemFont" uid="uid://bss1g27h68qmq" path="res://resources/RedecorationLevel/font.tres" id="2_5xa3v"]
 [ext_resource type="Script" path="res://scripts/RedecorationLevel/TurnLabel.gd" id="2_xxblj"]
 [ext_resource type="PackedScene" uid="uid://bdo1a8a6684de" path="res://scenes/game_win_redecoration.tscn" id="3_j5rxm"]
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/RoundsLeftLabel.gd" id="3_r0toy"]
 [ext_resource type="TileSet" uid="uid://hbsxr8nos3sv" path="res://scenes/RedecorationLevel/tileset2.tres" id="4_ba8q2"]
 [ext_resource type="Script" path="res://scripts/RedecorationLevel/GameBoard.gd" id="5_6qc8g"]
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/MovesLeftLabel.gd" id="5_8ukh2"]
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/StartTurnPopup.gd" id="5_a8fcp"]
 [ext_resource type="PackedScene" uid="uid://d0j7maoh01nji" path="res://scenes/RedecorationLevel/MrBlob.tscn" id="6_einn0"]
 [ext_resource type="PackedScene" uid="uid://26aoudbvlv7m" path="res://scenes/RedecorationLevel/player_1_redecoration.tscn" id="7_l00pq"]
 [ext_resource type="PackedScene" uid="uid://ci7cd1eqtlunf" path="res://scenes/RedecorationLevel/player_2_redecoration.tscn" id="8_1avvi"]
 [ext_resource type="Texture2D" uid="uid://bvpv2s8cbiqeu" path="res://sprites/RedecorationLevel/Furniture/Door Frame Right.png" id="9_qdnck"]
 [ext_resource type="Texture2D" uid="uid://b1himfxh7e8bt" path="res://sprites/RedecorationLevel/Furniture/Door Frame Left.png" id="10_dslyp"]
 
-[sub_resource type="Theme" id="Theme_1jbxb"]
-default_font = ExtResource("2_5xa3v")
-default_font_size = 40
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1raf2"]
 bg_color = Color(0.262745, 0.262745, 0.262745, 0.556863)
 corner_radius_bottom_right = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_se1u3"]
+font_size = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqqyi"]
+content_margin_left = 5.0
+content_margin_top = 2.0
+content_margin_right = 5.0
+content_margin_bottom = 2.0
+bg_color = Color(0.262745, 0.262745, 0.262745, 0.556863)
+corner_radius_top_right = 5
+expand_margin_top = 2.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_7l3tk"]
+font_size = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xa1u"]
+bg_color = Color(0.262745, 0.262745, 0.262745, 0.556863)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eeebl"]
+font_size = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qc6xl"]
+bg_color = Color(0.262745, 0.262745, 0.262745, 0.556863)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nhbik"]
+font_size = 40
 
 [node name="RedecorationLevel" type="Node"]
 process_mode = 3
@@ -42,27 +73,83 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="Camera2D/CanvasLayer/ui_root"]
-layout_mode = 0
-offset_right = 385.0
-offset_bottom = 46.0
-theme = SubResource("Theme_1jbxb")
-
-[node name="PanelContainer" type="PanelContainer" parent="Camera2D/CanvasLayer/ui_root/GridContainer"]
-layout_mode = 2
+[node name="TurnLabelPanel" type="PanelContainer" parent="Camera2D/CanvasLayer/ui_root"]
+layout_mode = 1
+offset_right = 119.0
+offset_bottom = 23.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1raf2")
 
-[node name="TurnLabel" type="Label" parent="Camera2D/CanvasLayer/ui_root/GridContainer/PanelContainer"]
+[node name="TurnLabel" type="Label" parent="Camera2D/CanvasLayer/ui_root/TurnLabelPanel"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Mr. Blob's turn!"
+label_settings = SubResource("LabelSettings_se1u3")
 script = ExtResource("2_xxblj")
+
+[node name="PanelContainer" type="PanelContainer" parent="Camera2D/CanvasLayer/ui_root"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+offset_right = 55.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fqqyi")
+
+[node name="RoundsLeftLabel" type="Label" parent="Camera2D/CanvasLayer/ui_root/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+label_settings = SubResource("LabelSettings_7l3tk")
+script = ExtResource("3_r0toy")
+
+[node name="StartTurnPanel" type="PanelContainer" parent="Camera2D/CanvasLayer/ui_root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6xa1u")
+script = ExtResource("5_a8fcp")
+
+[node name="StartTurnPopupLabel" type="Label" parent="Camera2D/CanvasLayer/ui_root/StartTurnPanel"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_eeebl")
+
+[node name="MovesLeftPanel" type="PanelContainer" parent="Camera2D/CanvasLayer/ui_root"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qc6xl")
+
+[node name="MovesLeftLabel" type="Label" parent="Camera2D/CanvasLayer/ui_root/MovesLeftPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "20 moves left!"
+label_settings = SubResource("LabelSettings_nhbik")
+script = ExtResource("5_8ukh2")
 
 [node name="game_win" parent="Camera2D/CanvasLayer/ui_root" instance=ExtResource("3_j5rxm")]
 process_mode = 3
 layout_mode = 1
 
 [node name="GameBoard" type="TileMap" parent="."]
+unique_name_in_owner = true
 y_sort_enabled = true
 position = Vector2(0, -1)
 tile_set = ExtResource("4_ba8q2")
@@ -111,6 +198,7 @@ scale = Vector2(0.62, 0.62)
 tilemap_position = Vector2i(-4, -25)
 
 [node name="RedecorationPlayer1" parent="GameBoard" instance=ExtResource("7_l00pq")]
+unique_name_in_owner = true
 z_index = 98
 y_sort_enabled = true
 position = Vector2(176, -88)
@@ -118,6 +206,7 @@ animation = &"move_nw"
 tilemap_position = Vector2i(-1, -11)
 
 [node name="RedecorationPlayer2" parent="GameBoard" instance=ExtResource("8_1avvi")]
+unique_name_in_owner = true
 z_index = 97
 y_sort_enabled = true
 position = Vector2(192, -96)
