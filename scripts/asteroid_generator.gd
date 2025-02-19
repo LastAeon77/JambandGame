@@ -6,11 +6,11 @@ func _ready():
 	SignalBus.connect("_pause",pause)
 	SignalBus.connect("_moon_gem_stage_restart", restart)
 	if SignalBus.curr_difficulty == SignalBus.Difficulties.EASY:
-		$Timer.wait_time = 1.2
+		$Timer.wait_time = 1.0
 	elif SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM:
-		$Timer.wait_time = 0.8
+		$Timer.wait_time = 0.7
 	elif SignalBus.curr_difficulty == SignalBus.Difficulties.HARD:
-		$Timer.wait_time = 0.4
+		$Timer.wait_time = 0.38
 	pass # Replace with function body.
 
 
