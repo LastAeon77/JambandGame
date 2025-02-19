@@ -13,9 +13,9 @@ var curr_highlight = -1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# for Debug:
-	SignalBus.beat_moon = true
-	SignalBus.beat_flower = true
-	SignalBus.beat_redecorate = true
+	#SignalBus.beat_moon = true
+	#SignalBus.beat_flower = true
+	#SignalBus.beat_redecorate = true
 	$MainScene/Ending.visible = false
 	for x in $MainScene.get_children():
 		if(x.get_child(0) is Button):
