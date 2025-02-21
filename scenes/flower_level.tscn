@@ -12198,7 +12198,16 @@ position = Vector2(-253, -211)
 position = Vector2(353, -8)
 
 [node name="PinkFlowerSpawner3" parent="." instance=ExtResource("13_am4od")]
-position = Vector2(2, -297)
+position = Vector2(-40, -296)
+
+[node name="PinkFlowerSpawner4" parent="." instance=ExtResource("13_am4od")]
+position = Vector2(32, -296)
+
+[node name="PinkFlowerSpawner5" parent="." instance=ExtResource("13_am4od")]
+position = Vector2(448, -288)
+
+[node name="PinkFlowerSpawner6" parent="." instance=ExtResource("13_am4od")]
+position = Vector2(-456, -296)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_ba2fw")

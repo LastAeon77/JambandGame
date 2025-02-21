@@ -18,11 +18,10 @@ func _physics_process(delta):
 		
 	if resume:
 		progress_ratio = min(progress_ratio + delta * speed,1)
+		$WorldBoundries/ProgressBar.value = progress_ratio*100
 	if progress_ratio >=1:
 		SignalBus.emit_signal("_moon_gem_stage_clear")
 		
-
-	
 func restart():
 	progress_ratio = 0
 	

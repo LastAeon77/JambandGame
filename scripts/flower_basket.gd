@@ -3,6 +3,7 @@ extends Area2D
 var victory_amount = 12
 var current_amount = 0
 func _ready():
+	$RichTextLabel.text = "%s/%s" % [str(current_amount),str(victory_amount)]
 	current_amount = 0
 	$AnimatedSprite2D.play("0")
 
@@ -15,6 +16,7 @@ func _process(delta):
 func _on_body_entered(body: CharacterBody2D):
 	if body.is_in_group("pixie"):
 		fill_basket(body.flower_drop())
+	$RichTextLabel.text = "%s/%s" % [str(current_amount),str(victory_amount)]
 		
 
 func fill_basket(num:int):

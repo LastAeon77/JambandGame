@@ -175,4 +175,11 @@ shape = SubResource("CircleShape2D_ccl3l")
 sprite_frames = SubResource("SpriteFrames_my68v")
 animation = &"12"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -22.0
+offset_top = 17.0
+offset_right = 30.0
+offset_bottom = 40.0
+text = "11/12"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

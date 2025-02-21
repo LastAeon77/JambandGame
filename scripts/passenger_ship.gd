@@ -42,6 +42,7 @@ func _physics_process(delta):
 	
 func damaged():
 	$HealthBar.value -= 10
+	$Thump.play()
 	if $HealthBar.value<=0:
 		$ShipSprite.play("get_hit")
 		
