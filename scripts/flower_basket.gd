@@ -22,7 +22,7 @@ func _on_body_entered(body: CharacterBody2D):
 func fill_basket(num:int):
 	current_amount += num
 	$AnimatedSprite2D.play(str(min(current_amount,12)))
-	if current_amount > victory_amount:
+	if current_amount >= victory_amount:
 		SignalBus.emit_signal("_flower_victory")
 
 
