@@ -9,7 +9,7 @@ var text_template = """
 
 <Text>
 
-PRESS "A" for next dialogue
+PRESS Controller Button "A" or Keyboard "Enter" for next dialogue.
 """
 
 # Called when the node enters the scene tree for the first time.
@@ -22,7 +22,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-		if (Input.is_action_just_pressed("button_1_player_1") or Input.is_action_just_pressed("button_1_player_2")):
+		if (Input.is_action_just_pressed("button_1_player_1") or Input.is_action_just_pressed("button_1_player_2") or Input.is_action_just_pressed("start_player_1")):
 			next_story()
 		
 
