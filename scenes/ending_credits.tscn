@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b07m8h6okpfqh" path="res://sprites/EndingAndCredit/Credit_1.png" id="2_hgcf1"]
 [ext_resource type="Texture2D" uid="uid://qtd5j2xqe3iw" path="res://sprites/EndingAndCredit/Credit_2.png" id="3_c1jn7"]
 [ext_resource type="Texture2D" uid="uid://d2uixagnh12yn" path="res://sprites/EndingAndCredit/Credit_3.png" id="4_8gc1b"]
+[ext_resource type="Texture2D" uid="uid://p3a5hq6v8ike" path="res://sprites/EndingAndCredit/Credit_Theme_Songs.png" id="6_7knuj"]
 [ext_resource type="Texture2D" uid="uid://h8kb7y0ng4iu" path="res://sprites/EndingAndCredit/Credit_Cursive.png" id="6_y5eif"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_num3u"]
@@ -30,10 +31,6 @@ region = Rect2(7680, 0, 1280, 720)
 [sub_resource type="AtlasTexture" id="AtlasTexture_12qv0"]
 atlas = ExtResource("1_v2570")
 region = Rect2(8960, 0, 1280, 720)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gftj3"]
-atlas = ExtResource("1_v2570")
-region = Rect2(10240, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dg8ih"]
 atlas = ExtResource("1_v2570")
@@ -78,7 +75,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_12qv0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gftj3")
+"texture": ExtResource("6_7knuj")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dg8ih")

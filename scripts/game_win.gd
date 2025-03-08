@@ -57,7 +57,7 @@ func _process(_delta):
 			get_tree().paused = false
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 			
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("start_player_1") or Input.is_action_just_pressed("start_player_2"):
 		get_tree().paused = true
 		$Pause_Continue.visible = true
 		
