@@ -12,6 +12,19 @@ func _ready():
 	print("Player 2 controller:", player_two_controller)
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	Input.joy_connection_changed.connect(_on_joy_connection_changed)
+	
+func _on_joy_connection_changed(id, connected):
+	if connected:
+		if player_one_controller == -1:
+			player_one_controller = id
+		elif player_two_controller == -1:
+			player_two_controller = id
+	else:
+		if player_one_controller == id:
+			player_one_controller = -1
+		elif player_two_controller == id:
+			player_two_controller = -1
 	
 func _input(event):
 	if event.device == player_one_controller and player_one_controller != -1:
