@@ -27,6 +27,7 @@ signal _moon_story_next()
 signal _flower_victory()
 
 signal _flower_defeat()
+signal _controller_unplugged()
 
 signal _redecoration_defeat()
 signal _redecoration_victory()

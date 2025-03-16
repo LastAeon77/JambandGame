@@ -7,6 +7,7 @@ func _ready():
 	visible = true
 	SignalBus.connect("_redecoration_defeat",game_lost)
 	SignalBus.connect("_redecoration_victory",game_win)
+	SignalBus._controller_unplugged.connect(_on_controller_unplugged)
 	if SignalBus.get_redecoration_first():
 		$Pause_Continue.visible = true
 		SignalBus.set_redecoration_first(false)
@@ -58,4 +59,6 @@ func game_lost():
 func restart():
 	$WinScreen.visible = false
 	
-
+func _on_controller_unplugged():
+	get_tree().paused = true
+	$Pause_Continue.visible = true

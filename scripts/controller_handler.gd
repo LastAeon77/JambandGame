@@ -23,9 +23,10 @@ func _on_joy_connection_changed(id, connected):
 	else:
 		if player_one_controller == id:
 			player_one_controller = -1
+			SignalBus._controller_unplugged.emit()			
 		elif player_two_controller == id:
 			player_two_controller = -1
-	
+			SignalBus._controller_unplugged.emit()
 func _input(event):
 	if event.device == player_one_controller and player_one_controller != -1:
 		var strength = 1.0

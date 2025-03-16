@@ -7,6 +7,7 @@ func _ready():
 	SignalBus.connect("_game_lost",game_lost)
 	SignalBus.connect("_moon_gem_stage_clear",game_win)
 	SignalBus.connect("_moon_gem_stage_restart",restart)
+	SignalBus._controller_unplugged.connect(_on_controller_unplugged)
 	if SignalBus.get_moon_first():
 		get_tree().paused = true
 		$Pause_Continue.visible = true
@@ -62,5 +63,8 @@ func game_lost():
 func restart():
 	$WinScreen.visible = false
 	
+func _on_controller_unplugged():
+	get_tree().paused = true
+	$Pause_Continue.visible = true
 
 

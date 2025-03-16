@@ -11,6 +11,7 @@ func _ready():
 	SignalBus.connect("_flower_defeat",flower_defeat)
 	SignalBus.connect("_moon_gem_stage_clear",game_win)
 	SignalBus.connect("_moon_gem_stage_restart",restart)
+	SignalBus._controller_unplugged.connect(_on_controller_unplugged)
 	$WinScreen.visible = false
 	$MainMenu.visible = false
 	$MainMenu.visible = false
@@ -76,4 +77,6 @@ func flower_defeat():
 func restart():
 	$WinScreen.visible = false
 	
-	
+func _on_controller_unplugged():
+	get_tree().paused = true
+	$Pause_Continue.visible = true
