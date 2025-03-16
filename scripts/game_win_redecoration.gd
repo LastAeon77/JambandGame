@@ -7,6 +7,10 @@ func _ready():
 	visible = true
 	SignalBus.connect("_redecoration_defeat",game_lost)
 	SignalBus.connect("_redecoration_victory",game_win)
+	if SignalBus.get_redecoration_first():
+		$Pause_Continue.visible = true
+		SignalBus.set_redecoration_first(false)
+		get_tree().paused = true
 
 func _process(_delta):
 	if Input.is_action_just_pressed("start_player_1") or Input.is_action_just_pressed("start_player_2"):

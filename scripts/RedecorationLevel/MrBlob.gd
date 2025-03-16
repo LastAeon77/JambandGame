@@ -14,7 +14,7 @@ const START_LOCATION = Vector2i(-4,-25)
 const TOP_LEFT_LOCATION = Vector2i(-9,-12)
 
 @export var tilemap_position: Vector2i
-@export var initiatives = [100]
+@export var initiatives = [100,49]
 @export var move_time : float = 0.12
 
 @onready var sprite :AnimatedSprite2D = $AnimatedSprite2D
@@ -40,6 +40,7 @@ func get_turn_actions() -> Array[Callable]:
 		actions.append(move_to_location.bind(STAGING_AREA_LOCATION))
 		actions.append(set_direction.bind(Vector2i(-1,0)))
 		actions.append(wait.bind(0.25))
+		actions.append(flash_staged_highlight)
 		actions.append(pickup_object_in_staging)
 		actions.append(move_to_location.bind(DOORWAY_LOCATION))
 		actions.append(place_object_in_house)
@@ -51,7 +52,6 @@ func get_turn_actions() -> Array[Callable]:
 		actions.append(set_direction.bind(Vector2i(-1,0)))
 		actions.append(wait.bind(0.25))
 		actions.append(stage_next_object)
-		actions.append(flash_staged_highlight)
 		actions.append(move_to_location.bind(START_LOCATION))
 		actions.append(set_direction.bind(Vector2i(0,1)))
 		
@@ -97,7 +97,7 @@ func stage_next_object():
 	item.tilemap_position = STAGING_AREA_LOCATION + Vector2i(-1,0)
 	get_parent().add_child(item)
 	object_in_staging = item
-
+	item.play_place_sound()
 func flash_staged_highlight():
 	pending_action = true
 	SignalBus._transparency_altered.emit(true)

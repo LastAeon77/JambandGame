@@ -48,7 +48,6 @@ func _process(delta):
 		if movement_vector != Vector2i.ZERO or button1_pressed or button2_pressed or select_pressed:
 			SignalBus._action_taken.emit()
 		
-		
 		if select_pressed:
 			end_turn()
 		elif button1_pressed:
@@ -74,7 +73,7 @@ func _process(delta):
 					movement_path.append(point)
 			else:
 				var previous
-				if len(movement_path) == 1:
+				if len(movement_path) == 1: 
 					previous = tilemap_position
 				else:
 					previous = movement_path[-2]
@@ -142,6 +141,7 @@ func start_turn():
 	update_highlight()
 	
 func end_turn():
+	update_highlight(false)
 	SignalBus._transparency_altered.emit(false)
 	SignalBus._end_turn.emit()
 	turn_in_progress = false

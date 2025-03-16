@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b1l6laa5c6rre"]
+[gd_scene load_steps=23 format=3 uid="uid://b1l6laa5c6rre"]
 
 [ext_resource type="AudioStream" uid="uid://d2bcwodqp261f" path="res://Sound/RedecorationLevel/Redecoration LoFi Song.mp3" id="1_lun3h"]
 [ext_resource type="Script" path="res://scripts/RedecorationLevel/TurnLabel.gd" id="2_xxblj"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/RedecorationLevel/StartTurnPopup.gd" id="5_a8fcp"]
 [ext_resource type="PackedScene" uid="uid://d0j7maoh01nji" path="res://scenes/RedecorationLevel/MrBlob.tscn" id="6_einn0"]
 [ext_resource type="PackedScene" uid="uid://26aoudbvlv7m" path="res://scenes/RedecorationLevel/player_1_redecoration.tscn" id="7_l00pq"]
+[ext_resource type="Script" path="res://scripts/RedecorationLevel/InventoryLabel.gd" id="7_yvtqr"]
 [ext_resource type="PackedScene" uid="uid://ci7cd1eqtlunf" path="res://scenes/RedecorationLevel/player_2_redecoration.tscn" id="8_1avvi"]
 [ext_resource type="Texture2D" uid="uid://bvpv2s8cbiqeu" path="res://sprites/RedecorationLevel/Furniture/Door Frame Right.png" id="9_qdnck"]
 [ext_resource type="Texture2D" uid="uid://b1himfxh7e8bt" path="res://sprites/RedecorationLevel/Furniture/Door Frame Left.png" id="10_dslyp"]
@@ -52,7 +53,6 @@ bg_color = Color(0.262745, 0.262745, 0.262745, 0.556863)
 font_size = 40
 
 [node name="RedecorationLevel" type="Node"]
-process_mode = 3
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_lun3h")
@@ -148,6 +148,28 @@ script = ExtResource("5_8ukh2")
 process_mode = 3
 layout_mode = 1
 
+[node name="PanelContainer2" type="PanelContainer" parent="Camera2D/CanvasLayer/ui_root"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/ui_root/PanelContainer2"]
+layout_mode = 2
+
+[node name="Player1Inventory" type="Label" parent="Camera2D/CanvasLayer/ui_root/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("7_yvtqr")
+
+[node name="Player2Inventory" type="Label" parent="Camera2D/CanvasLayer/ui_root/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("7_yvtqr")
+player = 2
+
 [node name="GameBoard" type="TileMap" parent="."]
 unique_name_in_owner = true
 y_sort_enabled = true
@@ -190,6 +212,7 @@ layer_8/y_sort_enabled = true
 layer_8/z_index = 101
 layer_8/tile_data = PackedInt32Array()
 script = ExtResource("5_6qc8g")
+debug_positions = 1
 
 [node name="MrBlob" parent="GameBoard" instance=ExtResource("6_einn0")]
 z_index = 4
@@ -202,7 +225,6 @@ unique_name_in_owner = true
 z_index = 98
 y_sort_enabled = true
 position = Vector2(176, -88)
-animation = &"move_nw"
 tilemap_position = Vector2i(-1, -11)
 
 [node name="RedecorationPlayer2" parent="GameBoard" instance=ExtResource("8_1avvi")]

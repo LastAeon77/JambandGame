@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://26aoudbvlv7m"]
+[gd_scene load_steps=12 format=3 uid="uid://26aoudbvlv7m"]
 
 [ext_resource type="Texture2D" uid="uid://bswshc6t7kqm8" path="res://sprites/RedecorationLevel/Mover1/Mover 1 NE.png" id="1_lcbk0"]
 [ext_resource type="Texture2D" uid="uid://dfbri8vs7n60c" path="res://sprites/RedecorationLevel/Mover1/Mover 1 NW.png" id="2_wa0h0"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://scripts/RedecorationLevel/player_redecoration.gd" id="5_l10vi"]
 [ext_resource type="Texture2D" uid="uid://djvwiknrujs4b" path="res://sprites/RedecorationLevel/Furniture/Spider Plant.png" id="6_j30ey"]
 [ext_resource type="Resource" uid="uid://cd0g5j6aebt4g" path="res://resources/RedecorationLevel/player_1_action_map.tres" id="6_un882"]
+[ext_resource type="Texture2D" uid="uid://cncvqmfkk8rn7" path="res://sprites/RedecorationLevel/Furniture/Book Shelf.png" id="8_mqk2t"]
+[ext_resource type="Texture2D" uid="uid://bi8n4hp2k03ek" path="res://sprites/RedecorationLevel/Furniture/Books.png" id="9_b6m8v"]
+[ext_resource type="Texture2D" uid="uid://djb8q338wkno7" path="res://sprites/RedecorationLevel/Furniture/Lamp.png" id="10_j5l7m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vsdmt"]
 animations = [{
@@ -47,7 +50,7 @@ animations = [{
 z_index = 3
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_vsdmt")
-animation = &"move_sw"
+animation = &"move_nw"
 offset = Vector2(35, -66)
 script = ExtResource("5_l10vi")
 action_map = ExtResource("6_un882")
@@ -56,12 +59,32 @@ action_map = ExtResource("6_un882")
 one_shot = true
 
 [node name="icons" type="Node2D" parent="."]
-visible = false
 
 [node name="SpiderPlant" type="Sprite2D" parent="icons"]
 visible = false
 modulate = Color(1, 1, 1, 0.545098)
 z_index = 3
-position = Vector2(5.68434e-14, -76)
+position = Vector2(4, -80)
 scale = Vector2(0.63, 0.63)
 texture = ExtResource("6_j30ey")
+
+[node name="Bookshelf" type="Sprite2D" parent="icons"]
+visible = false
+modulate = Color(1, 1, 1, 0.545098)
+position = Vector2(10, -66)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("8_mqk2t")
+
+[node name="Books" type="Sprite2D" parent="icons"]
+visible = false
+modulate = Color(1, 1, 1, 0.545098)
+position = Vector2(-2, -80)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_b6m8v")
+
+[node name="Lamp" type="Sprite2D" parent="icons"]
+visible = false
+modulate = Color(1, 1, 1, 0.545098)
+position = Vector2(4, -72)
+scale = Vector2(0.43, 0.43)
+texture = ExtResource("10_j5l7m")

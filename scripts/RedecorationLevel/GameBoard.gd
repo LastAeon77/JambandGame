@@ -3,6 +3,10 @@ extends TileMap
 class_name GameBoard
 
 @export var align : bool = false
+@export var align_to_desired_positions : bool = false
+@export var debug_positions : int = 0
+
+
 
 enum Direction {NW,NE, SW, SE}
 enum Highlight_Color {RED, GREEN, BLUE} 
@@ -147,6 +151,12 @@ func update_tilemap_positions():
 		if "tilemap_position" in node:
 			node.tilemap_position = local_to_map(node.position)
 
+func move_to_desired(index):
+	var children = get_tilemap_bound_children()
+	for node in children:
+		if "desired_locations" in node and len(node.desired_locations) > index:
+			node.tilemap_position = node.desired_locations[index]
+
 func align_children_to_tilemap():
 	var children = get_children()
 	for child in children:
@@ -202,11 +212,11 @@ func _ready():
 		start_next_turn()
 		match SignalBus.curr_difficulty:
 			SignalBus.Difficulties.HARD:
-				rounds_left = len(mr_blob.furniture_queue) + hard_num_rounds_after
+				rounds_left = len(mr_blob.furniture_queue)/len(mr_blob.initiatives) + hard_num_rounds_after
 			SignalBus.Difficulties.MEDIUM:
-				rounds_left = len(mr_blob.furniture_queue) + med_num_rounds_after
+				rounds_left = len(mr_blob.furniture_queue)/len(mr_blob.initiatives)  + med_num_rounds_after
 			SignalBus.Difficulties.EASY:
-				rounds_left = len(mr_blob.furniture_queue) + easy_num_rounds_after
+				rounds_left = len(mr_blob.furniture_queue)/len(mr_blob.initiatives)  + easy_num_rounds_after
 		
 		
 func _process(_delta):
@@ -217,7 +227,10 @@ func _process(_delta):
 		align = false
 		update_tilemap_positions()		
 		align_children_to_tilemap()
-		
+	elif align_to_desired_positions:
+		align_to_desired_positions = false
+		move_to_desired(debug_positions)
+		align_children_to_tilemap()
 func start_next_turn():
 	if turn_order == null:
 		turn_order = get_turn_order()
@@ -248,3 +261,4 @@ func update_turn_labels(character):
 				turn_label.set_turn(2)
 				start_turn_popup.set_turn(2)
 				moves_left_label.current_player = player2
+

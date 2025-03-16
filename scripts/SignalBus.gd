@@ -10,6 +10,8 @@ var moon_gem_first_time : bool = true
 
 var flower_first_time : bool = true
 
+var redecoration_first_time : bool = true
+
 signal _game_lost()
 
 signal _game_won()
@@ -143,4 +145,10 @@ func get_flower_first():
 
 func set_flower_first(boolean:bool):
 	flower_first_time = boolean
+		
+func get_redecoration_first():
+	return redecoration_first_time
+
+func set_redecoration_first(boolean:bool):
+	redecoration_first_time = boolean
 		

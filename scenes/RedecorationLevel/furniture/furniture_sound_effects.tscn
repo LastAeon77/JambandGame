@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsuphgdn32sby"]
+
+[ext_resource type="AudioStream" uid="uid://c3kif2lspf104" path="res://Sound/RedecorationLevel/Pickup 1.wav" id="1_5et36"]
+[ext_resource type="AudioStream" uid="uid://cysl8vddodhcn" path="res://Sound/RedecorationLevel/Drop 5.wav" id="2_5hlug"]
+
+[node name="FurnitureSoundEffects" type="Node2D"]
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_5et36")
+volume_db = 2.0
+
+[node name="Place" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_5hlug")

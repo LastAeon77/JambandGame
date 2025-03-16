@@ -1,5 +1,6 @@
 extends Furniture
 var on_shelf = false
+
 func place(placement_data = null):
 	if placement_data != null and placement_data.is_in_group("bookshelf"):
 		placement_data.place_books(self)
