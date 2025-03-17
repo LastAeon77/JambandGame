@@ -6,8 +6,6 @@ class_name GameBoard
 @export var align_to_desired_positions : bool = false
 @export var debug_positions : int = 0
 
-
-
 enum Direction {NW,NE, SW, SE}
 enum Highlight_Color {RED, GREEN, BLUE} 
 @onready var mr_blob = $MrBlob 
@@ -138,6 +136,7 @@ func try_place(character, item_to_be_placed : Furniture):
 			if item_to_be_placed.place(item):
 				character.held_object = null
 			return
+	in_correct_spots = in_correct_spots and player1.held_object == null and player2.held_object == null
 	if item_to_be_placed.place():
 		character.held_object = null
 	in_correct_spots = in_correct_spots and item_to_be_placed.is_in_correct_spot()
