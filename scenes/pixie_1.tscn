@@ -165,6 +165,7 @@ frame_progress = 0.412448
 shape = SubResource("CapsuleShape2D_gqtsx")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -53.0
 offset_top = -159.0
 offset_right = 63.0

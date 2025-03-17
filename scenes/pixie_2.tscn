@@ -149,6 +149,7 @@ height = 210.0
 bg_color = Color(0.248661, 0.71495, 1.92523e-07, 1)
 
 [node name="Pixie2" type="CharacterBody2D"]
+texture_filter = 1
 scale = Vector2(0.3, 0.3)
 collision_layer = 5
 collision_mask = 5
@@ -165,6 +166,7 @@ animation = &"flower_pickup"
 shape = SubResource("CapsuleShape2D_gqtsx")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -53.0
 offset_top = -159.0
 offset_right = 63.0

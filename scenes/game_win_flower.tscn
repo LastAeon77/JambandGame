@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/game_win.gd" id="1_1ddtn"]
 [ext_resource type="Texture2D" uid="uid://bjmwk3621r5i" path="res://sprites/Level Succeed.png" id="2_1kk5u"]
+[ext_resource type="Texture2D" uid="uid://ds2ogr15p6kgg" path="res://sprites/StartMenus/Menu Flower C.png" id="4_3jowm"]
 [ext_resource type="Texture2D" uid="uid://dftd62hg3qn0t" path="res://sprites/MainMenu/Flower Fail Main Menu.png" id="4_6xwtn"]
 [ext_resource type="Texture2D" uid="uid://4gmxel1emry" path="res://sprites/MainMenu/Flower Fail Try Again.png" id="4_eh6bm"]
-[ext_resource type="Texture2D" uid="uid://dxr05ogy5t1i8" path="res://sprites/MainMenu/Start Menu Flower C.PNG" id="4_s3j10"]
-[ext_resource type="Texture2D" uid="uid://dcfr5piid40kx" path="res://sprites/MainMenu/Start Menu Flower MM.PNG" id="5_f4qdn"]
+[ext_resource type="Texture2D" uid="uid://bbljrxxki22li" path="res://sprites/StartMenus/Menu Flower MM.png" id="5_7v6lf"]
 
 [node name="game_win_flower" type="Control"]
 layout_mode = 3
@@ -47,32 +47,34 @@ texture = ExtResource("4_6xwtn")
 [node name="Pause_Continue" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 248.0
-offset_top = 40.0
-offset_right = -776.0
-offset_bottom = -470.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -256.0
+offset_right = 512.0
+offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3.04, 3.04)
-texture = ExtResource("4_s3j10")
+texture = ExtResource("4_3jowm")
 
 [node name="Pause_MainMenu" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 248.0
-offset_top = 40.0
-offset_right = -776.0
-offset_bottom = -470.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -256.0
+offset_right = 512.0
+offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3.04, 3.04)
-texture = ExtResource("5_f4qdn")
+texture = ExtResource("5_7v6lf")
 
 [node name="TryAgain" type="TextureRect" parent="."]
 visible = false

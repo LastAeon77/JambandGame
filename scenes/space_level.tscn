@@ -82,13 +82,10 @@ position = Vector2(1422, -89)
 [node name="Asteroid_Generator" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("1_m0rt1")]
 position = Vector2(1425, 293)
 
-[node name="game_win" parent="Path2D/PathFollow2D/WorldBoundries" instance=ExtResource("1_3d03w")]
+[node name="CanvasLayer" type="CanvasLayer" parent="Path2D/PathFollow2D/WorldBoundries"]
+
+[node name="game_win" parent="Path2D/PathFollow2D/WorldBoundries/CanvasLayer" instance=ExtResource("1_3d03w")]
 z_index = 100
-offset_left = -1400.0
-offset_top = -807.0
-offset_right = -1400.0
-offset_bottom = -807.0
-scale = Vector2(0.85, 0.85)
 
 [node name="LeftBoundry" type="CollisionShape2D" parent="Path2D/PathFollow2D/WorldBoundries"]
 position = Vector2(-1280, 0)
