@@ -136,9 +136,9 @@ func try_place(character, item_to_be_placed : Furniture):
 			if item_to_be_placed.place(item):
 				character.held_object = null
 			return
-	in_correct_spots = in_correct_spots and player1.held_object == null and player2.held_object == null
 	if item_to_be_placed.place():
 		character.held_object = null
+	in_correct_spots = in_correct_spots and player1.held_object == null and player2.held_object == null
 	in_correct_spots = in_correct_spots and item_to_be_placed.is_in_correct_spot()
 	
 	if in_correct_spots:
