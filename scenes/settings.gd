@@ -3,6 +3,7 @@ var difficulities = 3
 var curr_highlight
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Easy.visible = false
 	$Medium.visible = false
 	$Hard.visible = false

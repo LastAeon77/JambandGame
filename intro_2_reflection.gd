@@ -14,6 +14,7 @@ PRESS Controller Button "A" or Keyboard "Enter" for next dialogue.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	var json_as_text = FileAccess.get_file_as_string(file)
 	json_dict_data = JSON.parse_string(json_as_text)
 	$MR_BLOB.play("default")

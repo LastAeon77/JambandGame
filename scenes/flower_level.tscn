@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://bh10rhj5i5eoy"]
+[gd_scene load_steps=36 format=3 uid="uid://bh10rhj5i5eoy"]
 
 [ext_resource type="Texture2D" uid="uid://ba8w6a2nx3dfx" path="res://sprites/tilesheet_complete.png" id="1_bty15"]
 [ext_resource type="Texture2D" uid="uid://dtgx4kteolf4b" path="res://sprites/Hill Background v2.png" id="1_hpy6w"]
+[ext_resource type="Script" path="res://scripts/flower_level.gd" id="1_svidx"]
 [ext_resource type="PackedScene" uid="uid://ddprghxhoa1bu" path="res://scenes/pixie_1.tscn" id="2_4qrlu"]
 [ext_resource type="PackedScene" uid="uid://datweac4c07w4" path="res://scenes/flower_basket.tscn" id="2_hn0fr"]
 [ext_resource type="Texture2D" uid="uid://cstl1ykt8ead8" path="res://sprites/Tileset.png" id="3_to5ay"]
@@ -12086,6 +12087,7 @@ source_geometry_group_name = &"obstacles"
 agent_radius = 36.01
 
 [node name="flower_level" type="Node"]
+script = ExtResource("1_svidx")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_4r3wv")

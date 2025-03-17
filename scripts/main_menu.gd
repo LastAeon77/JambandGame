@@ -16,6 +16,7 @@ func _ready():
 	#SignalBus.beat_moon = true
 	#SignalBus.beat_flower = true
 	#SignalBus.beat_redecorate = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$MainScene/Ending.visible = false
 	for x in $MainScene.get_children():
 		if(x.get_child(0) is Button):

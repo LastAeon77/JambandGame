@@ -35,6 +35,7 @@ func _process(_delta):
 			
 	elif Input.is_action_just_pressed("submit"):
 		if($TryAgain.visible==true):
+			get_tree().paused = false
 			get_tree().reload_current_scene()
 		elif($MainMenu.visible==true):
 			get_tree().paused = false

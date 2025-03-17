@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bn2fmk2fuwcwq"]
+[gd_scene load_steps=15 format=3 uid="uid://bn2fmk2fuwcwq"]
 
 [ext_resource type="PackedScene" uid="uid://bpuy7o464xvh8" path="res://scenes/game_win.tscn" id="1_3d03w"]
 [ext_resource type="Texture2D" uid="uid://cropil6jeixtb" path="res://sprites/Space Background.png" id="1_3j46u"]
 [ext_resource type="PackedScene" uid="uid://dp1wusb7lwvr6" path="res://scenes/asteroid_generator.tscn" id="1_m0rt1"]
 [ext_resource type="PackedScene" uid="uid://bsjdvrrnug3ck" path="res://scenes/player_ship.tscn" id="1_mn0o8"]
+[ext_resource type="Script" path="res://scenes/space_level.gd" id="1_xuurp"]
 [ext_resource type="PackedScene" uid="uid://cbw3frru4q7te" path="res://scenes/passenger_ship.tscn" id="2_rhrxj"]
 [ext_resource type="PackedScene" uid="uid://c1ino5hpjsofp" path="res://scenes/asteroid.tscn" id="3_00svk"]
 [ext_resource type="PackedScene" uid="uid://2pwwasdg3mp8" path="res://scenes/asteroid_generator_homing.tscn" id="4_edu6f"]
@@ -21,6 +22,7 @@ point_count = 9
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4p44d"]
 
 [node name="SpaceLevel" type="Node"]
+script = ExtResource("1_xuurp")
 
 [node name="SpaceBackground" type="Sprite2D" parent="."]
 position = Vector2(1922.5, 8.00003)
