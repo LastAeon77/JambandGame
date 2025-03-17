@@ -11,9 +11,9 @@ var _held = null
 var movement_path = []
 var move_timer : Timer
 var pending_action = false
-const hard_max_movement = 5
-const med_max_movement = 8
-const easy_max_movement = 10
+const hard_max_movement = 7
+const med_max_movement = 10
+const easy_max_movement = 12
 
 var max_movement = 10
 @export var tilemap_position : Vector2i
