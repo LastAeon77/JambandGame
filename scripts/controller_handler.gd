@@ -4,29 +4,24 @@ var player_two_controller = -1
 func _ready():
 	var joypad_ids = Input.get_connected_joypads()
 	
-	if(len(joypad_ids) >= 1):
-		player_one_controller = joypad_ids[0]
-	if(len(joypad_ids) >= 2):
-		player_two_controller = joypad_ids[1]
-	print("Player 1 controller:", player_one_controller)
-	print("Player 2 controller:", player_two_controller)
-	
+
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 	
 func _on_joy_connection_changed(id, connected):
 	if connected:
 		if player_one_controller == -1:
-			player_one_controller = id
+			player_one_controller = 0
 		elif player_two_controller == -1:
-			player_two_controller = id
+			player_two_controller = 1
 	else:
 		if player_one_controller == id:
 			player_one_controller = -1
-			SignalBus._controller_unplugged.emit()			
+			SignalBus._controller_unplugged.emit()
 		elif player_two_controller == id:
 			player_two_controller = -1
 			SignalBus._controller_unplugged.emit()
+			
 func _input(event):
 	if event.device == player_one_controller and player_one_controller != -1:
 		var strength = 1.0

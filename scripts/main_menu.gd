@@ -12,6 +12,7 @@ var curr_highlight = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	# for Debug:
 	#SignalBus.beat_moon = true
 	#SignalBus.beat_flower = true

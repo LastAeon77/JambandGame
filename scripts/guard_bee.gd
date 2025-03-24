@@ -5,9 +5,11 @@ extends CharacterBody2D
 @export var aggro_cooldown: float = 2.0
 @export var wander_distance : float = 100
 @export var wander_min_distance : float = 50
-@export var angry_speed = 200
+var angry_speed = 120
+
 @export var return_speed = 100
 @export var wander_speed = 50
+
 
 @onready var aggro_cooldown_timer: Timer = $CooldownTimer
 @onready var navigation_agent :NavigationAgent2D = $NavigationAgent2D
@@ -20,6 +22,15 @@ var navigation_is_ready : bool = false
 var animation :AnimatedSprite2D
 var target : Node2D
 func _ready():
+	match SignalBus.curr_difficulty:
+		SignalBus.Difficulties.EASY:
+			angry_speed = 120
+		SignalBus.Difficulties.MEDIUM:
+			angry_speed = 180
+		SignalBus.Difficulties.HARD:
+			angry_speed = 200
+
+
 	pixies = get_tree().get_nodes_in_group("pixie")
 	animation = $AnimatedSprite2D
 	animation.play("default")

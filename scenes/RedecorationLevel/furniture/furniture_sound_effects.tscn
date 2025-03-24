@@ -7,7 +7,8 @@
 
 [node name="Pickup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_5et36")
-volume_db = 2.0
+volume_db = 1.0
 
 [node name="Place" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_5hlug")
+volume_db = -1.0
