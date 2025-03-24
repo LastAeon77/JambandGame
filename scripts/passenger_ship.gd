@@ -15,9 +15,9 @@ func _ready():
 	SignalBus.connect("_game_lost", ship_destroyed) 
 	#SignalBus.connect("_moon_gem_stage_restart",restart)
 	if SignalBus.curr_difficulty == SignalBus.Difficulties.EASY:
-		health = 70
+		health = 120
 	elif SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM:
-		health = 60
+		health = 70
 	elif SignalBus.curr_difficulty == SignalBus.Difficulties.HARD:
 		health = 40
 	$HealthBar.max_value = health

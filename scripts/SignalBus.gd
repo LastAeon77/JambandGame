@@ -46,7 +46,7 @@ func _ready():
 	connect("_moon_gem_stage_clear",win_moon)
 	connect("_flower_victory", win_flower)
 	connect("_redecoration_victory", win_redecorate)
-	curr_difficulty = Difficulties.MEDIUM
+	curr_difficulty = Difficulties.EASY
 	load_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
