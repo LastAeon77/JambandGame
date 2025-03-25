@@ -38,9 +38,9 @@ region = Rect2(384, 0, 128, 128)
 atlas = ExtResource("2_7um3q")
 region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eihif"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4f3f"]
 atlas = ExtResource("2_7um3q")
-region = Rect2(768, 0, 128, 128)
+region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pdq2p"]
 atlas = ExtResource("2_7um3q")
@@ -126,7 +126,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eihif")
+"texture": SubResource("AtlasTexture_q4f3f")
 }],
 "loop": true,
 "name": &"5",
@@ -173,13 +173,13 @@ shape = SubResource("CircleShape2D_ccl3l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_my68v")
-animation = &"12"
+animation = &"5"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = -22.0
 offset_top = 17.0
 offset_right = 30.0
 offset_bottom = 40.0
-text = "11/12"
+text = " 1/12"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
