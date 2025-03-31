@@ -1,20 +1,24 @@
 extends Area2D
-
+@onready var timer = $Timer 
 var pink_flower = preload("res://scenes/pink_flower.tscn")
 var white_flower = preload("res://scenes/white_flower.tscn")
-var has_flower: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if(SignalBus.curr_difficulty == SignalBus.Difficulties.EASY):
-		$Timer.wait_time = 10
+		timer.wait_time = 10.0
 	if(SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM):
-		$Timer.wait_time = 15
+		timer.wait_time = 15.0
 	if(SignalBus.curr_difficulty == SignalBus.Difficulties.HARD):
-		$Timer.wait_time = 20
+		timer.wait_time = 20.0
+	timer.wait_time += randf()/2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	var empty_area = get_overlapping_areas().is_empty()
+	
+	if get_overlapping_areas().is_empty() and timer.is_stopped():
+		timer.start()
 
 signal flower_spawned(flower : Node2D);
 
