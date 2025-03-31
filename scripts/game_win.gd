@@ -48,6 +48,7 @@ func _process(_delta):
 			get_tree().paused = false
 			get_tree().reload_current_scene()
 		elif($MainMenu.visible==true):
+			get_tree().paused = false
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif($WinScreen.visible==true):
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

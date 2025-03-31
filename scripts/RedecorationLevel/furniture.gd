@@ -4,6 +4,7 @@ class_name Furniture
 @onready var animation : AnimatedSprite2D = $Normal
 @onready var sound_effects_scene = preload("res://scenes/RedecorationLevel/furniture/furniture_sound_effects.tscn")
 
+@export var friendly_name = ""
 @export var moveable = true
 @export var tilemap_position : Vector2i
 @export var normal_dimensions : Vector2i = Vector2i(1,1)

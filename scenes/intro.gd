@@ -21,6 +21,7 @@ func _ready():
 	$Path2D/PathFollow2D/Timer.autostart = true
 	$Path2D/PathFollow2D/MR_BLOB.play("Walking")
 	$MR_NEIGHBOR.play("default")
+	$AudioStreamPlayer2D.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

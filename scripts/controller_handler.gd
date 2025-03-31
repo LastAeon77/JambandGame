@@ -9,19 +9,16 @@ func _ready():
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 	
 func _on_joy_connection_changed(id, connected):
-	if connected:
-		if player_one_controller == -1:
-			player_one_controller = 0
-		elif player_two_controller == -1:
-			player_two_controller = 1
+	print(Input.get_connected_joypads())
+	if len(Input.get_connected_joypads()) > 0:
+		player_one_controller = Input.get_connected_joypads()[0]
 	else:
-		if player_one_controller == id:
-			player_one_controller = -1
-			SignalBus._controller_unplugged.emit()
-		elif player_two_controller == id:
-			player_two_controller = -1
-			SignalBus._controller_unplugged.emit()
-			
+		player_one_controller = -1
+	if len(Input.get_connected_joypads()) > 1:
+		player_two_controller = Input.get_connected_joypads()[1]
+	else:
+		player_two_controller = -1
+		
 func _input(event):
 	if event.device == player_one_controller and player_one_controller != -1:
 		var strength = 1.0
