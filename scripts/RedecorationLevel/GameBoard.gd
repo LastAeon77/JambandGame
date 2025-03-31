@@ -25,6 +25,7 @@ var turn_index = 0
 var border
 var all_furniture_in_house = false
 
+
 func get_color_source_id(color : Highlight_Color):
 	match color:
 		Highlight_Color.RED:
@@ -129,15 +130,21 @@ func try_place(character, item_to_be_placed : Furniture):
 		return
 	var items = get_items()
 	var in_correct_spots = mr_blob.all_items_in_house()
+	var placed = false
+	var occupied = false
 	for item in items:
 		var occupied_tiles = item.get_tiles()
 		in_correct_spots = in_correct_spots and item.is_in_correct_spot()
 		if any_intersection(occupied_tiles,placement_tiles):
+			occupied = true
 			if item_to_be_placed.place(item):
+				placed = true
 				character.held_object = null
-			return
-	if item_to_be_placed.place():
+	
+	if not occupied and not placed and item_to_be_placed.place():
 		character.held_object = null
+		placed = true
+	
 	in_correct_spots = in_correct_spots and player1.held_object == null and player2.held_object == null
 	in_correct_spots = in_correct_spots and item_to_be_placed.is_in_correct_spot()
 	
