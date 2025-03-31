@@ -16,6 +16,6 @@ func _process(delta):
 	if player_node.held_object == null:
 		temp = temp + "Empty"
 	else:
-		temp = temp + player_node.held_object.name
+		temp = temp + player_node.held_object.friendly_name
 	text = temp
 	

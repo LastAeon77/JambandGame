@@ -47,6 +47,7 @@ animations = [{
 [node name="Bookshelf" type="Node2D" groups=["bookshelf", "obstacles", "tilemap_bound"]]
 z_index = 3
 script = ExtResource("1_dvmtp")
+friendly_name = "Bookshelf"
 normal_dimensions = Vector2i(3, 1)
 flipped_dimensions = Vector2i(1, 3)
 desired_locations = Array[Vector2i]([Vector2i(-6, -12), Vector2i(-9, -9)])

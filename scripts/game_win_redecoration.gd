@@ -41,6 +41,7 @@ func _process(_delta):
 			get_tree().paused = false
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif($WinScreen.visible==true):
+			get_tree().paused = false
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif($Pause_Continue.visible == true):
 			$Pause_MainMenu.visible = false

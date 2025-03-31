@@ -94,6 +94,7 @@ animations = [{
 z_index = 3
 y_sort_enabled = true
 script = ExtResource("1_0pp6g")
+friendly_name = "Stereo"
 normal_dimensions = Vector2i(1, 3)
 flipped_dimensions = Vector2i(3, 1)
 desired_locations = Array[Vector2i]([Vector2i(-1, -12), Vector2i(-9, -5)])

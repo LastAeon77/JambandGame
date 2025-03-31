@@ -43,6 +43,7 @@ func _process(_delta):
 			get_tree().paused = false
 			get_tree().reload_current_scene()
 		elif($MainMenu.visible==true):
+			get_tree().paused = false
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif($Pause_Continue.visible == true):
 			$Pause_MainMenu.visible = false
@@ -58,6 +59,7 @@ func game_win():
 
 
 func game_lost():
+	get_tree().paused = true
 	$TryAgain.visible = true
 
 func restart():
