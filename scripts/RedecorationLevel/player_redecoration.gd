@@ -44,7 +44,6 @@ func _process(delta):
 		var button2_pressed = action_map.get_button_2()
 		var select_pressed = action_map.get_select()
 		
-		
 		if movement_vector != Vector2i.ZERO or button1_pressed or button2_pressed or select_pressed:
 			SignalBus._action_taken.emit()
 		
@@ -103,7 +102,10 @@ func update_highlight(draw_held = true):
 	if pending_action:
 		return
 	if len(movement_path) != 0:
-		SignalBus._update_highlight.emit(movement_path, GameBoard.Highlight_Color.RED, true)
+		SignalBus._update_highlight.emit([],GameBoard.Highlight_Color.RED, true)
+		if held_object != null and draw_held:
+			held_object.draw_placement_highlight()
+		SignalBus._update_highlight.emit(movement_path, GameBoard.Highlight_Color.RED, false)
 		
 	elif held_object != null and draw_held:
 		held_object.draw_placement_highlight()
