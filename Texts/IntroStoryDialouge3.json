@@ -6,27 +6,27 @@
 	},
 	{
 		"id":1,
-		"talker":"Blob",
+		"talker":"Mr. Blob",
 		"text": "I came up with a Honey-Do list last night."
 	},
 		{
 		"id":1.5,
-		"talker":"Blob",
+		"talker":"Mr. Blob",
 		"text": "For myself..."
 	},
 	{
 		"id":2,
-		"talker":"Blob",
+		"talker":"Mr. Blob",
 		"text": "I want to get Mrs. Blob a Moon Gem, Flowers, and New Furniture."
 	},
 	{
 		"id":3,
-		"talker":"Blob",
+		"talker":"Mr. Blob",
 		"text": "But how will I ever accomplish such great feats?!"
 	},
 	{
 		"id":3.1,
-		"talker":"Blob",
+		"talker":"Mr. Blob",
 		"text": "They say throwing a coin into the ancient Blobby Fountain calls mystical help."
 	},
 	{
@@ -36,7 +36,7 @@
 	},
 	{
 		"id":3.6,
-		"talker":"Blob",
+		"talker":"Mr. Blob",
 		"text": "I'm kinda hopeless. Better throw in a second."
 	},
 	{
@@ -71,12 +71,12 @@
 	},
 	{
 		"id":9,
-		"talker":"Blob",
+		"talker":"Mr. Blob",
 		"text": "Oh my Lord!"
 	},
 	{
 		"id":10,
-		"talker":"Blob",
+		"talker":"Mr. Blob",
 		"text": "I never knew we had a furniture store and a space travel agency."
 	}
 ]

@@ -52,7 +52,7 @@ func next_story():
 			var text = curr["text"]
 			var talker = curr["talker"]
 			var curr_id = curr["id"]
-			if(talker == "Blob"):
+			if(talker == "Mr. Blob"):
 				$MR_BLOB.visible = true
 			if(curr_id == 3.5):
 				$MR_BLOB.visible = false
