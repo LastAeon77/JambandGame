@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://drri5lj3u7elg"
+path="res://.godot/imported/Scene 2 Panick Attack.mp3-288c34769a9f1a5a6809aed18143059c.mp3str"
+
+[deps]
+
+source_file="res://Sound/Intro/Scene 2 Panick Attack.mp3"
+dest_files=["res://.godot/imported/Scene 2 Panick Attack.mp3-288c34769a9f1a5a6809aed18143059c.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

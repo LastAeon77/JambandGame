@@ -18,6 +18,7 @@ func _ready():
 	var json_as_text = FileAccess.get_file_as_string(file)
 	json_dict_data = JSON.parse_string(json_as_text)
 	$MR_BLOB.play("default")
+	$AudioStreamPlayer.play()
 	next_story()
 
 

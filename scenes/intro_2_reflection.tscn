@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://dq6nb7dunb1xj"]
+[gd_scene load_steps=21 format=3 uid="uid://dq6nb7dunb1xj"]
 
 [ext_resource type="Script" path="res://intro_2_reflection.gd" id="1_6nw78"]
 [ext_resource type="Texture2D" uid="uid://bovbds360mfr0" path="res://sprites/Intro/Scene 2 Background.png" id="2_chp8d"]
 [ext_resource type="Texture2D" uid="uid://batrye0nqad2f" path="res://sprites/Intro/Standard Thinking.png" id="3_utgm8"]
 [ext_resource type="Texture2D" uid="uid://dknb5705udkcm" path="res://sprites/Intro/Blob looking around-Sheet.png" id="4_i5q1v"]
 [ext_resource type="Texture2D" uid="uid://0ijout5l7eea" path="res://sprites/Intro/Intense Thinking.png" id="5_i4w8l"]
+[ext_resource type="AudioStream" uid="uid://drri5lj3u7elg" path="res://Sound/Intro/Scene 2 Panick Attack.mp3" id="6_w2cxu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4kka"]
 atlas = ExtResource("3_utgm8")
@@ -143,3 +144,6 @@ offset_left = 163.0
 offset_top = 549.0
 offset_right = 1116.0
 offset_bottom = 706.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_w2cxu")
