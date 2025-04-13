@@ -48,4 +48,4 @@ func next_story():
 			$MR_BLOB.play("serious")
 		if(talker == "Blob Think"):
 			$MR_BLOB.play("look_around")
-		$RichTextLabel.text = text_template.replace("<Text>",text).replace("<Talker>","Blob")
+		$RichTextLabel.text = text_template.replace("<Text>",text).replace("<Talker>","Mr. Blob")
