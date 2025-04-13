@@ -48,7 +48,7 @@ func next_story():
 		var curr = json_dict_data[count]
 		var text = curr["text"]
 		var talker = curr["talker"]
-		if(talker == "neighbor"):
+		if(talker == "Neighbor"):
 			$MR_NEIGHBOR.play("Talking")
 			$Path2D/PathFollow2D/MR_BLOB.play("default")
 		else:
