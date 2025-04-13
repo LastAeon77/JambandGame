@@ -24,6 +24,7 @@ func _ready():
 	$MR_BLOB_THROW_COIN.visible = false
 	$Fountain.play("default")
 	$NeonSign.visible = false
+	$WaterFountainMP3.play()
 	next_story()
 
 
