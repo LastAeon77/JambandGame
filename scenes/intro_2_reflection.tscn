@@ -147,3 +147,4 @@ offset_bottom = 706.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_w2cxu")
+volume_db = 5.0
