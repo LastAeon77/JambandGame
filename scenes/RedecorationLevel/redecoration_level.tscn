@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b1l6laa5c6rre"]
+[gd_scene load_steps=25 format=3 uid="uid://b1l6laa5c6rre"]
 
 [ext_resource type="AudioStream" uid="uid://d2bcwodqp261f" path="res://Sound/RedecorationLevel/Redecoration LoFi Song.mp3" id="1_lun3h"]
 [ext_resource type="Script" path="res://scripts/RedecorationLevel/redecoration_level.gd" id="1_t1smk"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ci7cd1eqtlunf" path="res://scenes/RedecorationLevel/player_2_redecoration.tscn" id="8_1avvi"]
 [ext_resource type="Texture2D" uid="uid://bvpv2s8cbiqeu" path="res://sprites/RedecorationLevel/Furniture/Door Frame Right.png" id="9_qdnck"]
 [ext_resource type="Texture2D" uid="uid://b1himfxh7e8bt" path="res://sprites/RedecorationLevel/Furniture/Door Frame Left.png" id="10_dslyp"]
+[ext_resource type="Texture2D" uid="uid://cysr3oxnowncq" path="res://sprites/RedecorationLevel/Menu/Information Menu.png" id="16_63coh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1raf2"]
 bg_color = Color(0.262745, 0.262745, 0.262745, 0.556863)
@@ -249,3 +250,9 @@ y_sort_enabled = true
 position = Vector2(152, -142)
 texture = ExtResource("10_dslyp")
 offset = Vector2(0, -1)
+
+[node name="InformationMenu" type="Sprite2D" parent="."]
+top_level = true
+position = Vector2(291, -31)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_63coh")
