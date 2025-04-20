@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://281pi36jk8bb"]
+[gd_scene load_steps=83 format=3 uid="uid://281pi36jk8bb"]
 
 [ext_resource type="Script" path="res://intro_3_fairy.gd" id="1_q3dc4"]
 [ext_resource type="Texture2D" uid="uid://btbdislipi266" path="res://sprites/Intro/Intro3/Water Fountain Background.png" id="2_m4x0v"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d2fdgx3h4jllq" path="res://sprites/Intro/Intro3/Neon Moon Sign-Sheet.png" id="8_u5ull"]
 [ext_resource type="AudioStream" uid="uid://80gs1trncjn" path="res://Sound/Intro/Flute Intro Song.mp3" id="9_na1i7"]
 [ext_resource type="AudioStream" uid="uid://g54mtgh4pui2" path="res://Sound/Intro/Water Fountain.mp3" id="11_16mml"]
+[ext_resource type="AudioStream" uid="uid://cf3rgqw3bt4hf" path="res://Sound/Intro/coin in fountain 1.mp3" id="12_e78mb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7tng4"]
 atlas = ExtResource("5_brlqn")
@@ -619,6 +620,9 @@ attenuation = 1e-05
 [node name="WaterFountainMP3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_16mml")
 volume_db = -27.0
+
+[node name="Coin_Splash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_e78mb")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

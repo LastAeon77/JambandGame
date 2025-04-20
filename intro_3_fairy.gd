@@ -59,6 +59,8 @@ func next_story():
 				$MR_BLOB.visible = false
 				$MR_BLOB_THROW_COIN.visible = true;
 				$MR_BLOB_THROW_COIN.play("default")
+				await get_tree().create_timer(1.8).timeout
+				$Coin_Splash.play()
 			if(curr_id == 3.6):
 				$MR_BLOB.visible = true
 				$MR_BLOB_THROW_COIN.visible = false;
@@ -66,6 +68,8 @@ func next_story():
 				$MR_BLOB.visible = false
 				$MR_BLOB_THROW_COIN.visible = true;
 				$MR_BLOB_THROW_COIN.play("default")
+				await get_tree().create_timer(1.8).timeout
+				$Coin_Splash.play()
 			if(curr_id == 4):
 				$MR_BLOB.visible = true
 				$MR_BLOB_THROW_COIN.visible = false;
