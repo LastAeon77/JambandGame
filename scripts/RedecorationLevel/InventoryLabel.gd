@@ -8,11 +8,7 @@ func _ready():
 		player_node = %RedecorationPlayer2
 
 func _process(delta):
-	var temp
-	if player == 1:
-		temp = "Player 1 inventory:\n"
-	else:
-		temp = "Player 2 inventory:\n"
+	var temp = ""
 	if player_node.held_object == null:
 		temp = temp + "Empty"
 	else:
