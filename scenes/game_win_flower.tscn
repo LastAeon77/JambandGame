@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://0mqrsqjbcjr8"]
+[gd_scene load_steps=9 format=3 uid="uid://0mqrsqjbcjr8"]
 
 [ext_resource type="Script" path="res://scripts/game_win.gd" id="1_1ddtn"]
 [ext_resource type="Texture2D" uid="uid://bjmwk3621r5i" path="res://sprites/Level Succeed.png" id="2_1kk5u"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dftd62hg3qn0t" path="res://sprites/MainMenu/Flower Fail Main Menu.png" id="4_6xwtn"]
 [ext_resource type="Texture2D" uid="uid://4gmxel1emry" path="res://sprites/MainMenu/Flower Fail Try Again.png" id="4_eh6bm"]
 [ext_resource type="Texture2D" uid="uid://bbljrxxki22li" path="res://sprites/StartMenus/Menu Flower MM.png" id="5_7v6lf"]
+[ext_resource type="AudioStream" uid="uid://cecg1q415pojn" path="res://Sound/SUCCESS.mp3" id="7_vpqpd"]
+[ext_resource type="AudioStream" uid="uid://dk0om8iyn6wh5" path="res://Sound/FAILURE.mp3" id="8_j3ocn"]
 
 [node name="game_win_flower" type="Control"]
 layout_mode = 3
@@ -89,3 +91,9 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.78, 1.78)
 texture = ExtResource("4_eh6bm")
+
+[node name="SuccessSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_vpqpd")
+
+[node name="FailureSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_j3ocn")

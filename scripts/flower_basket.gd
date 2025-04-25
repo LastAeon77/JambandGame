@@ -33,6 +33,7 @@ func fill_basket(num:int):
 	current_amount += num
 	$AnimatedSprite2D.play(str(min(current_amount,12)))
 	if current_amount >= victory_amount:
+		%AudioStreamPlayer2D.stop()
 		SignalBus.emit_signal("_flower_victory")
 
 

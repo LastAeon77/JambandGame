@@ -19,6 +19,7 @@ var check4 = false;
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if $PathFollow2D.progress_ratio >= 0.99:
+		%AudioStreamPlayer2D.stop()
 		SignalBus.emit_signal("_flower_defeat")
 		
 	if $PathFollow2D.progress_ratio >= 0.2289 and not check1:

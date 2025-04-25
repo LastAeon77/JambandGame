@@ -7,7 +7,6 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = true
 	SignalBus.connect("_flower_victory",game_win)
-	SignalBus.connect("_game_lost",game_lost)
 	SignalBus.connect("_flower_defeat",flower_defeat)
 	SignalBus.connect("_moon_gem_stage_clear",game_win)
 	SignalBus.connect("_moon_gem_stage_restart",restart)
@@ -65,14 +64,12 @@ func _process(_delta):
 		$Pause_Continue.visible = true
 		
 func game_win():
+	$SuccessSound.play()
 	$WinScreen.visible = true
-
-
-func game_lost():
-	pass
 
 func flower_defeat():
 	if(!self_visible):
+		$FailureSound.play()
 		$TryAgain.visible = true
 		self_visible = true
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpuy7o464xvh8"]
+[gd_scene load_steps=9 format=3 uid="uid://bpuy7o464xvh8"]
 
 [ext_resource type="Script" path="res://scripts/game_win_moon_gem.gd" id="1_leqg3"]
 [ext_resource type="Texture2D" uid="uid://xksxlwxvfqxw" path="res://sprites/End Level.png" id="2_ilr3x"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dcxhejnj3qva5" path="res://sprites/MoonGem/Moon Gem Fail Menu.png" id="5_jgijx"]
 [ext_resource type="Texture2D" uid="uid://eyjm6pt3vwp" path="res://sprites/MoonGem/Moon Gem Fail Try.png" id="6_f0jpp"]
 [ext_resource type="Texture2D" uid="uid://cgidr2nqbsk8u" path="res://sprites/StartMenus/Menu Moon MM.png" id="6_o03mh"]
+[ext_resource type="AudioStream" uid="uid://cecg1q415pojn" path="res://Sound/SUCCESS.mp3" id="7_8gt4j"]
+[ext_resource type="AudioStream" uid="uid://dk0om8iyn6wh5" path="res://Sound/FAILURE.mp3" id="8_71e8v"]
 
 [node name="game_win" type="Control"]
 layout_mode = 3
@@ -88,3 +90,9 @@ offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_o03mh")
+
+[node name="SuccessSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_8gt4j")
+
+[node name="FailureSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_71e8v")

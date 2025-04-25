@@ -54,11 +54,13 @@ func _process(_delta):
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func game_win():
+	$SuccessSound.play()
 	get_tree().paused = true
 	$WinScreen.visible = true
 
 
 func game_lost():
+	$FailureSound.play()
 	get_tree().paused = true
 	$TryAgain.visible = true
 
