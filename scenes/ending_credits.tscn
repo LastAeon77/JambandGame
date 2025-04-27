@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cq4px7sr8q65y"]
+[gd_scene load_steps=19 format=3 uid="uid://cq4px7sr8q65y"]
 
 [ext_resource type="Script" path="res://scenes/ending_credits.gd" id="1_s4mnv"]
 [ext_resource type="Texture2D" uid="uid://bcolpegbvfd1x" path="res://sprites/EndingAndCredit/End_Credits-Sheet.png" id="1_v2570"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d2uixagnh12yn" path="res://sprites/EndingAndCredit/Credit_3.png" id="4_8gc1b"]
 [ext_resource type="Texture2D" uid="uid://p3a5hq6v8ike" path="res://sprites/EndingAndCredit/Credit_Theme_Songs.png" id="6_7knuj"]
 [ext_resource type="Texture2D" uid="uid://h8kb7y0ng4iu" path="res://sprites/EndingAndCredit/Credit_Cursive.png" id="6_y5eif"]
+[ext_resource type="Texture2D" uid="uid://cgoh1nvmp1tyu" path="res://sprites/EndingAndCredit/Credit_Extensive_Testing.png" id="7_pkou1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_num3u"]
 atlas = ExtResource("1_v2570")
@@ -79,6 +80,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dg8ih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pkou1")
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_y5eif")
