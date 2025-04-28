@@ -4,6 +4,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play("default")
+	$Credits_Song.play()
 	confirm.confirmed.connect(_on_confirm_dialog_confirm)
 	confirm.canceled.connect(_on_confirm_dialog_cancel)
 	
