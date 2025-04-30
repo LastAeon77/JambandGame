@@ -12188,7 +12188,7 @@ grow_vertical = 1
 position = Vector2(234, -213)
 
 [node name="Flower2" parent="." instance=ExtResource("10_3fq2c")]
-position = Vector2(522, 165)
+position = Vector2(-3, -301)
 
 [node name="Flower3" parent="." instance=ExtResource("10_3fq2c")]
 position = Vector2(-347, -7)

@@ -65,11 +65,13 @@ func _process(_delta):
 		
 func game_win():
 	$SuccessSound.play()
+	get_tree().paused = true
 	$WinScreen.visible = true
 
 func flower_defeat():
 	if(!self_visible):
 		$FailureSound.play()
+		get_tree().paused = true
 		$TryAgain.visible = true
 		self_visible = true
 
