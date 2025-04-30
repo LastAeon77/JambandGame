@@ -37,7 +37,8 @@ func _ready():
 
 func play_place_sound():
 	place_sound.play()
-
+func play_pickup_sound():
+	pickup_sound.play()
 func flip():
 	if flipped_animation!= null:
 		if !flipped:

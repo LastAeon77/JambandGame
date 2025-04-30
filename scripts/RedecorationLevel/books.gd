@@ -5,10 +5,12 @@ func place(placement_data = null):
 	if placement_data != null and placement_data.is_in_group("bookshelf"):
 		placement_data.place_books(self)
 		on_shelf = true
+		super.play_place_sound()
 		return true
 	elif placement_data == null:
 		on_ground=true
 		add_to_group("obstacles")
+		super.play_place_sound()
 		visible = true
 		return true
 	return false
@@ -16,6 +18,7 @@ func place(placement_data = null):
 func pick_up():
 	on_ground = false
 	on_shelf = false
+	super.play_pickup_sound()
 	remove_from_group("obstacles")
 	visible = false
 	return self

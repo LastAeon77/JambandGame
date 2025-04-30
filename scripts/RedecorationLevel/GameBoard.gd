@@ -149,6 +149,7 @@ func try_place(character, item_to_be_placed : Furniture):
 	in_correct_spots = in_correct_spots and item_to_be_placed.is_in_correct_spot()
 	
 	if in_correct_spots:
+		%AudioStreamPlayer2D.stop()
 		SignalBus._redecoration_victory.emit()
 		
 func update_tilemap_positions():

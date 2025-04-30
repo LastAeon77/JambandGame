@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 var asteroids_in_your_area = {}
-@export var max_speed = 500.0
-@export var half_life = 0.3
+@export var max_speed = 600.0
+@export var half_life = 0.2
 var decay = 0
 # Called when the node enters the scene tree for the first time.
 var cooldown: bool = false

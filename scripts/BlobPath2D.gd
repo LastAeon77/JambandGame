@@ -9,7 +9,7 @@ func _ready():
 	if(SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM):
 		$Timer.wait_time = 0.12
 	if(SignalBus.curr_difficulty == SignalBus.Difficulties.HARD):
-		$Timer.wait_time = 0.10
+		$Timer.wait_time = 0.09
 
 var check1 = false;
 var check2 = false;
