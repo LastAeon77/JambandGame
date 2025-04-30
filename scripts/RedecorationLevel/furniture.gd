@@ -19,9 +19,10 @@ var flipped_animation = null
 var pickup_sound
 var place_sound
 func _ready():
-	add_child(sound_effects_scene.instantiate())
-	pickup_sound = $FurnitureSoundEffects/Pickup
-	place_sound = $FurnitureSoundEffects/Place
+	var sound_effects = sound_effects_scene.instantiate()
+	add_child(sound_effects)
+	pickup_sound = sound_effects.get_child(0)
+	place_sound = sound_effects.get_child(1)
 	
 	if !flipped:
 		dimensions = normal_dimensions

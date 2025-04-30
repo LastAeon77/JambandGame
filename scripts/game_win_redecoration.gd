@@ -25,6 +25,9 @@ func _process(_delta):
 		elif($Pause_Continue.visible == false && $Pause_MainMenu.visible == true):
 			$Pause_Continue.visible = true
 			$Pause_MainMenu.visible = false
+		elif($TryAgainOutOfTurns.visible == false && $MainMenuOutOfTurns.visible == true):
+			$TryAgainOutOfTurns.visible = true
+			$MainMenuOutOfTurns.visible = false
 	elif Input.is_action_just_pressed("left_player_1") or Input.is_action_just_pressed(("left_player_2")):
 		if($MainMenu.visible == false && $TryAgain.visible == true):
 			$TryAgain.visible = false
@@ -32,7 +35,10 @@ func _process(_delta):
 		elif($Pause_MainMenu.visible == false && $Pause_Continue.visible == true):
 			$Pause_Continue.visible = false
 			$Pause_MainMenu.visible = true
-			
+		elif($MainMenuOutOfTurns.visible == false && $TryAgainOutOfTurns.visible == true):
+			$TryAgainOutOfTurns.visible = false
+			$MainMenuOutOfTurns.visible = true
+		
 	elif Input.is_action_just_pressed("submit"):
 		if($TryAgain.visible==true):
 			get_tree().paused = false
@@ -50,16 +56,24 @@ func _process(_delta):
 		elif($Pause_MainMenu.visible == true):
 			get_tree().paused = false
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-
+		elif $MainMenuOutOfTurns.visible == true:
+			get_tree().paused = false
+			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		elif $TryAgainOutOfTurns.visible == true:
+			get_tree().paused = false
+			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		
 func game_win():
 	$SuccessSound.play()
 	$WinScreen.visible = true
 
-func game_lost():
+func game_lost(defeat_type):
 	$FailureSound.play()
 	get_tree().paused = true
-	$TryAgain.visible=true
-
+	if defeat_type==SignalBus.redecoration_defeat_type.OUT_OF_TURNS:
+		$TryAgainOutOfTurns.visible=true
+	else:
+		$TryAgain.visible=true
 func restart():
 	$WinScreen.visible = false
 	

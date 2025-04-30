@@ -29,7 +29,10 @@ signal _flower_victory()
 signal _flower_defeat()
 signal _controller_unplugged()
 
-signal _redecoration_defeat()
+enum redecoration_defeat_type {PILED_UP, OUT_OF_TURNS}
+
+signal _highlight_bookshelf()
+signal _redecoration_defeat(redecoration_defeat_type)
 signal _redecoration_victory()
 signal _update_highlight(points : Array, color : GameBoard.Highlight_Color, clear : bool)
 signal _turn_changed(turn_number:int)

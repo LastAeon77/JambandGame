@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdo1a8a6684de"]
+[gd_scene load_steps=11 format=3 uid="uid://bdo1a8a6684de"]
 
 [ext_resource type="Script" path="res://scripts/game_win_redecoration.gd" id="1_puacq"]
 [ext_resource type="Texture2D" uid="uid://b7yalu0mstjv6" path="res://sprites/MainMenu/Redecoration Succeed.png" id="2_xyj1a"]
@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://5cqkewft2678" path="res://sprites/StartMenus/Menu Redecoration MM.png" id="4_141ex"]
 [ext_resource type="Texture2D" uid="uid://brpymavxahkri" path="res://sprites/MainMenu/Redecoration Fail Main Menu.png" id="5_2b7c0"]
 [ext_resource type="Texture2D" uid="uid://cxt2buc4g307r" path="res://sprites/MainMenu/Redecoration Fail Try Again.png" id="6_4hhn4"]
+[ext_resource type="Texture2D" uid="uid://dfpdl6vc080rc" path="res://sprites/RedecorationLevel/Menu/Redecoration Fail No Turns Remain MM.png" id="7_dic4m"]
 [ext_resource type="AudioStream" uid="uid://cecg1q415pojn" path="res://Sound/SUCCESS.mp3" id="7_eh1ke"]
 [ext_resource type="AudioStream" uid="uid://dk0om8iyn6wh5" path="res://Sound/FAILURE.mp3" id="8_1ae57"]
+[ext_resource type="Texture2D" uid="uid://dp5jsajxx1v51" path="res://sprites/RedecorationLevel/Menu/Redecoration Fail No Turns Remain Try Again.png" id="8_u4kqw"]
 
 [node name="game_win" type="Control"]
 layout_mode = 3
@@ -79,6 +81,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_4hhn4")
+
+[node name="MainMenuOutOfTurns" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_dic4m")
+
+[node name="TryAgainOutOfTurns" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_u4kqw")
 
 [node name="SuccessSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_eh1ke")

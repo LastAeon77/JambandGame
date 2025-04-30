@@ -247,7 +247,7 @@ func start_next_turn():
 		turn_order = get_turn_order()
 		rounds_left = rounds_left - 1
 		if rounds_left == 0:
-			SignalBus._redecoration_defeat.emit()
+			SignalBus._redecoration_defeat.emit(SignalBus.redecoration_defeat_type.OUT_OF_TURNS)
 	else:
 		turn_index += 1
 	turn_order[turn_index].start_turn()

@@ -134,7 +134,7 @@ func place_object_in_house():
 				pending_action = false
 				return
 			held_object.flip()
-		SignalBus._redecoration_defeat.emit()
+		SignalBus._redecoration_defeat.emit(SignalBus.redecoration_defeat_type.PILED_UP)
 		pending_action = false
 
 func get_path_to_point(point):

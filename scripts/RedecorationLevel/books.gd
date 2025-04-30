@@ -22,3 +22,7 @@ func pick_up():
 	
 func is_in_correct_spot():
 	return on_shelf
+
+func draw_desired_highlight():
+	super.draw_desired_highlight()
+	SignalBus._highlight_bookshelf.emit()
