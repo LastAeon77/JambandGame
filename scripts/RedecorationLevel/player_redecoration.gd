@@ -12,7 +12,7 @@ var movement_path = []
 var move_timer : Timer
 var pending_action = false
 const hard_max_movement = 6
-const med_max_movement = 9
+const med_max_movement = 8
 const easy_max_movement = 11
 
 var max_movement = 10

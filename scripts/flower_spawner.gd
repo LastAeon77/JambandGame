@@ -10,7 +10,7 @@ func _ready():
 	if(SignalBus.curr_difficulty == SignalBus.Difficulties.MEDIUM):
 		timer.wait_time = 15.0
 	if(SignalBus.curr_difficulty == SignalBus.Difficulties.HARD):
-		timer.wait_time = 20.0
+		timer.wait_time = 25.0
 	timer.wait_time += randf()/2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

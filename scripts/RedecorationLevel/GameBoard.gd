@@ -16,8 +16,8 @@ enum Highlight_Color {RED, GREEN, BLUE}
 @onready var moves_left_label = $"%MovesLeftLabel"
 
 @onready var easy_num_rounds_after = 10
-@onready var med_num_rounds_after = 5
-@onready var hard_num_rounds_after = 2
+@onready var med_num_rounds_after = 4
+@onready var hard_num_rounds_after = 3
 
 var rounds_left = 1
 var turn_order
