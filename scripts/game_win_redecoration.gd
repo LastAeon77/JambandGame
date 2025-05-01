@@ -65,6 +65,7 @@ func _process(_delta):
 		
 func game_win():
 	$SuccessSound.play()
+	get_tree().paused = true
 	$WinScreen.visible = true
 
 func game_lost(defeat_type):

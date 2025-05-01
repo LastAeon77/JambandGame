@@ -50,6 +50,7 @@ func _process(_delta):
 			get_tree().paused = false
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif($WinScreen.visible==true):
+			get_tree().paused = false
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif($Pause_Continue.visible == true):
 			$Pause_MainMenu.visible = false
@@ -65,13 +66,13 @@ func _process(_delta):
 		
 func game_win():
 	$SuccessSound.play()
-	#get_tree().paused = true
+	get_tree().paused = true
 	$WinScreen.visible = true
 
 func flower_defeat():
 	if(!self_visible):
 		$FailureSound.play()
-		#get_tree().paused = true
+		get_tree().paused = true
 		$TryAgain.visible = true
 		self_visible = true
 
