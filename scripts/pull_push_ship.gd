@@ -41,6 +41,7 @@ func _physics_process(delta):
 		past_delta-=delta
 		if past_delta <0:
 			cooldown = false
+			$AnimatedSprite2D.play("default")
 	
 	var direction = Input.get_vector("left_player_2","right_player_2","up_player_2","down_player_2")
 	velocity = max_speed*direction+(velocity - max_speed*direction)*exp(-delta*decay)
