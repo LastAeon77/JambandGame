@@ -15,6 +15,9 @@ func _ready():
 
 
 func _process(_delta):
+	if Input.is_action_just_pressed("restart"):
+		get_tree().paused = false
+		get_tree().reload_current_scene()
 	if Input.is_action_just_pressed("start_player_1") or Input.is_action_just_pressed("start_player_2"):
 		get_tree().paused = true
 		$Pause_Continue.visible = true
