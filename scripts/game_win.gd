@@ -48,9 +48,11 @@ func _process(_delta):
 			get_tree().reload_current_scene()
 		elif($MainMenu.visible==true):
 			get_tree().paused = false
+			SignalBus.set_flower_first(true)
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif($WinScreen.visible==true):
 			get_tree().paused = false
+			SignalBus.set_flower_first(true)
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif($Pause_Continue.visible == true):
 			$Pause_MainMenu.visible = false
@@ -58,6 +60,7 @@ func _process(_delta):
 			get_tree().paused = false
 		elif($Pause_MainMenu.visible == true):
 			get_tree().paused = false
+			SignalBus.set_flower_first(true)
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 			
 	if Input.is_action_just_pressed("start_player_1") or Input.is_action_just_pressed("start_player_2"):

@@ -45,9 +45,11 @@ func _process(_delta):
 			get_tree().reload_current_scene()
 		elif($MainMenu.visible==true):
 			get_tree().paused = false
+			SignalBus.set_redecoration_first(true)
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif($WinScreen.visible==true):
 			get_tree().paused = false
+			SignalBus.set_redecoration_first(true)
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif($Pause_Continue.visible == true):
 			$Pause_MainMenu.visible = false
@@ -55,13 +57,15 @@ func _process(_delta):
 			get_tree().paused = false
 		elif($Pause_MainMenu.visible == true):
 			get_tree().paused = false
+			SignalBus.set_redecoration_first(true)
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif $MainMenuOutOfTurns.visible == true:
 			get_tree().paused = false
+			SignalBus.set_redecoration_first(true)
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif $TryAgainOutOfTurns.visible == true:
 			get_tree().paused = false
-			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+			get_tree().reload_current_scene()
 		
 func game_win():
 	$SuccessSound.play()
